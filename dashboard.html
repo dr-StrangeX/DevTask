@@ -10,7 +10,7 @@
 
     <meta
         name="description"
-        content="DevTask is a modern, responsive task management dashboard for organizing, tracking, and completing tasks."
+        content="DevTask dashboard for managing tasks, projects, and productivity."
     >
 
     <meta
@@ -18,18 +18,52 @@
         content="#080d18"
     >
 
-   <title>DevTask | Dashboard</title>
+    <title>DevTask | Dashboard</title>
 
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-    <div class="app">
+    <!-- =====================================================
+         AUTHENTICATION LOADING SCREEN
+    ====================================================== -->
 
-        <!-- =========================
+    <div
+        id="authLoading"
+        class="auth-loading"
+    >
+
+        <div class="auth-loading-card">
+
+            <div class="auth-loading-logo">
+                D
+            </div>
+
+            <div class="auth-loading-spinner"></div>
+
+            <p>
+                Checking your session...
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         APPLICATION
+    ====================================================== -->
+
+    <div
+        class="app"
+        id="app"
+        hidden
+    >
+
+        <!-- =================================================
              SIDEBAR
-        ========================== -->
+        ================================================== -->
 
         <aside
             class="sidebar"
@@ -46,7 +80,9 @@
                     D
                 </div>
 
-                <span>DevTask</span>
+                <span>
+                    DevTask
+                </span>
 
             </div>
 
@@ -95,13 +131,18 @@
                     aria-label="Toggle color theme"
                     aria-pressed="false"
                 >
-
                     <span aria-hidden="true">◐</span>
+                    <span>Toggle Theme</span>
+                </button>
 
-                    <span>
-                        Toggle Theme
-                    </span>
 
+                <button
+                    type="button"
+                    class="nav-item"
+                    id="logoutButton"
+                >
+                    <span aria-hidden="true">↪</span>
+                    <span>Log out</span>
                 </button>
 
 
@@ -109,6 +150,7 @@
 
                     <div
                         class="avatar"
+                        id="sidebarAvatar"
                         aria-hidden="true"
                     >
                         DR
@@ -117,11 +159,11 @@
 
                     <div>
 
-                        <strong>
+                        <strong id="sidebarUserName">
                             Developer
                         </strong>
 
-                        <small>
+                        <small id="sidebarUserEmail">
                             Personal Workspace
                         </small>
 
@@ -134,42 +176,46 @@
         </aside>
 
 
-        <!-- =========================
-             MAIN CONTENT
-        ========================== -->
+        <!-- =================================================
+             MAIN
+        ================================================== -->
 
         <main
             class="main"
             id="main-content"
         >
 
-            <!-- =========================
+            <!-- =================================================
                  TOPBAR
-            ========================== -->
+            ================================================== -->
 
             <header class="topbar">
 
-                <button
-                    type="button"
-                    class="mobile-menu"
-                    id="mobileMenu"
-                    aria-label="Open navigation menu"
-                    aria-controls="sidebar"
-                    aria-expanded="false"
-                >
-                    ☰
-                </button>
+                <div class="topbar-left">
+
+                    <button
+                        type="button"
+                        class="mobile-menu"
+                        id="mobileMenu"
+                        aria-label="Open navigation menu"
+                        aria-controls="sidebar"
+                        aria-expanded="false"
+                    >
+                        ☰
+                    </button>
 
 
-                <div>
+                    <div>
 
-                    <p class="topbar-label">
-                        WORKSPACE
-                    </p>
+                        <p class="topbar-label">
+                            WORKSPACE
+                        </p>
 
-                    <h1>
-                        Dashboard
-                    </h1>
+                        <h1>
+                            Dashboard
+                        </h1>
+
+                    </div>
 
                 </div>
 
@@ -190,18 +236,23 @@
                     <button
                         type="button"
                         class="profile-button"
-                        aria-label="Open developer profile"
+                        id="profileButton"
+                        aria-label="Account menu"
                     >
 
                         <span
                             class="avatar small"
+                            id="topbarAvatar"
                             aria-hidden="true"
                         >
                             DR
                         </span>
 
 
-                        <span class="profile-name">
+                        <span
+                            class="profile-name"
+                            id="topbarUserName"
+                        >
                             Developer
                         </span>
 
@@ -212,19 +263,15 @@
             </header>
 
 
-            <!-- =========================
+            <!-- =================================================
                  DASHBOARD
-            ========================== -->
+            ================================================== -->
 
             <section
                 class="dashboard"
                 id="dashboard"
                 aria-labelledby="dashboard-heading"
             >
-
-                <!-- =========================
-                     WELCOME
-                ========================== -->
 
                 <div class="welcome">
 
@@ -236,13 +283,10 @@
 
 
                         <h2 id="dashboard-heading">
-
                             Let's get things
-
                             <span>
                                 done.
                             </span>
-
                         </h2>
 
 
@@ -265,9 +309,9 @@
                 </div>
 
 
-                <!-- =========================
+                <!-- =================================================
                      STATISTICS
-                ========================== -->
+                ================================================== -->
 
                 <section
                     class="stats-grid"
@@ -282,7 +326,6 @@
                         >
                             ✓
                         </div>
-
 
                         <div>
 
@@ -311,7 +354,6 @@
                             ✓
                         </div>
 
-
                         <div>
 
                             <span>
@@ -338,7 +380,6 @@
                         >
                             ◷
                         </div>
-
 
                         <div>
 
@@ -367,7 +408,6 @@
                             %
                         </div>
 
-
                         <div>
 
                             <span>
@@ -388,15 +428,15 @@
                 </section>
 
 
-                <!-- =========================
+                <!-- =================================================
                      CONTENT GRID
-                ========================== -->
+                ================================================== -->
 
                 <div class="content-grid">
 
-                    <!-- =========================
+                    <!-- =================================================
                          TASKS
-                    ========================== -->
+                    ================================================== -->
 
                     <section
                         class="panel tasks-panel"
@@ -430,10 +470,6 @@
                         </div>
 
 
-                        <!-- =========================
-                             SEARCH / FILTER
-                        ========================== -->
-
                         <div class="task-controls">
 
                             <div class="search-box">
@@ -442,14 +478,12 @@
                                     ⌕
                                 </span>
 
-
                                 <label
                                     for="searchInput"
                                     class="sr-only"
                                 >
                                     Search tasks
                                 </label>
-
 
                                 <input
                                     type="search"
@@ -468,7 +502,6 @@
                             >
                                 Filter tasks
                             </label>
-
 
                             <select
                                 id="filterSelect"
@@ -495,10 +528,6 @@
 
                         </div>
 
-
-                        <!-- =========================
-                             TASK LIST
-                        ========================== -->
 
                         <div
                             id="taskList"
@@ -544,9 +573,9 @@
                     </section>
 
 
-                    <!-- =========================
+                    <!-- =================================================
                          PROGRESS
-                    ========================== -->
+                    ================================================== -->
 
                     <aside
                         class="panel progress-panel"
@@ -588,7 +617,6 @@
                                     0%
                                 </strong>
 
-
                                 <span>
                                     Complete
                                 </span>
@@ -606,7 +634,6 @@
                                     Completed
                                 </span>
 
-
                                 <strong
                                     id="progressCompleted"
                                     aria-live="polite"
@@ -622,7 +649,6 @@
                                 <span>
                                     Remaining
                                 </span>
-
 
                                 <strong
                                     id="progressRemaining"
@@ -640,9 +666,9 @@
                 </div>
 
 
-                <!-- =========================
+                <!-- =================================================
                      PROJECTS
-                ========================== -->
+                ================================================== -->
 
                 <section
                     class="panel projects-panel"
@@ -658,7 +684,6 @@
                                 WORKSPACE
                             </p>
 
-
                             <h3 id="projects-heading">
                                 Projects
                             </h3>
@@ -669,11 +694,6 @@
 
 
                     <div class="project-grid">
-
-
-                        <!-- =========================
-                             PROJECT 1
-                        ========================== -->
 
                         <article
                             class="project-item"
@@ -688,18 +708,15 @@
                                     aria-hidden="true"
                                 ></span>
 
-
                                 <span>
                                     WEB
                                 </span>
 
                             </div>
 
-
                             <h4>
                                 Portfolio Website
                             </h4>
-
 
                             <p>
                                 Personal developer portfolio
@@ -713,7 +730,6 @@
                                     <span>
                                         Progress
                                     </span>
-
 
                                     <strong class="project-percentage">
                                         75%
@@ -751,7 +767,6 @@
                                     −
                                 </button>
 
-
                                 <button
                                     class="task-action project-increase"
                                     type="button"
@@ -764,10 +779,6 @@
 
                         </article>
 
-
-                        <!-- =========================
-                             PROJECT 2
-                        ========================== -->
 
                         <article
                             class="project-item"
@@ -782,18 +793,15 @@
                                     aria-hidden="true"
                                 ></span>
 
-
                                 <span>
                                     APP
                                 </span>
 
                             </div>
 
-
                             <h4>
                                 DevTask
                             </h4>
-
 
                             <p>
                                 Task management application
@@ -807,7 +815,6 @@
                                     <span>
                                         Progress
                                     </span>
-
 
                                     <strong class="project-percentage">
                                         40%
@@ -845,7 +852,6 @@
                                     −
                                 </button>
 
-
                                 <button
                                     class="task-action project-increase"
                                     type="button"
@@ -858,10 +864,6 @@
 
                         </article>
 
-
-                        <!-- =========================
-                             PROJECT 3
-                        ========================== -->
 
                         <article
                             class="project-item"
@@ -876,18 +878,15 @@
                                     aria-hidden="true"
                                 ></span>
 
-
                                 <span>
                                     DESIGN
                                 </span>
 
                             </div>
 
-
                             <h4>
                                 Brand Identity
                             </h4>
-
 
                             <p>
                                 New visual identity project
@@ -901,7 +900,6 @@
                                     <span>
                                         Progress
                                     </span>
-
 
                                     <strong class="project-percentage">
                                         25%
@@ -939,7 +937,6 @@
                                     −
                                 </button>
 
-
                                 <button
                                     class="task-action project-increase"
                                     type="button"
@@ -952,7 +949,6 @@
 
                         </article>
 
-
                     </div>
 
                 </section>
@@ -964,9 +960,9 @@
     </div>
 
 
-    <!-- =========================
+    <!-- =====================================================
          ADD / EDIT TASK MODAL
-    ========================== -->
+    ====================================================== -->
 
     <div
         class="modal-overlay"
@@ -988,7 +984,6 @@
                     <p class="panel-label">
                         TASK MANAGEMENT
                     </p>
-
 
                     <h3 id="modalTitle">
                         Create Task
@@ -1059,14 +1054,12 @@
                                 Low
                             </option>
 
-
                             <option
                                 value="medium"
                                 selected
                             >
                                 Medium
                             </option>
-
 
                             <option value="high">
                                 High
@@ -1118,9 +1111,367 @@
     </div>
 
 
-    <!-- =========================
-         JAVASCRIPT
-    ========================== -->
+    <!-- =====================================================
+         FIREBASE AUTH GUARD
+    ====================================================== -->
+
+    <script type="module">
+
+        import {
+            initializeApp
+        } from
+        "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
+
+        import {
+            getAuth,
+            onAuthStateChanged,
+            signOut
+        } from
+        "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
+
+
+        // =====================================================
+        // FIREBASE CONFIG
+        // =====================================================
+
+        const firebaseConfig = {
+
+            apiKey:
+                "AIzaSyATGM7Z8DxDbaxJnm354YMSEJs_iL3hRnE",
+
+            authDomain:
+                "devtask-16557.firebaseapp.com",
+
+            projectId:
+                "devtask-16557",
+
+            storageBucket:
+                "devtask-16557.firebasestorage.app",
+
+            messagingSenderId:
+                "410494319429",
+
+            appId:
+                "1:410494319429:web:550bb45a80856c2e099c2c"
+
+        };
+
+
+        // =====================================================
+        // INITIALIZE
+        // =====================================================
+
+        const app =
+            initializeApp(
+                firebaseConfig
+            );
+
+        const auth =
+            getAuth(app);
+
+
+        // =====================================================
+        // UI
+        // =====================================================
+
+        const authLoading =
+            document.getElementById(
+                "authLoading"
+            );
+
+        const appElement =
+            document.getElementById(
+                "app"
+            );
+
+        const logoutButton =
+            document.getElementById(
+                "logoutButton"
+            );
+
+        const sidebarUserName =
+            document.getElementById(
+                "sidebarUserName"
+            );
+
+        const sidebarUserEmail =
+            document.getElementById(
+                "sidebarUserEmail"
+            );
+
+        const sidebarAvatar =
+            document.getElementById(
+                "sidebarAvatar"
+            );
+
+        const topbarUserName =
+            document.getElementById(
+                "topbarUserName"
+            );
+
+        const topbarAvatar =
+            document.getElementById(
+                "topbarAvatar"
+            );
+
+
+        // =====================================================
+        // AVATAR
+        // =====================================================
+
+        function getInitials(
+            name
+        ) {
+
+            if (!name) {
+                return "U";
+            }
+
+
+            const parts =
+                name
+                    .trim()
+                    .split(/\s+/)
+                    .filter(Boolean);
+
+
+            if (parts.length === 1) {
+
+                return parts[0]
+                    .slice(0, 2)
+                    .toUpperCase();
+
+            }
+
+
+            return (
+                parts[0][0] +
+                parts[parts.length - 1][0]
+            ).toUpperCase();
+
+        }
+
+
+        function setUserAvatar(
+            element,
+            user
+        ) {
+
+            if (!element) {
+                return;
+            }
+
+
+            if (user.photoURL) {
+
+                element.innerHTML = "";
+
+                const image =
+                    document.createElement(
+                        "img"
+                    );
+
+                image.src =
+                    user.photoURL;
+
+                image.alt =
+                    "";
+
+                image.referrerPolicy =
+                    "no-referrer";
+
+                image.width = 38;
+                image.height = 38;
+
+                element.appendChild(
+                    image
+                );
+
+                return;
+
+            }
+
+
+            element.textContent =
+                getInitials(
+                    user.displayName ||
+                    user.email ||
+                    "User"
+                );
+
+        }
+
+
+        // =====================================================
+        // USER UI
+        // =====================================================
+
+        function populateUser(
+            user
+        ) {
+
+            const displayName =
+                user.displayName ||
+                (
+                    user.email
+                        ? user.email.split("@")[0]
+                        : "Developer"
+                );
+
+
+            if (sidebarUserName) {
+
+                sidebarUserName.textContent =
+                    displayName;
+
+            }
+
+
+            if (sidebarUserEmail) {
+
+                sidebarUserEmail.textContent =
+                    user.email ||
+                    "Personal Workspace";
+
+            }
+
+
+            if (topbarUserName) {
+
+                topbarUserName.textContent =
+                    displayName;
+
+            }
+
+
+            setUserAvatar(
+                sidebarAvatar,
+                user
+            );
+
+            setUserAvatar(
+                topbarAvatar,
+                user
+            );
+
+        }
+
+
+        // =====================================================
+        // AUTH STATE
+        // =====================================================
+
+        onAuthStateChanged(
+            auth,
+            user => {
+
+                if (!user) {
+
+                    window.location.replace(
+                        "index.html"
+                    );
+
+                    return;
+
+                }
+
+
+                populateUser(
+                    user
+                );
+
+
+                if (authLoading) {
+
+                    authLoading.remove();
+
+                }
+
+
+                if (appElement) {
+
+                    appElement.hidden =
+                        false;
+
+                }
+
+            }
+        );
+
+
+        // =====================================================
+        // LOGOUT
+        // =====================================================
+
+        if (logoutButton) {
+
+            logoutButton.addEventListener(
+                "click",
+                async () => {
+
+                    logoutButton.disabled =
+                        true;
+
+                    logoutButton.querySelector(
+                        "span:last-child"
+                    ).textContent =
+                        "Logging out...";
+
+
+                    try {
+
+                        await signOut(
+                            auth
+                        );
+
+
+                        sessionStorage.removeItem(
+                            "devtask_logged_in"
+                        );
+
+                        sessionStorage.removeItem(
+                            "devtask_user"
+                        );
+
+
+                        window.location.replace(
+                            "index.html"
+                        );
+
+
+                    } catch (error) {
+
+                        console.error(
+                            "Logout failed:",
+                            error
+                        );
+
+
+                        logoutButton.disabled =
+                            false;
+
+                        logoutButton.querySelector(
+                            "span:last-child"
+                        ).textContent =
+                            "Log out";
+
+                        alert(
+                            "Unable to log out right now. Please try again."
+                        );
+
+                    }
+
+                }
+            );
+
+        }
+
+    </script>
+
+
+    <!-- =====================================================
+         EXISTING DASHBOARD LOGIC
+    ====================================================== -->
 
     <script
         src="script.js"
