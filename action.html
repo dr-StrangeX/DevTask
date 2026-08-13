@@ -1,0 +1,914 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="DevTask secure email verification and password recovery."
+    >
+
+    <meta
+        name="theme-color"
+        content="#080d18"
+    >
+
+    <title>DevTask | Secure Action</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="landing-page">
+
+    <main class="action-page">
+
+        <section class="action-card">
+
+            <!-- =========================
+                 BRAND
+            ========================== -->
+
+            <div class="action-logo">
+                D
+            </div>
+
+
+            <!-- =========================
+                 LOADING
+            ========================== -->
+
+            <div
+                id="loadingState"
+                class="action-state"
+            >
+
+                <div class="action-spinner"></div>
+
+                <span class="action-label">
+                    DEVTASK
+                </span>
+
+                <h1>
+                    Processing request
+                </h1>
+
+                <p>
+                    Please wait while we securely
+                    process your request.
+                </p>
+
+            </div>
+
+
+            <!-- =========================
+                 ERROR
+            ========================== -->
+
+            <div
+                id="errorState"
+                class="action-state"
+                hidden
+            >
+
+                <div class="action-icon error">
+                    !
+                </div>
+
+                <span class="action-label">
+                    ACTION FAILED
+                </span>
+
+                <h1 id="errorTitle">
+                    Link unavailable
+                </h1>
+
+                <p id="errorMessage">
+                    This link is invalid or has expired.
+                </p>
+
+                <a
+                    href="index.html"
+                    class="action-primary"
+                >
+                    Return to DevTask
+                </a>
+
+            </div>
+
+
+            <!-- =========================
+                 EMAIL VERIFIED
+            ========================== -->
+
+            <div
+                id="verifiedState"
+                class="action-state"
+                hidden
+            >
+
+                <div class="action-icon success">
+                    ✓
+                </div>
+
+                <span class="action-label">
+                    EMAIL VERIFIED
+                </span>
+
+                <h1>
+                    You're verified.
+                </h1>
+
+                <p id="verifiedMessage">
+                    Your email address has been verified successfully.
+                </p>
+
+                <a
+                    href="index.html"
+                    class="action-primary"
+                >
+                    Continue to DevTask
+                </a>
+
+            </div>
+
+
+            <!-- =========================
+                 PASSWORD RESET
+            ========================== -->
+
+            <div
+                id="resetState"
+                class="action-state"
+                hidden
+            >
+
+                <div class="action-icon reset">
+                    ✓
+                </div>
+
+                <span class="action-label">
+                    PASSWORD RESET
+                </span>
+
+                <h1>
+                    Create a new password
+                </h1>
+
+                <p id="resetAccountText">
+                    Choose a new password for your account.
+                </p>
+
+
+                <form
+                    id="resetForm"
+                    class="action-form"
+                    novalidate
+                >
+
+                    <label for="newPassword">
+                        New password
+
+                        <div class="action-input-wrapper">
+
+                            <input
+                                type="password"
+                                id="newPassword"
+                                autocomplete="new-password"
+                                placeholder="At least 6 characters"
+                                minlength="6"
+                                required
+                            >
+
+                            <button
+                                type="button"
+                                id="newPasswordToggle"
+                                class="action-toggle"
+                            >
+                                Show
+                            </button>
+
+                        </div>
+
+                    </label>
+
+
+                    <label for="confirmPassword">
+                        Confirm password
+
+                        <div class="action-input-wrapper">
+
+                            <input
+                                type="password"
+                                id="confirmPassword"
+                                autocomplete="new-password"
+                                placeholder="Enter your password again"
+                                minlength="6"
+                                required
+                            >
+
+                            <button
+                                type="button"
+                                id="confirmPasswordToggle"
+                                class="action-toggle"
+                            >
+                                Show
+                            </button>
+
+                        </div>
+
+                    </label>
+
+
+                    <p
+                        id="resetError"
+                        class="action-error"
+                        role="alert"
+                    ></p>
+
+
+                    <button
+                        type="submit"
+                        id="resetSubmit"
+                        class="action-primary"
+                    >
+                        <span id="resetButtonText">
+                            Update password
+                        </span>
+
+                        <span
+                            id="resetSpinner"
+                            class="action-spinner-small"
+                            hidden
+                        ></span>
+
+                    </button>
+
+                </form>
+
+            </div>
+
+
+            <!-- =========================
+                 PASSWORD RESET SUCCESS
+            ========================== -->
+
+            <div
+                id="resetSuccessState"
+                class="action-state"
+                hidden
+            >
+
+                <div class="action-icon success">
+                    ✓
+                </div>
+
+                <span class="action-label">
+                    PASSWORD UPDATED
+                </span>
+
+                <h1>
+                    You're all set.
+                </h1>
+
+                <p>
+                    Your DevTask password has been updated successfully.
+                </p>
+
+                <a
+                    href="index.html"
+                    class="action-primary"
+                >
+                    Return to login
+                </a>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- =========================
+         FIREBASE
+    ========================== -->
+
+    <script type="module">
+
+        import {
+            initializeApp
+        } from
+        "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
+
+        import {
+            getAuth,
+            applyActionCode,
+            verifyPasswordResetCode,
+            confirmPasswordReset
+        } from
+        "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
+
+
+        // =====================================================
+        // FIREBASE CONFIG
+        // =====================================================
+
+        const firebaseConfig = {
+
+            apiKey:
+                "AIzaSyATGM7Z8DxDbaxJnm354YMSEJs_iL3hRnE",
+
+            authDomain:
+                "devtask-16557.firebaseapp.com",
+
+            projectId:
+                "devtask-16557",
+
+            storageBucket:
+                "devtask-16557.firebasestorage.app",
+
+            messagingSenderId:
+                "410494319429",
+
+            appId:
+                "1:410494319429:web:550bb45a80856c2e099c2c"
+
+        };
+
+
+        // =====================================================
+        // INITIALIZE
+        // =====================================================
+
+        const app =
+            initializeApp(
+                firebaseConfig
+            );
+
+        const auth =
+            getAuth(app);
+
+
+        // =====================================================
+        // URL PARAMETERS
+        // =====================================================
+
+        const params =
+            new URLSearchParams(
+                window.location.search
+            );
+
+        const mode =
+            params.get("mode");
+
+        const actionCode =
+            params.get("oobCode");
+
+        const continueUrl =
+            params.get("continueUrl");
+
+
+        // =====================================================
+        // DOM
+        // =====================================================
+
+        const loadingState =
+            document.getElementById(
+                "loadingState"
+            );
+
+        const errorState =
+            document.getElementById(
+                "errorState"
+            );
+
+        const errorTitle =
+            document.getElementById(
+                "errorTitle"
+            );
+
+        const errorMessage =
+            document.getElementById(
+                "errorMessage"
+            );
+
+        const verifiedState =
+            document.getElementById(
+                "verifiedState"
+            );
+
+        const verifiedMessage =
+            document.getElementById(
+                "verifiedMessage"
+            );
+
+        const resetState =
+            document.getElementById(
+                "resetState"
+            );
+
+        const resetAccountText =
+            document.getElementById(
+                "resetAccountText"
+            );
+
+        const resetSuccessState =
+            document.getElementById(
+                "resetSuccessState"
+            );
+
+        const resetForm =
+            document.getElementById(
+                "resetForm"
+            );
+
+        const newPassword =
+            document.getElementById(
+                "newPassword"
+            );
+
+        const confirmPassword =
+            document.getElementById(
+                "confirmPassword"
+            );
+
+        const newPasswordToggle =
+            document.getElementById(
+                "newPasswordToggle"
+            );
+
+        const confirmPasswordToggle =
+            document.getElementById(
+                "confirmPasswordToggle"
+            );
+
+        const resetError =
+            document.getElementById(
+                "resetError"
+            );
+
+        const resetSubmit =
+            document.getElementById(
+                "resetSubmit"
+            );
+
+        const resetButtonText =
+            document.getElementById(
+                "resetButtonText"
+            );
+
+        const resetSpinner =
+            document.getElementById(
+                "resetSpinner"
+            );
+
+
+        // =====================================================
+        // HELPERS
+        // =====================================================
+
+        function hideLoading() {
+
+            loadingState.hidden =
+                true;
+
+        }
+
+
+        function showError(
+            title,
+            message
+        ) {
+
+            hideLoading();
+
+            verifiedState.hidden =
+                true;
+
+            resetState.hidden =
+                true;
+
+            resetSuccessState.hidden =
+                true;
+
+            errorState.hidden =
+                false;
+
+            errorTitle.textContent =
+                title;
+
+            errorMessage.textContent =
+                message;
+
+        }
+
+
+        function showVerified(
+            email
+        ) {
+
+            hideLoading();
+
+            errorState.hidden =
+                true;
+
+            resetState.hidden =
+                true;
+
+            resetSuccessState.hidden =
+                true;
+
+            verifiedState.hidden =
+                false;
+
+            if (email) {
+
+                verifiedMessage.textContent =
+                    `${email} has been verified successfully.`;
+
+            }
+
+        }
+
+
+        function showReset(
+            email
+        ) {
+
+            hideLoading();
+
+            errorState.hidden =
+                true;
+
+            verifiedState.hidden =
+                true;
+
+            resetSuccessState.hidden =
+                true;
+
+            resetState.hidden =
+                false;
+
+            if (email) {
+
+                resetAccountText.textContent =
+                    `Create a new password for ${email}.`;
+
+            }
+
+            newPassword.focus();
+
+        }
+
+
+        function firebaseActionError(
+            error
+        ) {
+
+            switch (error.code) {
+
+                case "auth/expired-action-code":
+
+                    return {
+                        title:
+                            "This link has expired",
+                        message:
+                            "This Firebase action link is no longer valid. Request a new email from DevTask and use the newest link."
+                    };
+
+
+                case "auth/invalid-action-code":
+
+                    return {
+                        title:
+                            "This link is no longer valid",
+                        message:
+                            "The action code is invalid or has already been used. Request a new email and try again."
+                    };
+
+
+                case "auth/user-disabled":
+
+                    return {
+                        title:
+                            "Account disabled",
+                        message:
+                            "This account has been disabled."
+                    };
+
+
+                case "auth/user-not-found":
+
+                    return {
+                        title:
+                            "Account not found",
+                        message:
+                            "The Firebase account associated with this action could not be found."
+                    };
+
+
+                case "auth/weak-password":
+
+                    return {
+                        title:
+                            "Password too weak",
+                        message:
+                            "Choose a stronger password with at least 6 characters."
+                    };
+
+
+                default:
+
+                    return {
+                        title:
+                            "Something went wrong",
+                        message:
+                            error.message ||
+                            "The requested action could not be completed."
+                    };
+
+            }
+
+        }
+
+
+        function toggleVisibility(
+            input,
+            button
+        ) {
+
+            const isPassword =
+                input.type === "password";
+
+            input.type =
+                isPassword
+                    ? "text"
+                    : "password";
+
+            button.textContent =
+                isPassword
+                    ? "Hide"
+                    : "Show";
+
+        }
+
+
+        // =====================================================
+        // PASSWORD VISIBILITY
+        // =====================================================
+
+        newPasswordToggle.addEventListener(
+            "click",
+            () => {
+
+                toggleVisibility(
+                    newPassword,
+                    newPasswordToggle
+                );
+
+            }
+        );
+
+
+        confirmPasswordToggle.addEventListener(
+            "click",
+            () => {
+
+                toggleVisibility(
+                    confirmPassword,
+                    confirmPasswordToggle
+                );
+
+            }
+        );
+
+
+        // =====================================================
+        // PASSWORD RESET FORM
+        // =====================================================
+
+        resetForm.addEventListener(
+            "submit",
+            async event => {
+
+                event.preventDefault();
+
+                resetError.textContent =
+                    "";
+
+                const password =
+                    newPassword.value;
+
+                const confirmation =
+                    confirmPassword.value;
+
+
+                if (
+                    password.length < 6
+                ) {
+
+                    resetError.textContent =
+                        "Password must contain at least 6 characters.";
+
+                    newPassword.focus();
+
+                    return;
+
+                }
+
+
+                if (
+                    password !==
+                    confirmation
+                ) {
+
+                    resetError.textContent =
+                        "Passwords do not match.";
+
+                    confirmPassword.focus();
+
+                    return;
+
+                }
+
+
+                resetSubmit.disabled =
+                    true;
+
+                resetButtonText.textContent =
+                    "Updating password...";
+
+                resetSpinner.hidden =
+                    false;
+
+
+                try {
+
+                    await confirmPasswordReset(
+                        auth,
+                        actionCode,
+                        password
+                    );
+
+
+                    resetState.hidden =
+                        true;
+
+                    resetSuccessState.hidden =
+                        false;
+
+
+                } catch (error) {
+
+                    console.error(
+                        "Password reset error:",
+                        error
+                    );
+
+                    const result =
+                        firebaseActionError(
+                            error
+                        );
+
+                    showError(
+                        result.title,
+                        result.message
+                    );
+
+                } finally {
+
+                    resetSubmit.disabled =
+                        false;
+
+                    resetButtonText.textContent =
+                        "Update password";
+
+                    resetSpinner.hidden =
+                        true;
+
+                }
+
+            }
+        );
+
+
+        // =====================================================
+        // INITIAL ACTION HANDLER
+        // =====================================================
+
+        async function processAction() {
+
+            if (!mode || !actionCode) {
+
+                showError(
+                    "Invalid request",
+                    "This page is missing the Firebase email action information."
+                );
+
+                return;
+
+            }
+
+
+            try {
+
+                // =============================================
+                // VERIFY EMAIL
+                // =============================================
+
+                if (
+                    mode ===
+                    "verifyEmail"
+                ) {
+
+                    await applyActionCode(
+                        auth,
+                        actionCode
+                    );
+
+
+                    // Firebase has successfully
+                    // marked the email as verified.
+
+                    showVerified();
+
+
+                    return;
+
+                }
+
+
+                // =============================================
+                // RESET PASSWORD
+                // =============================================
+
+                if (
+                    mode ===
+                    "resetPassword"
+                ) {
+
+                    const email =
+                        await verifyPasswordResetCode(
+                            auth,
+                            actionCode
+                        );
+
+
+                    showReset(
+                        email
+                    );
+
+
+                    return;
+
+                }
+
+
+                // =============================================
+                // UNSUPPORTED
+                // =============================================
+
+                showError(
+                    "Unsupported action",
+                    "This DevTask email action is not supported by this page."
+                );
+
+
+            } catch (error) {
+
+                console.error(
+                    "Firebase action handler error:",
+                    error
+                );
+
+
+                const result =
+                    firebaseActionError(
+                        error
+                    );
+
+
+                showError(
+                    result.title,
+                    result.message
+                );
+
+            }
+
+        }
+
+
+        // =====================================================
+        // START
+        // =====================================================
+
+        processAction();
+
+    </script>
+
+</body>
+</html>
