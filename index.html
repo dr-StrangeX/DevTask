@@ -43,6 +43,7 @@
         >
 
             <div class="brand">
+
                 <div
                     class="brand-icon"
                     aria-hidden="true"
@@ -51,10 +52,14 @@
                 </div>
 
                 <span>DevTask</span>
+
             </div>
 
 
-            <nav class="sidebar-nav" aria-label="Dashboard navigation">
+            <nav
+                class="sidebar-nav"
+                aria-label="Dashboard navigation"
+            >
 
                 <a
                     href="#dashboard"
@@ -65,6 +70,7 @@
                     <span>Dashboard</span>
                 </a>
 
+
                 <a
                     href="#tasks"
                     class="nav-item"
@@ -72,6 +78,7 @@
                     <span aria-hidden="true">✓</span>
                     <span>My Tasks</span>
                 </a>
+
 
                 <a
                     href="#projects"
@@ -93,8 +100,13 @@
                     aria-label="Toggle color theme"
                     aria-pressed="false"
                 >
+
                     <span aria-hidden="true">◐</span>
-                    <span>Toggle Theme</span>
+
+                    <span>
+                        Toggle Theme
+                    </span>
+
                 </button>
 
 
@@ -107,9 +119,17 @@
                         DR
                     </div>
 
+
                     <div>
-                        <strong>Developer</strong>
-                        <small>Personal Workspace</small>
+
+                        <strong>
+                            Developer
+                        </strong>
+
+                        <small>
+                            Personal Workspace
+                        </small>
+
                     </div>
 
                 </div>
@@ -152,7 +172,9 @@
                         WORKSPACE
                     </p>
 
-                    <h1>Dashboard</h1>
+                    <h1>
+                        Dashboard
+                    </h1>
 
                 </div>
 
@@ -164,7 +186,9 @@
                         class="icon-button"
                         aria-label="Notifications"
                     >
-                        <span aria-hidden="true">♧</span>
+                        <span aria-hidden="true">
+                            ♧
+                        </span>
                     </button>
 
 
@@ -180,6 +204,7 @@
                         >
                             DR
                         </span>
+
 
                         <span class="profile-name">
                             Developer
@@ -202,7 +227,9 @@
                 aria-labelledby="dashboard-heading"
             >
 
-                <!-- Welcome -->
+                <!-- =========================
+                     WELCOME
+                ========================== -->
 
                 <div class="welcome">
 
@@ -212,10 +239,17 @@
                             GOOD MORNING
                         </p>
 
+
                         <h2 id="dashboard-heading">
+
                             Let's get things
-                            <span>done.</span>
+
+                            <span>
+                                done.
+                            </span>
+
                         </h2>
+
 
                         <p>
                             Organize your work, track your progress,
@@ -254,9 +288,12 @@
                             ✓
                         </div>
 
+
                         <div>
 
-                            <span>Total Tasks</span>
+                            <span>
+                                Total Tasks
+                            </span>
 
                             <strong
                                 id="totalTasks"
@@ -279,9 +316,12 @@
                             ✓
                         </div>
 
+
                         <div>
 
-                            <span>Completed</span>
+                            <span>
+                                Completed
+                            </span>
 
                             <strong
                                 id="completedTasks"
@@ -304,9 +344,12 @@
                             ◷
                         </div>
 
+
                         <div>
 
-                            <span>In Progress</span>
+                            <span>
+                                In Progress
+                            </span>
 
                             <strong
                                 id="activeTasks"
@@ -329,9 +372,12 @@
                             %
                         </div>
 
+
                         <div>
 
-                            <span>Completion</span>
+                            <span>
+                                Completion
+                            </span>
 
                             <strong
                                 id="completionRate"
@@ -353,7 +399,9 @@
 
                 <div class="content-grid">
 
-                    <!-- Tasks -->
+                    <!-- =========================
+                         TASKS
+                    ========================== -->
 
                     <section
                         class="panel tasks-panel"
@@ -387,7 +435,9 @@
                         </div>
 
 
-                        <!-- Search and filters -->
+                        <!-- =========================
+                             SEARCH / FILTER
+                        ========================== -->
 
                         <div class="task-controls">
 
@@ -397,12 +447,14 @@
                                     ⌕
                                 </span>
 
+
                                 <label
                                     for="searchInput"
                                     class="sr-only"
                                 >
                                     Search tasks
                                 </label>
+
 
                                 <input
                                     type="search"
@@ -422,10 +474,12 @@
                                 Filter tasks
                             </label>
 
+
                             <select
                                 id="filterSelect"
                                 aria-label="Filter tasks"
                             >
+
                                 <option value="all">
                                     All Tasks
                                 </option>
@@ -441,12 +495,15 @@
                                 <option value="high">
                                     High Priority
                                 </option>
+
                             </select>
 
                         </div>
 
 
-                        <!-- Task list -->
+                        <!-- =========================
+                             TASK LIST
+                        ========================== -->
 
                         <div
                             id="taskList"
@@ -466,11 +523,16 @@
                                     ✓
                                 </div>
 
-                                <h4>No tasks yet</h4>
+
+                                <h4>
+                                    No tasks yet
+                                </h4>
+
 
                                 <p>
                                     Create your first task to get started.
                                 </p>
+
 
                                 <button
                                     type="button"
@@ -531,6 +593,7 @@
                                     0%
                                 </strong>
 
+
                                 <span>
                                     Complete
                                 </span>
@@ -548,6 +611,7 @@
                                     Completed
                                 </span>
 
+
                                 <strong
                                     id="progressCompleted"
                                     aria-live="polite"
@@ -563,6 +627,7 @@
                                 <span>
                                     Remaining
                                 </span>
+
 
                                 <strong
                                     id="progressRemaining"
@@ -598,6 +663,7 @@
                                 WORKSPACE
                             </p>
 
+
                             <h3 id="projects-heading">
                                 Projects
                             </h3>
@@ -609,7 +675,16 @@
 
                     <div class="project-grid">
 
-                        <article class="project-item">
+
+                        <!-- =========================
+                             PROJECT 1
+                        ========================== -->
+
+                        <article
+                            class="project-item"
+                            data-project="portfolio"
+                            data-progress="75"
+                        >
 
                             <div class="project-top">
 
@@ -618,15 +693,18 @@
                                     aria-hidden="true"
                                 ></span>
 
+
                                 <span>
                                     WEB
                                 </span>
 
                             </div>
 
+
                             <h4>
                                 Portfolio Website
                             </h4>
+
 
                             <p>
                                 Personal developer portfolio
@@ -641,11 +719,13 @@
                                         Progress
                                     </span>
 
-                                    <strong>
+
+                                    <strong class="project-percentage">
                                         75%
                                     </strong>
 
                                 </div>
+
 
                                 <div
                                     class="progress-bar"
@@ -655,15 +735,50 @@
                                     aria-valuenow="75"
                                     aria-label="Portfolio Website progress"
                                 >
-                                    <span style="width: 75%"></span>
+
+                                    <span
+                                        class="project-progress-fill"
+                                        style="width: 75%"
+                                    ></span>
+
                                 </div>
+
+                            </div>
+
+
+                            <div class="project-controls">
+
+                                <button
+                                    class="task-action project-decrease"
+                                    type="button"
+                                    aria-label="Decrease Portfolio Website progress"
+                                >
+                                    −
+                                </button>
+
+
+                                <button
+                                    class="task-action project-increase"
+                                    type="button"
+                                    aria-label="Increase Portfolio Website progress"
+                                >
+                                    +
+                                </button>
 
                             </div>
 
                         </article>
 
 
-                        <article class="project-item">
+                        <!-- =========================
+                             PROJECT 2
+                        ========================== -->
+
+                        <article
+                            class="project-item"
+                            data-project="devtask"
+                            data-progress="40"
+                        >
 
                             <div class="project-top">
 
@@ -672,15 +787,18 @@
                                     aria-hidden="true"
                                 ></span>
 
+
                                 <span>
                                     APP
                                 </span>
 
                             </div>
 
+
                             <h4>
                                 DevTask
                             </h4>
+
 
                             <p>
                                 Task management application
@@ -695,11 +813,13 @@
                                         Progress
                                     </span>
 
-                                    <strong>
+
+                                    <strong class="project-percentage">
                                         40%
                                     </strong>
 
                                 </div>
+
 
                                 <div
                                     class="progress-bar"
@@ -709,15 +829,50 @@
                                     aria-valuenow="40"
                                     aria-label="DevTask project progress"
                                 >
-                                    <span style="width: 40%"></span>
+
+                                    <span
+                                        class="project-progress-fill"
+                                        style="width: 40%"
+                                    ></span>
+
                                 </div>
+
+                            </div>
+
+
+                            <div class="project-controls">
+
+                                <button
+                                    class="task-action project-decrease"
+                                    type="button"
+                                    aria-label="Decrease DevTask progress"
+                                >
+                                    −
+                                </button>
+
+
+                                <button
+                                    class="task-action project-increase"
+                                    type="button"
+                                    aria-label="Increase DevTask progress"
+                                >
+                                    +
+                                </button>
 
                             </div>
 
                         </article>
 
 
-                        <article class="project-item">
+                        <!-- =========================
+                             PROJECT 3
+                        ========================== -->
+
+                        <article
+                            class="project-item"
+                            data-project="brand"
+                            data-progress="25"
+                        >
 
                             <div class="project-top">
 
@@ -726,15 +881,18 @@
                                     aria-hidden="true"
                                 ></span>
 
+
                                 <span>
                                     DESIGN
                                 </span>
 
                             </div>
 
+
                             <h4>
                                 Brand Identity
                             </h4>
+
 
                             <p>
                                 New visual identity project
@@ -749,11 +907,13 @@
                                         Progress
                                     </span>
 
-                                    <strong>
+
+                                    <strong class="project-percentage">
                                         25%
                                     </strong>
 
                                 </div>
+
 
                                 <div
                                     class="progress-bar"
@@ -763,12 +923,40 @@
                                     aria-valuenow="25"
                                     aria-label="Brand Identity project progress"
                                 >
-                                    <span style="width: 25%"></span>
+
+                                    <span
+                                        class="project-progress-fill"
+                                        style="width: 25%"
+                                    ></span>
+
                                 </div>
 
                             </div>
 
+
+                            <div class="project-controls">
+
+                                <button
+                                    class="task-action project-decrease"
+                                    type="button"
+                                    aria-label="Decrease Brand Identity progress"
+                                >
+                                    −
+                                </button>
+
+
+                                <button
+                                    class="task-action project-increase"
+                                    type="button"
+                                    aria-label="Increase Brand Identity progress"
+                                >
+                                    +
+                                </button>
+
+                            </div>
+
                         </article>
+
 
                     </div>
 
@@ -806,6 +994,7 @@
                         TASK MANAGEMENT
                     </p>
 
+
                     <h3 id="modalTitle">
                         Create Task
                     </h3>
@@ -834,6 +1023,7 @@
 
 
                 <label for="taskTitle">
+
                     Task title
 
                     <input
@@ -849,6 +1039,7 @@
 
 
                 <label for="taskDescription">
+
                     Description
 
                     <textarea
@@ -864,6 +1055,7 @@
                 <div class="form-row">
 
                     <label for="taskPriority">
+
                         Priority
 
                         <select id="taskPriority">
@@ -872,12 +1064,14 @@
                                 Low
                             </option>
 
+
                             <option
                                 value="medium"
                                 selected
                             >
                                 Medium
                             </option>
+
 
                             <option value="high">
                                 High
@@ -889,6 +1083,7 @@
 
 
                     <label for="taskDueDate">
+
                         Due date
 
                         <input
@@ -927,6 +1122,10 @@
 
     </div>
 
+
+    <!-- =========================
+         JAVASCRIPT
+    ========================== -->
 
     <script
         src="script.js"
