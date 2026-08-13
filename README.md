@@ -1,5 +1,5 @@
 # 🚀 DevTask — Productivity Dashboard
-=======
+==================================================================================================
 ## 🌐 Deployment
 
 A modern, responsive **task and project management dashboard** designed to help users organize tasks, track projects, and monitor productivity from one centralized interface.
@@ -35,7 +35,6 @@ https://dr-strangex.github.io/DevTask/
 ---
 
 ## 🔮 Future Improvements
->>>>>>> 936a18f (Improve README and add project screenshots)
 
 | Technology          | Purpose                                         |
 | ------------------- | ----------------------------------------------- |
@@ -77,7 +76,6 @@ https://github.com/dr-StrangeX
 ---
 
 ## 📄 License
->>>>>>> 936a18f (Improve README and add project screenshots)
 
 🚧 **Coming soon**
 
@@ -155,7 +153,7 @@ Planned improvements include:
 💻 Web Developer
 🌐 Responsive Websites & Web Applications
 ⚡ JavaScript • Firebase • HTML • CSS
-🐙 GitHub: **YOUR_GITHUB_PROFILE**
+🐙 GitHub: **https://github.com/dr-StrangeX**
 
 ## 📄 License
 
