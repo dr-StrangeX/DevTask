@@ -1,15 +1,13 @@
 # DevTask
 
-A modern, responsive task management dashboard built with vanilla HTML, CSS, and JavaScript.
-
-DevTask allows users to create, manage, search, filter, prioritize, and complete tasks through a clean productivity-focused interface.
+A modern, responsive task management dashboard built with
+HTML, CSS, and vanilla JavaScript.
 
 ![DevTask Preview](images/website-preview.png)
 
 ## Live Demo
 
-https://dr-strangex.github.io/NexaTech-Solutions/
-
+https://dr-strangex.github.io/DevTask/
 ## Features
 
 - Create tasks
