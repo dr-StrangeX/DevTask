@@ -1,3 +1,4 @@
+```css
 /* =========================
    RESET
 ========================= */
@@ -72,13 +73,14 @@ a {
 
 /* =========================
    PREMIUM BACKGROUND
+   IMAGE OPACITY: 0.25 OVERLAY
 ========================= */
 
 body {
     background-image:
         linear-gradient(
-            rgba(8, 13, 24, 0.84),
-            rgba(8, 13, 24, 0.94)
+            rgba(8, 13, 24, 0.25),
+            rgba(8, 13, 24, 0.25)
         ),
         url("assets/background.png");
 
@@ -87,6 +89,7 @@ body {
     background-repeat: no-repeat;
     background-attachment: fixed;
 }
+
 
 /* Ambient glow */
 
@@ -101,22 +104,23 @@ body::before {
     background:
         radial-gradient(
             circle at 15% 20%,
-            rgba(77, 163, 255, 0.12),
+            rgba(77, 163, 255, 0.08),
             transparent 28%
         ),
         radial-gradient(
             circle at 85% 70%,
-            rgba(167, 123, 255, 0.10),
+            rgba(167, 123, 255, 0.06),
             transparent 30%
         ),
         radial-gradient(
             circle at 50% 100%,
-            rgba(61, 220, 151, 0.06),
+            rgba(61, 220, 151, 0.04),
             transparent 25%
         );
 
     z-index: 0;
 }
+
 
 /* Subtle technical grid */
 
@@ -130,12 +134,12 @@ body::after {
 
     background-image:
         linear-gradient(
-            rgba(255, 255, 255, 0.018) 1px,
+            rgba(255, 255, 255, 0.012) 1px,
             transparent 1px
         ),
         linear-gradient(
             90deg,
-            rgba(255, 255, 255, 0.018) 1px,
+            rgba(255, 255, 255, 0.012) 1px,
             transparent 1px
         );
 
@@ -178,10 +182,10 @@ body::after {
 
     padding: 28px 18px;
 
-    background: rgba(11, 18, 32, 0.92);
+    background: rgba(11, 18, 32, 0.78);
 
-    backdrop-filter: blur(18px);
-    -webkit-backdrop-filter: blur(18px);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
 
     border-right: 1px solid var(--border);
 
@@ -266,8 +270,7 @@ body::after {
 
     overflow: hidden;
 
-    transition:
-        0.2s ease;
+    transition: 0.2s ease;
 }
 
 .nav-item span {
@@ -401,10 +404,10 @@ body::after {
     align-items: center;
     justify-content: space-between;
 
-    background: rgba(8, 13, 24, 0.78);
+    background: rgba(8, 13, 24, 0.55);
 
-    backdrop-filter: blur(18px);
-    -webkit-backdrop-filter: blur(18px);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
 
     border-bottom: 1px solid var(--border);
 
@@ -658,10 +661,10 @@ body::after {
     align-items: center;
     gap: 15px;
 
-    background: rgba(16, 24, 39, 0.88);
+    background: rgba(16, 24, 39, 0.70);
 
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
 
     border: 1px solid var(--border);
 
@@ -770,10 +773,10 @@ body::after {
 .panel {
     overflow: hidden;
 
-    background: rgba(16, 24, 39, 0.88);
+    background: rgba(16, 24, 39, 0.70);
 
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
 
     border: 1px solid var(--border);
 
@@ -828,7 +831,7 @@ body::after {
 
     padding: 0 12px;
 
-    background: var(--bg);
+    background: rgba(8, 13, 24, 0.65);
 
     border: 1px solid var(--border);
     border-radius: 8px;
@@ -868,7 +871,7 @@ body::after {
 .form-row select {
     padding: 0 12px;
 
-    background: var(--bg);
+    background: rgba(8, 13, 24, 0.65);
 
     color: var(--muted);
 
@@ -1598,7 +1601,6 @@ body::after {
 ========================= */
 
 body.light-theme {
-
     --bg: #f4f7fb;
     --sidebar: #ffffff;
     --surface: #ffffff;
@@ -1607,29 +1609,28 @@ body.light-theme {
 
     --text: #172033;
     --muted: #69778d;
-
 }
 
 body.light-theme {
     background-image:
         linear-gradient(
-            rgba(244, 247, 251, 0.86),
-            rgba(244, 247, 251, 0.94)
+            rgba(244, 247, 251, 0.25),
+            rgba(244, 247, 251, 0.25)
         ),
         url("assets/background.png");
 }
 
 body.light-theme .topbar {
-    background: rgba(244, 247, 251, 0.82);
+    background: rgba(244, 247, 251, 0.50);
 }
 
 body.light-theme .sidebar {
-    background: rgba(255, 255, 255, 0.90);
+    background: rgba(255, 255, 255, 0.65);
 }
 
 body.light-theme .panel,
 body.light-theme .stat-card {
-    background: rgba(255, 255, 255, 0.88);
+    background: rgba(255, 255, 255, 0.68);
 }
 
 body.light-theme .search-box,
@@ -1639,7 +1640,7 @@ body.light-theme .modal textarea,
 body.light-theme .modal select,
 body.light-theme .icon-button,
 body.light-theme .secondary-button {
-    background: #f7f9fc;
+    background: rgba(247, 249, 252, 0.75);
 }
 
 body.light-theme .progress-inner {
@@ -1668,6 +1669,7 @@ a:focus-visible {
 
     outline-offset: 3px;
 }
+
 
 /* Screen-reader-only content */
 
@@ -1854,3 +1856,4 @@ a:focus-visible {
     }
 
 }
+```
