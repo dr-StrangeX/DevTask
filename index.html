@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="description"
+        content="DevTask - A modern task management dashboard."
+    >
+
+    <title>DevTask | Task Management</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="app">
+
+        <!-- Sidebar -->
+        <aside class="sidebar" id="sidebar">
+
+            <div class="brand">
+                <div class="brand-icon">D</div>
+                <span>DevTask</span>
+            </div>
+
+            <nav class="sidebar-nav">
+
+                <a href="#dashboard" class="nav-item active">
+                    <span>⌂</span>
+                    Dashboard
+                </a>
+
+                <a href="#tasks" class="nav-item">
+                    <span>✓</span>
+                    My Tasks
+                </a>
+
+                <a href="#projects" class="nav-item">
+                    <span>▣</span>
+                    Projects
+                </a>
+
+            </nav>
+
+            <div class="sidebar-bottom">
+
+                <button class="nav-item" id="themeToggle">
+                    <span>◐</span>
+                    Toggle Theme
+                </button>
+
+                <div class="user-card">
+                    <div class="avatar">DR</div>
+
+                    <div>
+                        <strong>Developer</strong>
+                        <small>Personal Workspace</small>
+                    </div>
+                </div>
+
+            </div>
+
+        </aside>
+
+
+        <!-- Main -->
+        <main class="main">
+
+            <!-- Topbar -->
+            <header class="topbar">
+
+                <button
+                    class="mobile-menu"
+                    id="mobileMenu"
+                    aria-label="Open menu"
+                >
+                    ☰
+                </button>
+
+                <div>
+                    <p class="topbar-label">WORKSPACE</p>
+                    <h1>Dashboard</h1>
+                </div>
+
+                <div class="topbar-actions">
+
+                    <button class="icon-button" aria-label="Notifications">
+                        ♧
+                    </button>
+
+                    <button class="profile-button">
+                        <span class="avatar small">DR</span>
+                        <span class="profile-name">Developer</span>
+                    </button>
+
+                </div>
+
+            </header>
+
+
+            <!-- Dashboard -->
+            <section class="dashboard" id="dashboard">
+
+                <!-- Welcome -->
+                <div class="welcome">
+
+                    <div>
+                        <p class="welcome-label">GOOD MORNING</p>
+
+                        <h2>
+                            Let's get things
+                            <span>done.</span>
+                        </h2>
+
+                        <p>
+                            Organize your work, track your progress,
+                            and stay productive.
+                        </p>
+                    </div>
+
+                    <button class="primary-button" id="addTaskButton">
+                        + Add Task
+                    </button>
+
+                </div>
+
+
+                <!-- Statistics -->
+                <div class="stats-grid">
+
+                    <div class="stat-card">
+
+                        <div class="stat-icon blue">✓</div>
+
+                        <div>
+                            <span>Total Tasks</span>
+                            <strong id="totalTasks">0</strong>
+                        </div>
+
+                    </div>
+
+
+                    <div class="stat-card">
+
+                        <div class="stat-icon green">✓</div>
+
+                        <div>
+                            <span>Completed</span>
+                            <strong id="completedTasks">0</strong>
+                        </div>
+
+                    </div>
+
+
+                    <div class="stat-card">
+
+                        <div class="stat-icon orange">◷</div>
+
+                        <div>
+                            <span>In Progress</span>
+                            <strong id="activeTasks">0</strong>
+                        </div>
+
+                    </div>
+
+
+                    <div class="stat-card">
+
+                        <div class="stat-icon purple">%</div>
+
+                        <div>
+                            <span>Completion</span>
+                            <strong id="completionRate">0%</strong>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Content grid -->
+                <div class="content-grid">
+
+                    <!-- Tasks -->
+                    <section class="panel tasks-panel" id="tasks">
+
+                        <div class="panel-header">
+
+                            <div>
+                                <p class="panel-label">TASK MANAGEMENT</p>
+                                <h3>My Tasks</h3>
+                            </div>
+
+                            <button
+                                class="text-button"
+                                id="clearCompleted"
+                            >
+                                Clear completed
+                            </button>
+
+                        </div>
+
+
+                        <!-- Search -->
+                        <div class="task-controls">
+
+                            <div class="search-box">
+
+                                <span>⌕</span>
+
+                                <input
+                                    type="search"
+                                    id="searchInput"
+                                    placeholder="Search tasks..."
+                                >
+
+                            </div>
+
+                            <select id="filterSelect">
+                                <option value="all">All Tasks</option>
+                                <option value="active">Active</option>
+                                <option value="completed">Completed</option>
+                                <option value="high">High Priority</option>
+                            </select>
+
+                        </div>
+
+
+                        <!-- Task list -->
+                        <div id="taskList" class="task-list">
+
+                            <div class="empty-state" id="emptyState">
+
+                                <div class="empty-icon">✓</div>
+
+                                <h4>No tasks yet</h4>
+
+                                <p>
+                                    Create your first task to get started.
+                                </p>
+
+                                <button
+                                    class="primary-button"
+                                    id="emptyAddTask"
+                                >
+                                    Create Task
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                    </section>
+
+
+                    <!-- Progress -->
+                    <aside class="panel progress-panel">
+
+                        <div class="panel-header">
+
+                            <div>
+                                <p class="panel-label">OVERVIEW</p>
+                                <h3>Progress</h3>
+                            </div>
+
+                        </div>
+
+
+                        <div class="progress-circle">
+
+                            <div class="progress-inner">
+                                <strong id="progressPercentage">0%</strong>
+                                <span>Complete</span>
+                            </div>
+
+                        </div>
+
+
+                        <div class="progress-details">
+
+                            <div>
+                                <span>Completed</span>
+                                <strong id="progressCompleted">0</strong>
+                            </div>
+
+                            <div>
+                                <span>Remaining</span>
+                                <strong id="progressRemaining">0</strong>
+                            </div>
+
+                        </div>
+
+                    </aside>
+
+                </div>
+
+
+                <!-- Projects -->
+                <section class="panel projects-panel" id="projects">
+
+                    <div class="panel-header">
+
+                        <div>
+                            <p class="panel-label">WORKSPACE</p>
+                            <h3>Projects</h3>
+                        </div>
+
+                    </div>
+
+
+                    <div class="project-grid">
+
+                        <article class="project-item">
+
+                            <div class="project-top">
+                                <span class="project-dot blue"></span>
+                                <span>WEB</span>
+                            </div>
+
+                            <h4>Portfolio Website</h4>
+
+                            <p>
+                                Personal developer portfolio
+                            </p>
+
+                            <div class="project-progress">
+                                <div>
+                                    <span>Progress</span>
+                                    <strong>75%</strong>
+                                </div>
+
+                                <div class="progress-bar">
+                                    <span style="width: 75%"></span>
+                                </div>
+                            </div>
+
+                        </article>
+
+
+                        <article class="project-item">
+
+                            <div class="project-top">
+                                <span class="project-dot green"></span>
+                                <span>APP</span>
+                            </div>
+
+                            <h4>DevTask</h4>
+
+                            <p>
+                                Task management application
+                            </p>
+
+                            <div class="project-progress">
+                                <div>
+                                    <span>Progress</span>
+                                    <strong>40%</strong>
+                                </div>
+
+                                <div class="progress-bar">
+                                    <span style="width: 40%"></span>
+                                </div>
+                            </div>
+
+                        </article>
+
+
+                        <article class="project-item">
+
+                            <div class="project-top">
+                                <span class="project-dot purple"></span>
+                                <span>DESIGN</span>
+                            </div>
+
+                            <h4>Brand Identity</h4>
+
+                            <p>
+                                New visual identity project
+                            </p>
+
+                            <div class="project-progress">
+                                <div>
+                                    <span>Progress</span>
+                                    <strong>25%</strong>
+                                </div>
+
+                                <div class="progress-bar">
+                                    <span style="width: 25%"></span>
+                                </div>
+                            </div>
+
+                        </article>
+
+                    </div>
+
+                </section>
+
+            </section>
+
+        </main>
+
+    </div>
+
+
+    <!-- Add Task Modal -->
+    <div class="modal-overlay" id="modalOverlay">
+
+        <div class="modal">
+
+            <div class="modal-header">
+
+                <div>
+                    <p class="panel-label">TASK MANAGEMENT</p>
+                    <h3 id="modalTitle">Create Task</h3>
+                </div>
+
+                <button
+                    class="close-button"
+                    id="closeModal"
+                    aria-label="Close modal"
+                >
+                    ×
+                </button>
+
+            </div>
+
+
+            <form id="taskForm">
+
+                <input type="hidden" id="taskId">
+
+
+                <label>
+                    Task title
+
+                    <input
+                        type="text"
+                        id="taskTitle"
+                        placeholder="e.g. Finish portfolio website"
+                        required
+                    >
+
+                </label>
+
+
+                <label>
+                    Description
+
+                    <textarea
+                        id="taskDescription"
+                        rows="4"
+                        placeholder="Describe the task..."
+                    ></textarea>
+
+                </label>
+
+
+                <div class="form-row">
+
+                    <label>
+                        Priority
+
+                        <select id="taskPriority">
+
+                            <option value="low">
+                                Low
+                            </option>
+
+                            <option value="medium" selected>
+                                Medium
+                            </option>
+
+                            <option value="high">
+                                High
+                            </option>
+
+                        </select>
+
+                    </label>
+
+
+                    <label>
+                        Due date
+
+                        <input
+                            type="date"
+                            id="taskDueDate"
+                        >
+
+                    </label>
+
+                </div>
+
+
+                <div class="modal-actions">
+
+                    <button
+                        type="button"
+                        class="secondary-button"
+                        id="cancelTask"
+                    >
+                        Cancel
+                    </button>
+
+                    <button
+                        type="submit"
+                        class="primary-button"
+                    >
+                        Save Task
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+    <script src="script.js"></script>
+
+</body>
+</html>
