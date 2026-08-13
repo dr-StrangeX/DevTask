@@ -3185,3 +3185,357 @@ body.light-theme .progress-inner {
             0.01ms !important;
     }
 }
+/* =========================================================
+   LIGHT THEME — READABILITY OVERRIDES
+========================================================= */
+
+body.light-theme {
+    --bg: #f4f7fb;
+    --bg-secondary: #ffffff;
+    --panel: #ffffff;
+    --panel-hover: #f1f5fa;
+    --border: #d8e0eb;
+
+    --text: #172033;
+    --text-secondary: #536174;
+    --muted: #68768a;
+
+    --blue: #3977e8;
+}
+
+/* Main application */
+body.light-theme .app {
+    background: var(--bg);
+}
+
+body.light-theme .main {
+    background: var(--bg);
+}
+
+/* Sidebar */
+body.light-theme .sidebar {
+    background: #ffffff;
+    border-right-color: #dce3ed;
+}
+
+body.light-theme .brand {
+    color: #172033;
+}
+
+body.light-theme .nav-item {
+    color: #536174;
+}
+
+body.light-theme .nav-item:hover {
+    background: #edf3ff;
+    color: #2867d8;
+}
+
+body.light-theme .nav-item.active {
+    background: #e8f0ff;
+    color: #2867d8;
+}
+
+body.light-theme .user-card {
+    border-top-color: #dce3ed;
+}
+
+body.light-theme .user-card strong {
+    color: #172033;
+}
+
+body.light-theme .user-card small {
+    color: #657286;
+}
+
+/* Topbar */
+body.light-theme .topbar {
+    background: #ffffff;
+    border-bottom-color: #dce3ed;
+}
+
+body.light-theme .topbar-label,
+body.light-theme .welcome-label,
+body.light-theme .panel-label {
+    color: #657286;
+}
+
+body.light-theme .topbar h1 {
+    color: #172033;
+}
+
+body.light-theme .profile-name {
+    color: #344155;
+}
+
+body.light-theme .icon-button,
+body.light-theme .profile-button {
+    color: #536174;
+}
+
+body.light-theme .icon-button:hover {
+    background: #eef2f7;
+}
+
+/* Dashboard headings */
+body.light-theme .welcome h2 {
+    color: #172033;
+}
+
+body.light-theme .welcome h2 span {
+    color: #2867d8;
+}
+
+body.light-theme .welcome p:last-child {
+    color: #536174;
+}
+
+/* Stats */
+body.light-theme .stat-card {
+    background: #ffffff;
+    border-color: #dce3ed;
+}
+
+body.light-theme .stat-card:hover {
+    border-color: #bfd0e8;
+    box-shadow: 0 8px 25px rgba(30, 60, 100, 0.08);
+}
+
+body.light-theme .stat-card span {
+    color: #657286;
+}
+
+body.light-theme .stat-card strong {
+    color: #172033;
+}
+
+/* Panels */
+body.light-theme .panel {
+    background: #ffffff;
+    border-color: #dce3ed;
+}
+
+body.light-theme .panel-header h3 {
+    color: #172033;
+}
+
+body.light-theme .text-button {
+    color: #2867d8;
+}
+
+/* Search and filters */
+body.light-theme .search-box input,
+body.light-theme .task-controls select {
+    background: #f8fafc;
+    border-color: #d5deea;
+    color: #172033;
+}
+
+body.light-theme .search-box input::placeholder {
+    color: #7a8799;
+}
+
+body.light-theme .search-box > span {
+    color: #66758a;
+}
+
+body.light-theme .search-box input:focus,
+body.light-theme .task-controls select:focus {
+    background: #ffffff;
+    border-color: #3977e8;
+}
+
+/* Tasks */
+body.light-theme .task-item {
+    border-bottom-color: #e3e8ef;
+}
+
+body.light-theme .task-item:hover {
+    background: #f8fafc;
+}
+
+body.light-theme .task-title {
+    color: #172033;
+}
+
+body.light-theme .task-description {
+    color: #59677a;
+}
+
+body.light-theme .task-check {
+    border-color: #aebdce;
+}
+
+body.light-theme .task-action {
+    background: #f1f4f8;
+    color: #536174;
+}
+
+body.light-theme .task-action:hover {
+    background: #e8f0ff;
+    color: #2867d8;
+}
+
+body.light-theme .task-item.completed .task-title {
+    color: #7a8798;
+}
+
+/* Priority / due-date labels */
+body.light-theme .priority,
+body.light-theme .due-date {
+    background: #eef2f6;
+    color: #536174;
+}
+
+body.light-theme .priority.high {
+    background: #fff0f2;
+    color: #d64558;
+}
+
+body.light-theme .priority.medium {
+    background: #fff5e9;
+    color: #c87820;
+}
+
+body.light-theme .priority.low {
+    background: #eafaf4;
+    color: #168c68;
+}
+
+/* Empty state */
+body.light-theme .empty-state h4 {
+    color: #172033;
+}
+
+body.light-theme .empty-state p {
+    color: #657286;
+}
+
+/* Progress */
+body.light-theme .progress-inner {
+    background: #ffffff;
+}
+
+body.light-theme .progress-inner strong {
+    color: #172033;
+}
+
+body.light-theme .progress-inner span {
+    color: #657286;
+}
+
+body.light-theme .progress-details > div {
+    background: #f5f7fa;
+}
+
+body.light-theme .progress-details span {
+    color: #657286;
+}
+
+body.light-theme .progress-details strong {
+    color: #172033;
+}
+
+/* Projects */
+body.light-theme .project-item {
+    background: #ffffff;
+    border-color: #dce3ed;
+}
+
+body.light-theme .project-item:hover {
+    border-color: #bfd0e8;
+    box-shadow: 0 8px 25px rgba(30, 60, 100, 0.08);
+}
+
+body.light-theme .project-top {
+    color: #657286;
+}
+
+body.light-theme .project-item h4 {
+    color: #172033;
+}
+
+body.light-theme .project-item > p {
+    color: #59677a;
+}
+
+body.light-theme .project-progress > div:first-child {
+    color: #657286;
+}
+
+body.light-theme .project-percentage {
+    color: #344155;
+}
+
+body.light-theme .progress-bar {
+    background: #e2e7ee;
+}
+
+/* Buttons */
+body.light-theme .secondary-button {
+    background: #ffffff;
+    border-color: #d5deea;
+    color: #344155;
+}
+
+body.light-theme .secondary-button:hover {
+    background: #f1f5fa;
+    border-color: #b9c8da;
+}
+
+/* Modals */
+body.light-theme .modal {
+    background: #ffffff;
+    border-color: #d5deea;
+}
+
+body.light-theme .modal-header h3 {
+    color: #172033;
+}
+
+body.light-theme .modal form > label,
+body.light-theme .form-row label {
+    color: #344155;
+}
+
+body.light-theme .modal input,
+body.light-theme .modal textarea,
+body.light-theme .modal select {
+    background: #f8fafc;
+    border-color: #d5deea;
+    color: #172033;
+}
+
+body.light-theme .modal input::placeholder,
+body.light-theme .modal textarea::placeholder {
+    color: #7a8799;
+}
+
+body.light-theme .close-button {
+    background: #f1f4f8;
+    color: #536174;
+}
+
+body.light-theme .close-button:hover {
+    background: #e7ecf2;
+    color: #172033;
+}
+
+/* Mobile menu */
+body.light-theme .mobile-menu {
+    background: #eef2f7;
+    color: #344155;
+}
+
+body.light-theme .mobile-menu:hover {
+    background: #e2e8f0;
+}
+
+/* Loading screen */
+body.light-theme .auth-loading {
+    background: #f4f7fb;
+}
+
+body.light-theme .auth-loading-card {
+    color: #536174;
+}
