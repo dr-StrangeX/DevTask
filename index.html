@@ -10,7 +10,7 @@
 
     <meta
         name="description"
-        content="DevTask is a modern, responsive task management dashboard for organizing, tracking, and completing tasks."
+        content="DevTask is a modern workspace for managing tasks, projects, and productivity."
     >
 
     <meta
@@ -18,1119 +18,572 @@
         content="#080d18"
     >
 
-    <link
-        rel="canonical"
-        href="https://dr-strangex.github.io/DevTask/"
-    >
-
-    <title>DevTask | Task Management Dashboard</title>
+    <title>DevTask | Your Productivity Workspace</title>
 
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-    <div class="app">
+    <div class="landing-page">
 
         <!-- =========================
-             SIDEBAR
+             NAVIGATION
         ========================== -->
 
-        <aside
-            class="sidebar"
-            id="sidebar"
-            aria-label="Main navigation"
-        >
+        <header class="landing-nav">
 
-            <div class="brand">
+            <a
+                href="index.html"
+                class="landing-brand"
+            >
 
-                <div
-                    class="brand-icon"
+                <span
+                    class="landing-brand-icon"
                     aria-hidden="true"
                 >
                     D
-                </div>
+                </span>
 
-                <span>DevTask</span>
+                <span>
+                    DevTask
+                </span>
 
-            </div>
+            </a>
 
 
             <nav
-                class="sidebar-nav"
-                aria-label="Dashboard navigation"
+                class="landing-links"
+                aria-label="Main navigation"
             >
 
-                <a
-                    href="#dashboard"
-                    class="nav-item active"
-                    aria-current="page"
-                >
-                    <span aria-hidden="true">⌂</span>
-                    <span>Dashboard</span>
+                <a href="#features">
+                    Features
                 </a>
 
-
-                <a
-                    href="#tasks"
-                    class="nav-item"
-                >
-                    <span aria-hidden="true">✓</span>
-                    <span>My Tasks</span>
+                <a href="#about">
+                    About
                 </a>
 
-
                 <a
-                    href="#projects"
-                    class="nav-item"
+                    href="dashboard.html"
+                    class="nav-login"
                 >
-                    <span aria-hidden="true">▣</span>
-                    <span>Projects</span>
+                    Login
                 </a>
 
             </nav>
 
-
-            <div class="sidebar-bottom">
-
-                <button
-                    type="button"
-                    class="nav-item"
-                    id="themeToggle"
-                    aria-label="Toggle color theme"
-                    aria-pressed="false"
-                >
-
-                    <span aria-hidden="true">◐</span>
-
-                    <span>
-                        Toggle Theme
-                    </span>
-
-                </button>
-
-
-                <div class="user-card">
-
-                    <div
-                        class="avatar"
-                        aria-hidden="true"
-                    >
-                        DR
-                    </div>
-
-
-                    <div>
-
-                        <strong>
-                            Developer
-                        </strong>
-
-                        <small>
-                            Personal Workspace
-                        </small>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </aside>
+        </header>
 
 
         <!-- =========================
-             MAIN CONTENT
+             HERO
         ========================== -->
 
-        <main
-            class="main"
-            id="main-content"
-        >
+        <main>
 
-            <!-- =========================
-                 TOPBAR
-            ========================== -->
+            <section
+                class="hero"
+                id="about"
+            >
 
-            <header class="topbar">
+                <div class="hero-content">
 
-                <button
-                    type="button"
-                    class="mobile-menu"
-                    id="mobileMenu"
-                    aria-label="Open navigation menu"
-                    aria-controls="sidebar"
-                    aria-expanded="false"
-                >
-                    ☰
-                </button>
-
-
-                <div>
-
-                    <p class="topbar-label">
-                        WORKSPACE
-                    </p>
-
-                    <h1>
-                        Dashboard
-                    </h1>
-
-                </div>
-
-
-                <div class="topbar-actions">
-
-                    <button
-                        type="button"
-                        class="icon-button"
-                        aria-label="Notifications"
-                    >
-                        <span aria-hidden="true">
-                            ♧
-                        </span>
-                    </button>
-
-
-                    <button
-                        type="button"
-                        class="profile-button"
-                        aria-label="Open developer profile"
-                    >
+                    <div class="hero-badge">
 
                         <span
-                            class="avatar small"
+                            class="hero-badge-dot"
                             aria-hidden="true"
+                        ></span>
+
+                        Your personal productivity workspace
+
+                    </div>
+
+
+                    <h1>
+
+                        Get more done.
+
+                        <span>
+                            Stay in control.
+                        </span>
+
+                    </h1>
+
+
+                    <p class="hero-description">
+
+                        DevTask gives you a simple, powerful workspace
+                        to organize your tasks, track projects, and
+                        keep your work moving forward.
+
+                    </p>
+
+
+                    <div class="hero-actions">
+
+                        <a
+                            href="dashboard.html"
+                            class="hero-primary"
                         >
-                            DR
-                        </span>
+                            Open Dashboard
+
+                            <span aria-hidden="true">
+                                →
+                            </span>
+
+                        </a>
 
 
-                        <span class="profile-name">
-                            Developer
-                        </span>
+                        <a
+                            href="#features"
+                            class="hero-secondary"
+                        >
+                            Explore Features
+                        </a>
 
-                    </button>
+                    </div>
+
+
+                    <div class="hero-trust">
+
+                        <div class="trust-avatars">
+
+                            <span>DR</span>
+                            <span>DT</span>
+                            <span>✓</span>
+
+                        </div>
+
+                        <p>
+                            Built for developers,
+                            creators, and teams.
+                        </p>
+
+                    </div>
 
                 </div>
 
-            </header>
+
+                <!-- =========================
+                     DASHBOARD PREVIEW
+                ========================== -->
+
+                <div
+                    class="hero-preview"
+                    aria-label="DevTask dashboard preview"
+                >
+
+                    <div class="preview-window">
+
+                        <div class="preview-topbar">
+
+                            <div class="preview-dots">
+
+                                <span></span>
+                                <span></span>
+                                <span></span>
+
+                            </div>
+
+                            <span class="preview-url">
+                                devtask / dashboard
+                            </span>
+
+                        </div>
+
+
+                        <div class="preview-body">
+
+                            <div class="preview-sidebar">
+
+                                <div class="preview-logo">
+                                    D
+                                </div>
+
+                                <div class="preview-side-line active"></div>
+                                <div class="preview-side-line"></div>
+                                <div class="preview-side-line"></div>
+
+                            </div>
+
+
+                            <div class="preview-main">
+
+                                <div class="preview-heading">
+
+                                    <div>
+
+                                        <small>
+                                            WORKSPACE
+                                        </small>
+
+                                        <strong>
+                                            Dashboard
+                                        </strong>
+
+                                    </div>
+
+                                    <div class="preview-avatar">
+                                        DR
+                                    </div>
+
+                                </div>
+
+
+                                <div class="preview-welcome">
+
+                                    <div>
+
+                                        <small>
+                                            GOOD MORNING
+                                        </small>
+
+                                        <strong>
+                                            Let's get things
+                                            <span>done.</span>
+                                        </strong>
+
+                                    </div>
+
+                                    <div class="preview-button">
+                                        + Add Task
+                                    </div>
+
+                                </div>
+
+
+                                <div class="preview-stats">
+
+                                    <div class="preview-stat">
+
+                                        <small>
+                                            Total Tasks
+                                        </small>
+
+                                        <strong>
+                                            12
+                                        </strong>
+
+                                    </div>
+
+
+                                    <div class="preview-stat">
+
+                                        <small>
+                                            Completed
+                                        </small>
+
+                                        <strong>
+                                            8
+                                        </strong>
+
+                                    </div>
+
+
+                                    <div class="preview-stat">
+
+                                        <small>
+                                            In Progress
+                                        </small>
+
+                                        <strong>
+                                            4
+                                        </strong>
+
+                                    </div>
+
+
+                                    <div class="preview-stat">
+
+                                        <small>
+                                            Completion
+                                        </small>
+
+                                        <strong>
+                                            67%
+                                        </strong>
+
+                                    </div>
+
+                                </div>
+
+
+                                <div class="preview-content">
+
+                                    <div class="preview-tasks">
+
+                                        <div class="preview-section-title">
+                                            My Tasks
+                                        </div>
+
+
+                                        <div class="preview-task done">
+
+                                            <span class="preview-check">
+                                                ✓
+                                            </span>
+
+                                            <div>
+                                                <strong>
+                                                    Finish portfolio
+                                                </strong>
+
+                                                <small>
+                                                    High priority
+                                                </small>
+                                            </div>
+
+                                        </div>
+
+
+                                        <div class="preview-task">
+
+                                            <span class="preview-check">
+                                            </span>
+
+                                            <div>
+                                                <strong>
+                                                    Review project
+                                                </strong>
+
+                                                <small>
+                                                    Medium priority
+                                                </small>
+                                            </div>
+
+                                        </div>
+
+
+                                        <div class="preview-task">
+
+                                            <span class="preview-check">
+                                            </span>
+
+                                            <div>
+                                                <strong>
+                                                    Update website
+                                                </strong>
+
+                                                <small>
+                                                    Low priority
+                                                </small>
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+
+
+                                    <div class="preview-progress">
+
+                                        <div class="preview-section-title">
+                                            Progress
+                                        </div>
+
+
+                                        <div class="preview-circle">
+
+                                            <div>
+                                                <strong>
+                                                    67%
+                                                </strong>
+
+                                                <small>
+                                                    Complete
+                                                </small>
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
 
 
             <!-- =========================
-                 DASHBOARD
+                 FEATURES
             ========================== -->
 
             <section
-                class="dashboard"
-                id="dashboard"
-                aria-labelledby="dashboard-heading"
+                class="features"
+                id="features"
             >
 
-                <!-- =========================
-                     WELCOME
-                ========================== -->
+                <div class="section-heading">
 
-                <div class="welcome">
+                    <span>
+                        EVERYTHING YOU NEED
+                    </span>
 
-                    <div>
+                    <h2>
+                        A workspace built for productivity.
+                    </h2>
 
-                        <p class="welcome-label">
-                            GOOD MORNING
-                        </p>
-
-
-                        <h2 id="dashboard-heading">
-
-                            Let's get things
-
-                            <span>
-                                done.
-                            </span>
-
-                        </h2>
-
-
-                        <p>
-                            Organize your work, track your progress,
-                            and stay productive.
-                        </p>
-
-                    </div>
-
-
-                    <button
-                        type="button"
-                        class="primary-button"
-                        id="addTaskButton"
-                    >
-                        + Add Task
-                    </button>
+                    <p>
+                        Keep your work organized without unnecessary
+                        complexity.
+                    </p>
 
                 </div>
 
 
-                <!-- =========================
-                     STATISTICS
-                ========================== -->
+                <div class="feature-grid">
 
-                <section
-                    class="stats-grid"
-                    aria-label="Task statistics"
-                >
+                    <article class="feature-card">
 
-                    <div class="stat-card">
-
-                        <div
-                            class="stat-icon blue"
-                            aria-hidden="true"
-                        >
+                        <div class="feature-icon blue">
                             ✓
                         </div>
 
+                        <h3>
+                            Task Management
+                        </h3>
 
-                        <div>
+                        <p>
+                            Create, edit, prioritize, complete, and
+                            organize your tasks from one simple workspace.
+                        </p>
 
-                            <span>
-                                Total Tasks
-                            </span>
-
-                            <strong
-                                id="totalTasks"
-                                aria-live="polite"
-                            >
-                                0
-                            </strong>
-
-                        </div>
-
-                    </div>
+                    </article>
 
 
-                    <div class="stat-card">
+                    <article class="feature-card">
 
-                        <div
-                            class="stat-icon green"
-                            aria-hidden="true"
-                        >
-                            ✓
-                        </div>
-
-
-                        <div>
-
-                            <span>
-                                Completed
-                            </span>
-
-                            <strong
-                                id="completedTasks"
-                                aria-live="polite"
-                            >
-                                0
-                            </strong>
-
-                        </div>
-
-                    </div>
-
-
-                    <div class="stat-card">
-
-                        <div
-                            class="stat-icon orange"
-                            aria-hidden="true"
-                        >
+                        <div class="feature-icon green">
                             ◷
                         </div>
 
+                        <h3>
+                            Track Progress
+                        </h3>
 
-                        <div>
+                        <p>
+                            See your completion rate and project progress
+                            at a glance so you always know where you stand.
+                        </p>
 
-                            <span>
-                                In Progress
-                            </span>
+                    </article>
 
-                            <strong
-                                id="activeTasks"
-                                aria-live="polite"
-                            >
-                                0
-                            </strong>
 
+                    <article class="feature-card">
+
+                        <div class="feature-icon purple">
+                            ▣
                         </div>
 
-                    </div>
+                        <h3>
+                            Manage Projects
+                        </h3>
+
+                        <p>
+                            Keep multiple projects organized and update
+                            their progress as your work develops.
+                        </p>
+
+                    </article>
 
 
-                    <div class="stat-card">
+                    <article class="feature-card">
 
-                        <div
-                            class="stat-icon purple"
-                            aria-hidden="true"
-                        >
-                            %
+                        <div class="feature-icon orange">
+                            ◐
                         </div>
 
+                        <h3>
+                            Your Workspace
+                        </h3>
 
-                        <div>
+                        <p>
+                            Customize your experience with theme support
+                            and a clean interface designed for focus.
+                        </p>
 
-                            <span>
-                                Completion
-                            </span>
+                    </article>
 
-                            <strong
-                                id="completionRate"
-                                aria-live="polite"
-                            >
-                                0%
-                            </strong>
+                </div>
 
-                        </div>
+            </section>
 
-                    </div>
 
-                </section>
+            <!-- =========================
+                 CTA
+            ========================== -->
 
+            <section class="landing-cta">
 
-                <!-- =========================
-                     CONTENT GRID
-                ========================== -->
+                <div>
 
-                <div class="content-grid">
+                    <span>
+                        READY TO GET STARTED?
+                    </span>
 
-                    <!-- =========================
-                         TASKS
-                    ========================== -->
+                    <h2>
+                        Turn your ideas into progress.
+                    </h2>
 
-                    <section
-                        class="panel tasks-panel"
-                        id="tasks"
-                        aria-labelledby="tasks-heading"
-                    >
-
-                        <div class="panel-header">
-
-                            <div>
-
-                                <p class="panel-label">
-                                    TASK MANAGEMENT
-                                </p>
-
-                                <h3 id="tasks-heading">
-                                    My Tasks
-                                </h3>
-
-                            </div>
-
-
-                            <button
-                                type="button"
-                                class="text-button"
-                                id="clearCompleted"
-                            >
-                                Clear completed
-                            </button>
-
-                        </div>
-
-
-                        <!-- =========================
-                             SEARCH / FILTER
-                        ========================== -->
-
-                        <div class="task-controls">
-
-                            <div class="search-box">
-
-                                <span aria-hidden="true">
-                                    ⌕
-                                </span>
-
-
-                                <label
-                                    for="searchInput"
-                                    class="sr-only"
-                                >
-                                    Search tasks
-                                </label>
-
-
-                                <input
-                                    type="search"
-                                    id="searchInput"
-                                    placeholder="Search tasks..."
-                                    autocomplete="off"
-                                    maxlength="100"
-                                >
-
-                            </div>
-
-
-                            <label
-                                for="filterSelect"
-                                class="sr-only"
-                            >
-                                Filter tasks
-                            </label>
-
-
-                            <select
-                                id="filterSelect"
-                                aria-label="Filter tasks"
-                            >
-
-                                <option value="all">
-                                    All Tasks
-                                </option>
-
-                                <option value="active">
-                                    Active
-                                </option>
-
-                                <option value="completed">
-                                    Completed
-                                </option>
-
-                                <option value="high">
-                                    High Priority
-                                </option>
-
-                            </select>
-
-                        </div>
-
-
-                        <!-- =========================
-                             TASK LIST
-                        ========================== -->
-
-                        <div
-                            id="taskList"
-                            class="task-list"
-                            aria-live="polite"
-                        >
-
-                            <div
-                                class="empty-state"
-                                id="emptyState"
-                            >
-
-                                <div
-                                    class="empty-icon"
-                                    aria-hidden="true"
-                                >
-                                    ✓
-                                </div>
-
-
-                                <h4>
-                                    No tasks yet
-                                </h4>
-
-
-                                <p>
-                                    Create your first task to get started.
-                                </p>
-
-
-                                <button
-                                    type="button"
-                                    class="primary-button"
-                                    id="emptyAddTask"
-                                >
-                                    Create Task
-                                </button>
-
-                            </div>
-
-                        </div>
-
-                    </section>
-
-
-                    <!-- =========================
-                         PROGRESS
-                    ========================== -->
-
-                    <aside
-                        class="panel progress-panel"
-                        aria-labelledby="progress-heading"
-                    >
-
-                        <div class="panel-header">
-
-                            <div>
-
-                                <p class="panel-label">
-                                    OVERVIEW
-                                </p>
-
-                                <h3 id="progress-heading">
-                                    Progress
-                                </h3>
-
-                            </div>
-
-                        </div>
-
-
-                        <div
-                            class="progress-circle"
-                            role="progressbar"
-                            aria-valuemin="0"
-                            aria-valuemax="100"
-                            aria-valuenow="0"
-                            aria-label="Task completion progress"
-                        >
-
-                            <div class="progress-inner">
-
-                                <strong
-                                    id="progressPercentage"
-                                    aria-live="polite"
-                                >
-                                    0%
-                                </strong>
-
-
-                                <span>
-                                    Complete
-                                </span>
-
-                            </div>
-
-                        </div>
-
-
-                        <div class="progress-details">
-
-                            <div>
-
-                                <span>
-                                    Completed
-                                </span>
-
-
-                                <strong
-                                    id="progressCompleted"
-                                    aria-live="polite"
-                                >
-                                    0
-                                </strong>
-
-                            </div>
-
-
-                            <div>
-
-                                <span>
-                                    Remaining
-                                </span>
-
-
-                                <strong
-                                    id="progressRemaining"
-                                    aria-live="polite"
-                                >
-                                    0
-                                </strong>
-
-                            </div>
-
-                        </div>
-
-                    </aside>
+                    <p>
+                        Open your DevTask workspace and start organizing
+                        your work today.
+                    </p>
 
                 </div>
 
 
-                <!-- =========================
-                     PROJECTS
-                ========================== -->
-
-                <section
-                    class="panel projects-panel"
-                    id="projects"
-                    aria-labelledby="projects-heading"
+                <a
+                    href="dashboard.html"
+                    class="hero-primary"
                 >
-
-                    <div class="panel-header">
-
-                        <div>
-
-                            <p class="panel-label">
-                                WORKSPACE
-                            </p>
-
-
-                            <h3 id="projects-heading">
-                                Projects
-                            </h3>
-
-                        </div>
-
-                    </div>
-
-
-                    <div class="project-grid">
-
-
-                        <!-- =========================
-                             PROJECT 1
-                        ========================== -->
-
-                        <article
-                            class="project-item"
-                            data-project="portfolio"
-                            data-progress="75"
-                        >
-
-                            <div class="project-top">
-
-                                <span
-                                    class="project-dot blue"
-                                    aria-hidden="true"
-                                ></span>
-
-
-                                <span>
-                                    WEB
-                                </span>
-
-                            </div>
-
-
-                            <h4>
-                                Portfolio Website
-                            </h4>
-
-
-                            <p>
-                                Personal developer portfolio
-                            </p>
-
-
-                            <div class="project-progress">
-
-                                <div>
-
-                                    <span>
-                                        Progress
-                                    </span>
-
-
-                                    <strong class="project-percentage">
-                                        75%
-                                    </strong>
-
-                                </div>
-
-
-                                <div
-                                    class="progress-bar"
-                                    role="progressbar"
-                                    aria-valuemin="0"
-                                    aria-valuemax="100"
-                                    aria-valuenow="75"
-                                    aria-label="Portfolio Website progress"
-                                >
-
-                                    <span
-                                        class="project-progress-fill"
-                                        style="width: 75%"
-                                    ></span>
-
-                                </div>
-
-                            </div>
-
-
-                            <div class="project-controls">
-
-                                <button
-                                    class="task-action project-decrease"
-                                    type="button"
-                                    aria-label="Decrease Portfolio Website progress"
-                                >
-                                    −
-                                </button>
-
-
-                                <button
-                                    class="task-action project-increase"
-                                    type="button"
-                                    aria-label="Increase Portfolio Website progress"
-                                >
-                                    +
-                                </button>
-
-                            </div>
-
-                        </article>
-
-
-                        <!-- =========================
-                             PROJECT 2
-                        ========================== -->
-
-                        <article
-                            class="project-item"
-                            data-project="devtask"
-                            data-progress="40"
-                        >
-
-                            <div class="project-top">
-
-                                <span
-                                    class="project-dot green"
-                                    aria-hidden="true"
-                                ></span>
-
-
-                                <span>
-                                    APP
-                                </span>
-
-                            </div>
-
-
-                            <h4>
-                                DevTask
-                            </h4>
-
-
-                            <p>
-                                Task management application
-                            </p>
-
-
-                            <div class="project-progress">
-
-                                <div>
-
-                                    <span>
-                                        Progress
-                                    </span>
-
-
-                                    <strong class="project-percentage">
-                                        40%
-                                    </strong>
-
-                                </div>
-
-
-                                <div
-                                    class="progress-bar"
-                                    role="progressbar"
-                                    aria-valuemin="0"
-                                    aria-valuemax="100"
-                                    aria-valuenow="40"
-                                    aria-label="DevTask project progress"
-                                >
-
-                                    <span
-                                        class="project-progress-fill"
-                                        style="width: 40%"
-                                    ></span>
-
-                                </div>
-
-                            </div>
-
-
-                            <div class="project-controls">
-
-                                <button
-                                    class="task-action project-decrease"
-                                    type="button"
-                                    aria-label="Decrease DevTask progress"
-                                >
-                                    −
-                                </button>
-
-
-                                <button
-                                    class="task-action project-increase"
-                                    type="button"
-                                    aria-label="Increase DevTask progress"
-                                >
-                                    +
-                                </button>
-
-                            </div>
-
-                        </article>
-
-
-                        <!-- =========================
-                             PROJECT 3
-                        ========================== -->
-
-                        <article
-                            class="project-item"
-                            data-project="brand"
-                            data-progress="25"
-                        >
-
-                            <div class="project-top">
-
-                                <span
-                                    class="project-dot purple"
-                                    aria-hidden="true"
-                                ></span>
-
-
-                                <span>
-                                    DESIGN
-                                </span>
-
-                            </div>
-
-
-                            <h4>
-                                Brand Identity
-                            </h4>
-
-
-                            <p>
-                                New visual identity project
-                            </p>
-
-
-                            <div class="project-progress">
-
-                                <div>
-
-                                    <span>
-                                        Progress
-                                    </span>
-
-
-                                    <strong class="project-percentage">
-                                        25%
-                                    </strong>
-
-                                </div>
-
-
-                                <div
-                                    class="progress-bar"
-                                    role="progressbar"
-                                    aria-valuemin="0"
-                                    aria-valuemax="100"
-                                    aria-valuenow="25"
-                                    aria-label="Brand Identity project progress"
-                                >
-
-                                    <span
-                                        class="project-progress-fill"
-                                        style="width: 25%"
-                                    ></span>
-
-                                </div>
-
-                            </div>
-
-
-                            <div class="project-controls">
-
-                                <button
-                                    class="task-action project-decrease"
-                                    type="button"
-                                    aria-label="Decrease Brand Identity progress"
-                                >
-                                    −
-                                </button>
-
-
-                                <button
-                                    class="task-action project-increase"
-                                    type="button"
-                                    aria-label="Increase Brand Identity progress"
-                                >
-                                    +
-                                </button>
-
-                            </div>
-
-                        </article>
-
-
-                    </div>
-
-                </section>
+                    Open DevTask
+                    <span aria-hidden="true">→</span>
+                </a>
 
             </section>
 
         </main>
 
-    </div>
 
+        <!-- =========================
+             FOOTER
+        ========================== -->
 
-    <!-- =========================
-         ADD / EDIT TASK MODAL
-    ========================== -->
+        <footer class="landing-footer">
 
-    <div
-        class="modal-overlay"
-        id="modalOverlay"
-        role="presentation"
-    >
+            <div class="landing-brand">
 
-        <div
-            class="modal"
-            role="dialog"
-            aria-modal="true"
-            aria-labelledby="modalTitle"
-        >
-
-            <div class="modal-header">
-
-                <div>
-
-                    <p class="panel-label">
-                        TASK MANAGEMENT
-                    </p>
-
-
-                    <h3 id="modalTitle">
-                        Create Task
-                    </h3>
-
-                </div>
-
-
-                <button
-                    type="button"
-                    class="close-button"
-                    id="closeModal"
-                    aria-label="Close task dialog"
+                <span
+                    class="landing-brand-icon"
+                    aria-hidden="true"
                 >
-                    ×
-                </button>
+                    D
+                </span>
+
+                <span>
+                    DevTask
+                </span>
 
             </div>
 
 
-            <form id="taskForm">
+            <p>
+                © 2026 DevTask. Built for better productivity.
+            </p>
 
-                <input
-                    type="hidden"
-                    id="taskId"
-                >
-
-
-                <label for="taskTitle">
-
-                    Task title
-
-                    <input
-                        type="text"
-                        id="taskTitle"
-                        placeholder="e.g. Finish portfolio website"
-                        autocomplete="off"
-                        maxlength="100"
-                        required
-                    >
-
-                </label>
-
-
-                <label for="taskDescription">
-
-                    Description
-
-                    <textarea
-                        id="taskDescription"
-                        rows="4"
-                        placeholder="Describe the task..."
-                        maxlength="500"
-                    ></textarea>
-
-                </label>
-
-
-                <div class="form-row">
-
-                    <label for="taskPriority">
-
-                        Priority
-
-                        <select id="taskPriority">
-
-                            <option value="low">
-                                Low
-                            </option>
-
-
-                            <option
-                                value="medium"
-                                selected
-                            >
-                                Medium
-                            </option>
-
-
-                            <option value="high">
-                                High
-                            </option>
-
-                        </select>
-
-                    </label>
-
-
-                    <label for="taskDueDate">
-
-                        Due date
-
-                        <input
-                            type="date"
-                            id="taskDueDate"
-                        >
-
-                    </label>
-
-                </div>
-
-
-                <div class="modal-actions">
-
-                    <button
-                        type="button"
-                        class="secondary-button"
-                        id="cancelTask"
-                    >
-                        Cancel
-                    </button>
-
-
-                    <button
-                        type="submit"
-                        class="primary-button"
-                    >
-                        Save Task
-                    </button>
-
-                </div>
-
-            </form>
-
-        </div>
+        </footer>
 
     </div>
-
-
-    <!-- =========================
-         JAVASCRIPT
-    ========================== -->
-
-    <script
-        src="script.js"
-        defer
-    ></script>
 
 </body>
 </html>

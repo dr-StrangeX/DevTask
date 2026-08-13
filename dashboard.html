@@ -1,0 +1,1131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="DevTask is a modern, responsive task management dashboard for organizing, tracking, and completing tasks."
+    >
+
+    <meta
+        name="theme-color"
+        content="#080d18"
+    >
+
+   <title>DevTask | Dashboard</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="app">
+
+        <!-- =========================
+             SIDEBAR
+        ========================== -->
+
+        <aside
+            class="sidebar"
+            id="sidebar"
+            aria-label="Main navigation"
+        >
+
+            <div class="brand">
+
+                <div
+                    class="brand-icon"
+                    aria-hidden="true"
+                >
+                    D
+                </div>
+
+                <span>DevTask</span>
+
+            </div>
+
+
+            <nav
+                class="sidebar-nav"
+                aria-label="Dashboard navigation"
+            >
+
+                <a
+                    href="#dashboard"
+                    class="nav-item active"
+                    aria-current="page"
+                >
+                    <span aria-hidden="true">⌂</span>
+                    <span>Dashboard</span>
+                </a>
+
+
+                <a
+                    href="#tasks"
+                    class="nav-item"
+                >
+                    <span aria-hidden="true">✓</span>
+                    <span>My Tasks</span>
+                </a>
+
+
+                <a
+                    href="#projects"
+                    class="nav-item"
+                >
+                    <span aria-hidden="true">▣</span>
+                    <span>Projects</span>
+                </a>
+
+            </nav>
+
+
+            <div class="sidebar-bottom">
+
+                <button
+                    type="button"
+                    class="nav-item"
+                    id="themeToggle"
+                    aria-label="Toggle color theme"
+                    aria-pressed="false"
+                >
+
+                    <span aria-hidden="true">◐</span>
+
+                    <span>
+                        Toggle Theme
+                    </span>
+
+                </button>
+
+
+                <div class="user-card">
+
+                    <div
+                        class="avatar"
+                        aria-hidden="true"
+                    >
+                        DR
+                    </div>
+
+
+                    <div>
+
+                        <strong>
+                            Developer
+                        </strong>
+
+                        <small>
+                            Personal Workspace
+                        </small>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </aside>
+
+
+        <!-- =========================
+             MAIN CONTENT
+        ========================== -->
+
+        <main
+            class="main"
+            id="main-content"
+        >
+
+            <!-- =========================
+                 TOPBAR
+            ========================== -->
+
+            <header class="topbar">
+
+                <button
+                    type="button"
+                    class="mobile-menu"
+                    id="mobileMenu"
+                    aria-label="Open navigation menu"
+                    aria-controls="sidebar"
+                    aria-expanded="false"
+                >
+                    ☰
+                </button>
+
+
+                <div>
+
+                    <p class="topbar-label">
+                        WORKSPACE
+                    </p>
+
+                    <h1>
+                        Dashboard
+                    </h1>
+
+                </div>
+
+
+                <div class="topbar-actions">
+
+                    <button
+                        type="button"
+                        class="icon-button"
+                        aria-label="Notifications"
+                    >
+                        <span aria-hidden="true">
+                            ♧
+                        </span>
+                    </button>
+
+
+                    <button
+                        type="button"
+                        class="profile-button"
+                        aria-label="Open developer profile"
+                    >
+
+                        <span
+                            class="avatar small"
+                            aria-hidden="true"
+                        >
+                            DR
+                        </span>
+
+
+                        <span class="profile-name">
+                            Developer
+                        </span>
+
+                    </button>
+
+                </div>
+
+            </header>
+
+
+            <!-- =========================
+                 DASHBOARD
+            ========================== -->
+
+            <section
+                class="dashboard"
+                id="dashboard"
+                aria-labelledby="dashboard-heading"
+            >
+
+                <!-- =========================
+                     WELCOME
+                ========================== -->
+
+                <div class="welcome">
+
+                    <div>
+
+                        <p class="welcome-label">
+                            GOOD MORNING
+                        </p>
+
+
+                        <h2 id="dashboard-heading">
+
+                            Let's get things
+
+                            <span>
+                                done.
+                            </span>
+
+                        </h2>
+
+
+                        <p>
+                            Organize your work, track your progress,
+                            and stay productive.
+                        </p>
+
+                    </div>
+
+
+                    <button
+                        type="button"
+                        class="primary-button"
+                        id="addTaskButton"
+                    >
+                        + Add Task
+                    </button>
+
+                </div>
+
+
+                <!-- =========================
+                     STATISTICS
+                ========================== -->
+
+                <section
+                    class="stats-grid"
+                    aria-label="Task statistics"
+                >
+
+                    <div class="stat-card">
+
+                        <div
+                            class="stat-icon blue"
+                            aria-hidden="true"
+                        >
+                            ✓
+                        </div>
+
+
+                        <div>
+
+                            <span>
+                                Total Tasks
+                            </span>
+
+                            <strong
+                                id="totalTasks"
+                                aria-live="polite"
+                            >
+                                0
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="stat-card">
+
+                        <div
+                            class="stat-icon green"
+                            aria-hidden="true"
+                        >
+                            ✓
+                        </div>
+
+
+                        <div>
+
+                            <span>
+                                Completed
+                            </span>
+
+                            <strong
+                                id="completedTasks"
+                                aria-live="polite"
+                            >
+                                0
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="stat-card">
+
+                        <div
+                            class="stat-icon orange"
+                            aria-hidden="true"
+                        >
+                            ◷
+                        </div>
+
+
+                        <div>
+
+                            <span>
+                                In Progress
+                            </span>
+
+                            <strong
+                                id="activeTasks"
+                                aria-live="polite"
+                            >
+                                0
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="stat-card">
+
+                        <div
+                            class="stat-icon purple"
+                            aria-hidden="true"
+                        >
+                            %
+                        </div>
+
+
+                        <div>
+
+                            <span>
+                                Completion
+                            </span>
+
+                            <strong
+                                id="completionRate"
+                                aria-live="polite"
+                            >
+                                0%
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+                <!-- =========================
+                     CONTENT GRID
+                ========================== -->
+
+                <div class="content-grid">
+
+                    <!-- =========================
+                         TASKS
+                    ========================== -->
+
+                    <section
+                        class="panel tasks-panel"
+                        id="tasks"
+                        aria-labelledby="tasks-heading"
+                    >
+
+                        <div class="panel-header">
+
+                            <div>
+
+                                <p class="panel-label">
+                                    TASK MANAGEMENT
+                                </p>
+
+                                <h3 id="tasks-heading">
+                                    My Tasks
+                                </h3>
+
+                            </div>
+
+
+                            <button
+                                type="button"
+                                class="text-button"
+                                id="clearCompleted"
+                            >
+                                Clear completed
+                            </button>
+
+                        </div>
+
+
+                        <!-- =========================
+                             SEARCH / FILTER
+                        ========================== -->
+
+                        <div class="task-controls">
+
+                            <div class="search-box">
+
+                                <span aria-hidden="true">
+                                    ⌕
+                                </span>
+
+
+                                <label
+                                    for="searchInput"
+                                    class="sr-only"
+                                >
+                                    Search tasks
+                                </label>
+
+
+                                <input
+                                    type="search"
+                                    id="searchInput"
+                                    placeholder="Search tasks..."
+                                    autocomplete="off"
+                                    maxlength="100"
+                                >
+
+                            </div>
+
+
+                            <label
+                                for="filterSelect"
+                                class="sr-only"
+                            >
+                                Filter tasks
+                            </label>
+
+
+                            <select
+                                id="filterSelect"
+                                aria-label="Filter tasks"
+                            >
+
+                                <option value="all">
+                                    All Tasks
+                                </option>
+
+                                <option value="active">
+                                    Active
+                                </option>
+
+                                <option value="completed">
+                                    Completed
+                                </option>
+
+                                <option value="high">
+                                    High Priority
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <!-- =========================
+                             TASK LIST
+                        ========================== -->
+
+                        <div
+                            id="taskList"
+                            class="task-list"
+                            aria-live="polite"
+                        >
+
+                            <div
+                                class="empty-state"
+                                id="emptyState"
+                            >
+
+                                <div
+                                    class="empty-icon"
+                                    aria-hidden="true"
+                                >
+                                    ✓
+                                </div>
+
+
+                                <h4>
+                                    No tasks yet
+                                </h4>
+
+
+                                <p>
+                                    Create your first task to get started.
+                                </p>
+
+
+                                <button
+                                    type="button"
+                                    class="primary-button"
+                                    id="emptyAddTask"
+                                >
+                                    Create Task
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                    </section>
+
+
+                    <!-- =========================
+                         PROGRESS
+                    ========================== -->
+
+                    <aside
+                        class="panel progress-panel"
+                        aria-labelledby="progress-heading"
+                    >
+
+                        <div class="panel-header">
+
+                            <div>
+
+                                <p class="panel-label">
+                                    OVERVIEW
+                                </p>
+
+                                <h3 id="progress-heading">
+                                    Progress
+                                </h3>
+
+                            </div>
+
+                        </div>
+
+
+                        <div
+                            class="progress-circle"
+                            role="progressbar"
+                            aria-valuemin="0"
+                            aria-valuemax="100"
+                            aria-valuenow="0"
+                            aria-label="Task completion progress"
+                        >
+
+                            <div class="progress-inner">
+
+                                <strong
+                                    id="progressPercentage"
+                                    aria-live="polite"
+                                >
+                                    0%
+                                </strong>
+
+
+                                <span>
+                                    Complete
+                                </span>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="progress-details">
+
+                            <div>
+
+                                <span>
+                                    Completed
+                                </span>
+
+
+                                <strong
+                                    id="progressCompleted"
+                                    aria-live="polite"
+                                >
+                                    0
+                                </strong>
+
+                            </div>
+
+
+                            <div>
+
+                                <span>
+                                    Remaining
+                                </span>
+
+
+                                <strong
+                                    id="progressRemaining"
+                                    aria-live="polite"
+                                >
+                                    0
+                                </strong>
+
+                            </div>
+
+                        </div>
+
+                    </aside>
+
+                </div>
+
+
+                <!-- =========================
+                     PROJECTS
+                ========================== -->
+
+                <section
+                    class="panel projects-panel"
+                    id="projects"
+                    aria-labelledby="projects-heading"
+                >
+
+                    <div class="panel-header">
+
+                        <div>
+
+                            <p class="panel-label">
+                                WORKSPACE
+                            </p>
+
+
+                            <h3 id="projects-heading">
+                                Projects
+                            </h3>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="project-grid">
+
+
+                        <!-- =========================
+                             PROJECT 1
+                        ========================== -->
+
+                        <article
+                            class="project-item"
+                            data-project="portfolio"
+                            data-progress="75"
+                        >
+
+                            <div class="project-top">
+
+                                <span
+                                    class="project-dot blue"
+                                    aria-hidden="true"
+                                ></span>
+
+
+                                <span>
+                                    WEB
+                                </span>
+
+                            </div>
+
+
+                            <h4>
+                                Portfolio Website
+                            </h4>
+
+
+                            <p>
+                                Personal developer portfolio
+                            </p>
+
+
+                            <div class="project-progress">
+
+                                <div>
+
+                                    <span>
+                                        Progress
+                                    </span>
+
+
+                                    <strong class="project-percentage">
+                                        75%
+                                    </strong>
+
+                                </div>
+
+
+                                <div
+                                    class="progress-bar"
+                                    role="progressbar"
+                                    aria-valuemin="0"
+                                    aria-valuemax="100"
+                                    aria-valuenow="75"
+                                    aria-label="Portfolio Website progress"
+                                >
+
+                                    <span
+                                        class="project-progress-fill"
+                                        style="width: 75%"
+                                    ></span>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="project-controls">
+
+                                <button
+                                    class="task-action project-decrease"
+                                    type="button"
+                                    aria-label="Decrease Portfolio Website progress"
+                                >
+                                    −
+                                </button>
+
+
+                                <button
+                                    class="task-action project-increase"
+                                    type="button"
+                                    aria-label="Increase Portfolio Website progress"
+                                >
+                                    +
+                                </button>
+
+                            </div>
+
+                        </article>
+
+
+                        <!-- =========================
+                             PROJECT 2
+                        ========================== -->
+
+                        <article
+                            class="project-item"
+                            data-project="devtask"
+                            data-progress="40"
+                        >
+
+                            <div class="project-top">
+
+                                <span
+                                    class="project-dot green"
+                                    aria-hidden="true"
+                                ></span>
+
+
+                                <span>
+                                    APP
+                                </span>
+
+                            </div>
+
+
+                            <h4>
+                                DevTask
+                            </h4>
+
+
+                            <p>
+                                Task management application
+                            </p>
+
+
+                            <div class="project-progress">
+
+                                <div>
+
+                                    <span>
+                                        Progress
+                                    </span>
+
+
+                                    <strong class="project-percentage">
+                                        40%
+                                    </strong>
+
+                                </div>
+
+
+                                <div
+                                    class="progress-bar"
+                                    role="progressbar"
+                                    aria-valuemin="0"
+                                    aria-valuemax="100"
+                                    aria-valuenow="40"
+                                    aria-label="DevTask project progress"
+                                >
+
+                                    <span
+                                        class="project-progress-fill"
+                                        style="width: 40%"
+                                    ></span>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="project-controls">
+
+                                <button
+                                    class="task-action project-decrease"
+                                    type="button"
+                                    aria-label="Decrease DevTask progress"
+                                >
+                                    −
+                                </button>
+
+
+                                <button
+                                    class="task-action project-increase"
+                                    type="button"
+                                    aria-label="Increase DevTask progress"
+                                >
+                                    +
+                                </button>
+
+                            </div>
+
+                        </article>
+
+
+                        <!-- =========================
+                             PROJECT 3
+                        ========================== -->
+
+                        <article
+                            class="project-item"
+                            data-project="brand"
+                            data-progress="25"
+                        >
+
+                            <div class="project-top">
+
+                                <span
+                                    class="project-dot purple"
+                                    aria-hidden="true"
+                                ></span>
+
+
+                                <span>
+                                    DESIGN
+                                </span>
+
+                            </div>
+
+
+                            <h4>
+                                Brand Identity
+                            </h4>
+
+
+                            <p>
+                                New visual identity project
+                            </p>
+
+
+                            <div class="project-progress">
+
+                                <div>
+
+                                    <span>
+                                        Progress
+                                    </span>
+
+
+                                    <strong class="project-percentage">
+                                        25%
+                                    </strong>
+
+                                </div>
+
+
+                                <div
+                                    class="progress-bar"
+                                    role="progressbar"
+                                    aria-valuemin="0"
+                                    aria-valuemax="100"
+                                    aria-valuenow="25"
+                                    aria-label="Brand Identity project progress"
+                                >
+
+                                    <span
+                                        class="project-progress-fill"
+                                        style="width: 25%"
+                                    ></span>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="project-controls">
+
+                                <button
+                                    class="task-action project-decrease"
+                                    type="button"
+                                    aria-label="Decrease Brand Identity progress"
+                                >
+                                    −
+                                </button>
+
+
+                                <button
+                                    class="task-action project-increase"
+                                    type="button"
+                                    aria-label="Increase Brand Identity progress"
+                                >
+                                    +
+                                </button>
+
+                            </div>
+
+                        </article>
+
+
+                    </div>
+
+                </section>
+
+            </section>
+
+        </main>
+
+    </div>
+
+
+    <!-- =========================
+         ADD / EDIT TASK MODAL
+    ========================== -->
+
+    <div
+        class="modal-overlay"
+        id="modalOverlay"
+        role="presentation"
+    >
+
+        <div
+            class="modal"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="modalTitle"
+        >
+
+            <div class="modal-header">
+
+                <div>
+
+                    <p class="panel-label">
+                        TASK MANAGEMENT
+                    </p>
+
+
+                    <h3 id="modalTitle">
+                        Create Task
+                    </h3>
+
+                </div>
+
+
+                <button
+                    type="button"
+                    class="close-button"
+                    id="closeModal"
+                    aria-label="Close task dialog"
+                >
+                    ×
+                </button>
+
+            </div>
+
+
+            <form id="taskForm">
+
+                <input
+                    type="hidden"
+                    id="taskId"
+                >
+
+
+                <label for="taskTitle">
+
+                    Task title
+
+                    <input
+                        type="text"
+                        id="taskTitle"
+                        placeholder="e.g. Finish portfolio website"
+                        autocomplete="off"
+                        maxlength="100"
+                        required
+                    >
+
+                </label>
+
+
+                <label for="taskDescription">
+
+                    Description
+
+                    <textarea
+                        id="taskDescription"
+                        rows="4"
+                        placeholder="Describe the task..."
+                        maxlength="500"
+                    ></textarea>
+
+                </label>
+
+
+                <div class="form-row">
+
+                    <label for="taskPriority">
+
+                        Priority
+
+                        <select id="taskPriority">
+
+                            <option value="low">
+                                Low
+                            </option>
+
+
+                            <option
+                                value="medium"
+                                selected
+                            >
+                                Medium
+                            </option>
+
+
+                            <option value="high">
+                                High
+                            </option>
+
+                        </select>
+
+                    </label>
+
+
+                    <label for="taskDueDate">
+
+                        Due date
+
+                        <input
+                            type="date"
+                            id="taskDueDate"
+                        >
+
+                    </label>
+
+                </div>
+
+
+                <div class="modal-actions">
+
+                    <button
+                        type="button"
+                        class="secondary-button"
+                        id="cancelTask"
+                    >
+                        Cancel
+                    </button>
+
+
+                    <button
+                        type="submit"
+                        class="primary-button"
+                    >
+                        Save Task
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         JAVASCRIPT
+    ========================== -->
+
+    <script
+        src="script.js"
+        defer
+    ></script>
+
+</body>
+</html>
