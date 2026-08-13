@@ -1,4 +1,7 @@
 # 🚀 DevTask — Productivity Dashboard
+=======
+## 🌐 Deployment
+>>>>>>> 936a18f (Improve README and add project screenshots)
 
 A modern, responsive **task and project management dashboard** designed to help users organize tasks, track projects, and monitor productivity from one centralized interface.
 
@@ -16,6 +19,24 @@ A modern, responsive **task and project management dashboard** designed to help 
 * 🎨 **Modern UI** — Clean interface with a focus on usability and accessibility
 
 ## 🛠️ Tech Stack
+=======
+🔗 **Live Website:**  
+https://dr-strangex.github.io/DevTask/
+
+---
+
+## 📸 Preview
+
+![Home](screenshots/home.png)
+
+![Function](screenshots/function.png)
+
+![Login](screenshots/login.png)
+
+---
+
+## 🔮 Future Improvements
+>>>>>>> 936a18f (Improve README and add project screenshots)
 
 | Technology          | Purpose                                         |
 | ------------------- | ----------------------------------------------- |
@@ -34,6 +55,30 @@ A modern, responsive **task and project management dashboard** designed to help 
 <!-- ![DevTask Dashboard](screenshots/dashboard.png) -->
 
 ## 🌐 Live Demo
+=======
+- 🔐 User authentication
+- ☁️ Cloud database synchronization
+- 👤 User accounts
+- 🏷️ Task categories
+- 🖱️ Drag-and-drop task organization
+- 📅 Calendar integration
+- 🔔 Notifications
+- 🔌 Backend API
+- 🔄 Multi-device synchronization
+
+---
+
+## 👨‍💻 Author
+
+**dr-StrangeX**
+
+🔗 **GitHub:**  
+https://github.com/dr-StrangeX
+
+---
+
+## 📄 License
+>>>>>>> 936a18f (Improve README and add project screenshots)
 
 🚧 **Coming soon**
 
@@ -106,7 +151,7 @@ Planned improvements include:
 
 ## 👨‍💻 Developer
 
-**Raoul Abbas**
+**Raul Bu Abbas**
 
 💻 Web Developer
 🌐 Responsive Websites & Web Applications
