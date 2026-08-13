@@ -1224,3 +1224,611 @@ body.light-theme .modal-overlay {
     background: rgba(20, 30, 45, 0.45);
 
 }
+/* =========================
+   PROFESSIONAL UI POLISH
+========================= */
+
+/* Smooth global transitions */
+* {
+    -webkit-tap-highlight-color: transparent;
+}
+
+body {
+    transition:
+        background-color 0.25s ease,
+        color 0.25s ease;
+}
+
+
+/* =========================
+   SIDEBAR POLISH
+========================= */
+
+.sidebar {
+    box-shadow: 8px 0 30px rgba(0, 0, 0, 0.08);
+}
+
+.brand-icon {
+    box-shadow:
+        0 0 0 1px rgba(77, 163, 255, 0.15),
+        0 8px 20px rgba(77, 163, 255, 0.18);
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.brand:hover .brand-icon {
+    transform: translateY(-2px) rotate(-3deg);
+
+    box-shadow:
+        0 0 0 1px rgba(77, 163, 255, 0.25),
+        0 10px 25px rgba(77, 163, 255, 0.25);
+}
+
+
+/* =========================
+   NAVIGATION
+========================= */
+
+.nav-item {
+    position: relative;
+
+    overflow: hidden;
+}
+
+.nav-item::after {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    top: 0;
+    bottom: 0;
+
+    width: 3px;
+
+    background: var(--blue);
+
+    transform: scaleY(0);
+
+    transition:
+        transform 0.2s ease;
+}
+
+.nav-item.active::after {
+    transform: scaleY(1);
+}
+
+.nav-item:hover {
+    transform: translateX(2px);
+}
+
+
+/* =========================
+   TOPBAR
+========================= */
+
+.topbar {
+    box-shadow:
+        0 8px 30px rgba(0, 0, 0, 0.04);
+}
+
+.icon-button {
+    border: 1px solid transparent;
+
+    transition:
+        transform 0.2s ease,
+        background 0.2s ease,
+        border-color 0.2s ease;
+}
+
+.icon-button:hover {
+    transform: translateY(-2px);
+
+    border-color: var(--border);
+
+    background: var(--surface-hover);
+}
+
+
+/* =========================
+   WELCOME SECTION
+========================= */
+
+.welcome h2 {
+    letter-spacing: -0.035em;
+}
+
+.welcome h2 span {
+    text-shadow:
+        0 0 25px rgba(77, 163, 255, 0.15);
+}
+
+
+/* =========================
+   BUTTON POLISH
+========================= */
+
+.primary-button {
+    position: relative;
+
+    overflow: hidden;
+
+    box-shadow:
+        0 6px 18px rgba(77, 163, 255, 0.16);
+}
+
+.primary-button::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: -120%;
+
+    width: 80%;
+    height: 100%;
+
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.22),
+        transparent
+    );
+
+    transform: skewX(-20deg);
+
+    transition: left 0.55s ease;
+}
+
+.primary-button:hover::before {
+    left: 140%;
+}
+
+.primary-button:active {
+    transform: translateY(0);
+}
+
+.secondary-button {
+    transition:
+        background 0.2s ease,
+        border-color 0.2s ease,
+        transform 0.2s ease;
+}
+
+.secondary-button:hover {
+    transform: translateY(-1px);
+
+    border-color: #2c3b50;
+}
+
+
+/* =========================
+   STAT CARDS
+========================= */
+
+.stat-card {
+    position: relative;
+
+    overflow: hidden;
+
+    transition:
+        transform 0.22s ease,
+        border-color 0.22s ease,
+        box-shadow 0.22s ease;
+}
+
+.stat-card::before {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        radial-gradient(
+            circle at top right,
+            rgba(77, 163, 255, 0.07),
+            transparent 45%
+        );
+
+    pointer-events: none;
+}
+
+.stat-card:hover {
+    transform: translateY(-3px);
+
+    border-color: #2a3a50;
+
+    box-shadow:
+        0 14px 35px rgba(0, 0, 0, 0.14);
+}
+
+.stat-icon {
+    transition:
+        transform 0.2s ease;
+}
+
+.stat-card:hover .stat-icon {
+    transform: scale(1.06);
+}
+
+
+/* =========================
+   PANELS
+========================= */
+
+.panel {
+    overflow: hidden;
+
+    box-shadow:
+        0 8px 30px rgba(0, 0, 0, 0.05);
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.panel:hover {
+    border-color: #26364b;
+}
+
+
+/* =========================
+   TASK CONTROLS
+========================= */
+
+.search-box {
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.search-box:focus-within {
+    border-color: var(--blue);
+
+    box-shadow:
+        0 0 0 3px rgba(77, 163, 255, 0.08);
+}
+
+.task-controls select {
+    cursor: pointer;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.task-controls select:focus {
+    border-color: var(--blue);
+
+    box-shadow:
+        0 0 0 3px rgba(77, 163, 255, 0.08);
+}
+
+
+/* =========================
+   TASK ITEMS
+========================= */
+
+.task-item {
+    position: relative;
+
+    transition:
+        background 0.2s ease,
+        padding-left 0.2s ease,
+        padding-right 0.2s ease;
+}
+
+.task-item:hover {
+    background: rgba(77, 163, 255, 0.025);
+
+    padding-left: 7px;
+    padding-right: 7px;
+}
+
+.task-check {
+    transition:
+        background 0.18s ease,
+        border-color 0.18s ease,
+        transform 0.18s ease;
+}
+
+.task-check:hover {
+    transform: scale(1.08);
+
+    border-color: var(--blue);
+}
+
+.task-check.completed:hover {
+    border-color: var(--green);
+}
+
+.task-title {
+    transition:
+        color 0.2s ease;
+}
+
+.task-item:hover .task-title {
+    color: var(--blue);
+}
+
+.task-action {
+    transition:
+        background 0.18s ease,
+        color 0.18s ease,
+        transform 0.18s ease;
+}
+
+.task-action:hover {
+    transform: translateY(-1px);
+}
+
+
+/* =========================
+   PRIORITY BADGES
+========================= */
+
+.priority {
+    letter-spacing: 0.04em;
+
+    border: 1px solid transparent;
+}
+
+.priority.low {
+    border-color: rgba(61, 220, 151, 0.12);
+}
+
+.priority.medium {
+    border-color: rgba(255, 173, 92, 0.12);
+}
+
+.priority.high {
+    border-color: rgba(255, 107, 122, 0.12);
+}
+
+
+/* =========================
+   EMPTY STATE
+========================= */
+
+.empty-state {
+    animation:
+        emptyStateIn 0.35s ease both;
+}
+
+@keyframes emptyStateIn {
+
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+}
+
+.empty-icon {
+    box-shadow:
+        0 10px 30px rgba(77, 163, 255, 0.08);
+
+    animation:
+        emptyIconFloat 3s ease-in-out infinite;
+}
+
+@keyframes emptyIconFloat {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-4px);
+    }
+
+}
+
+
+/* =========================
+   PROGRESS
+========================= */
+
+.progress-circle {
+    box-shadow:
+        0 15px 40px rgba(77, 163, 255, 0.08);
+
+    transition:
+        background 0.5s ease,
+        transform 0.25s ease;
+}
+
+.progress-circle:hover {
+    transform: scale(1.025);
+}
+
+
+/* =========================
+   PROJECT CARDS
+========================= */
+
+.project-item {
+    transition:
+        background 0.2s ease;
+}
+
+.project-item:hover {
+    background:
+        rgba(77, 163, 255, 0.025);
+}
+
+.project-dot {
+    box-shadow:
+        0 0 10px currentColor;
+}
+
+.progress-bar {
+    box-shadow:
+        inset 0 1px 2px rgba(0, 0, 0, 0.12);
+}
+
+.progress-bar span {
+    transition:
+        width 0.5s ease;
+}
+
+
+/* =========================
+   MODAL
+========================= */
+
+.modal-overlay {
+    backdrop-filter: blur(5px);
+
+    animation:
+        overlayIn 0.2s ease both;
+}
+
+@keyframes overlayIn {
+
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+
+}
+
+.modal {
+    animation:
+        modalIn 0.25s ease both;
+}
+
+@keyframes modalIn {
+
+    from {
+        opacity: 0;
+        transform: translateY(12px) scale(0.98);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+
+}
+
+.modal input,
+.modal textarea,
+.modal select {
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.modal input:hover,
+.modal textarea:hover,
+.modal select:hover {
+    border-color: #2a3a50;
+}
+
+
+/* =========================
+   ACCESSIBILITY
+========================= */
+
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible,
+a:focus-visible {
+    outline: 2px solid var(--blue);
+
+    outline-offset: 3px;
+}
+
+
+/* =========================
+   MOBILE POLISH
+========================= */
+
+@media (max-width: 800px) {
+
+    .sidebar {
+        box-shadow:
+            15px 0 45px rgba(0, 0, 0, 0.3);
+    }
+
+    .welcome h2 {
+        font-size: 2.25rem;
+    }
+
+    .task-item:hover {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+}
+
+
+@media (max-width: 550px) {
+
+    .dashboard {
+        padding: 22px 15px;
+    }
+
+    .welcome h2 {
+        font-size: 2rem;
+    }
+
+    .stats-grid {
+        gap: 12px;
+    }
+
+    .stat-card {
+        padding: 17px;
+    }
+
+    .panel-header {
+        padding: 18px;
+    }
+
+    .task-controls {
+        padding: 15px 18px;
+    }
+
+    .task-list {
+        padding: 0 18px 18px;
+    }
+
+    .modal {
+        padding: 20px;
+    }
+
+}
+
+
+/* =========================
+   REDUCED MOTION
+========================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+
+        transition-duration: 0.01ms !important;
+    }
+
+}
