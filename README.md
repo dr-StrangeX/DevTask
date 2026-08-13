@@ -1,52 +1,50 @@
-# NexaTech Solutions
+# DevTask
 
-A modern, responsive IT company website designed and developed to showcase web development, IT support, cloud solutions, cybersecurity, and digital services.
+A modern, responsive task management dashboard built with vanilla HTML, CSS, and JavaScript.
 
-## 🌐 Live Demo
+DevTask allows users to create, manage, search, filter, prioritize, and complete tasks through a clean productivity-focused interface.
 
-**[View the live website](https://dr-strangex.github.io/NexaTech-Solutions/)**
+![DevTask Preview](images/website-preview.png)
 
-## 🛠️ Technologies
+## Live Demo
+
+https://dr-strangex.github.io/NexaTech-Solutions/
+
+## Features
+
+- Create tasks
+- Edit existing tasks
+- Delete tasks
+- Mark tasks as completed
+- Search tasks
+- Filter tasks by status and priority
+- Automatic task prioritization
+- Task completion statistics
+- Progress tracking
+- Persistent data using browser localStorage
+- Dark and light theme support
+- Responsive mobile layout
+- Mobile navigation
+- Empty-state handling
+- Confirmation dialogs for destructive actions
+
+## Technologies
 
 - HTML5
 - CSS3
-- JavaScript
+- JavaScript (ES6+)
+- LocalStorage API
 - Git
-- GitHub
 - GitHub Pages
 
-## ✨ Features
-
-- Responsive desktop and mobile design
-- Fixed navigation bar
-- Mobile navigation menu
-- Modern technology-focused UI
-- Responsive hero section
-- Service cards
-- Project showcase
-- Animated statistics counters
-- Scroll reveal animations
-- Contact form validation
-- Smooth scrolling
-- Responsive layouts for different screen sizes
-
-## 📋 Project Highlights
-
-- Designed and developed the website from scratch.
-- Created a responsive interface using modern HTML and CSS.
-- Implemented interactive functionality with vanilla JavaScript.
-- Added animated statistics using the Intersection Observer API.
-- Implemented client-side contact form validation.
-- Added responsive mobile navigation.
-- Used Git and GitHub for version control.
-- Deployed the project using GitHub Pages.
-
-## 📁 Project Structure
+## Project Structure
 
 ```text
-NexaTech-Solutions/
+DevTask/
 ├── index.html
 ├── style.css
 ├── script.js
-├── .gitignore
-└── README.md
+├── images/
+│   └── website-preview.png
+├── README.md
+└── .gitignore
