@@ -1,0 +1,14 @@
+# VS Code
+.vscode/*
+!.vscode/settings.json
+
+# Environment variables
+.env
+.env.*
+
+# Dependencies
+node_modules/
+
+# Operating system files
+.DS_Store
+Thumbs.db
