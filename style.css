@@ -1,14 +1,15 @@
 /* =========================================================
    DEVTASK — COMPLETE APPLICATION STYLES
-   Landing page + Login modal + Dashboard
+   Landing + Login + Dashboard + Firebase UI
 ========================================================= */
 
 :root {
     --bg: #080d18;
     --bg-secondary: #0d1424;
     --panel: #101827;
-    --panel-hover: #141e31;
+    --panel-hover: #151f31;
     --border: #1d2a3d;
+
     --text: #f4f7fb;
     --text-secondary: #9ba8ba;
     --muted: #68778c;
@@ -20,8 +21,10 @@
     --purple: #a879ff;
     --red: #ff6577;
 
-    --shadow: 0 24px 70px rgba(0, 0, 0, 0.35);
     --radius: 18px;
+    --shadow: 0 24px 70px rgba(0, 0, 0, 0.35);
+
+    --sidebar-width: 245px;
 }
 
 /* =========================================================
@@ -32,6 +35,7 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+    -webkit-tap-highlight-color: transparent;
 }
 
 html {
@@ -40,7 +44,6 @@ html {
 
 body {
     min-height: 100vh;
-
     position: relative;
 
     font-family:
@@ -56,6 +59,8 @@ body {
     color: var(--text);
 
     line-height: 1.6;
+
+    overflow-x: hidden;
 }
 
 button,
@@ -70,6 +75,10 @@ button {
     cursor: pointer;
 }
 
+button:disabled {
+    cursor: not-allowed;
+}
+
 a {
     color: inherit;
     text-decoration: none;
@@ -79,15 +88,25 @@ a {
     background: rgba(79, 140, 255, 0.35);
 }
 
-
 /* =========================================================
-   DASHBOARD BACKGROUND IMAGE
+   ACCESSIBILITY
 ========================================================= */
 
-/*
-   The landing page keeps its own background.
-   The dashboard receives the premium background image.
-*/
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* =========================================================
+   DASHBOARD BACKGROUND
+========================================================= */
 
 body:not(.landing-page) {
     background-image:
@@ -101,33 +120,7 @@ body:not(.landing-page) {
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
-
-    overflow-x: hidden;
 }
-
-
-/* =========================================================
-   ACCESSIBILITY
-========================================================= */
-
-.sr-only {
-    position: absolute;
-
-    width: 1px;
-    height: 1px;
-
-    padding: 0;
-    margin: -1px;
-
-    overflow: hidden;
-
-    clip: rect(0, 0, 0, 0);
-
-    white-space: nowrap;
-
-    border: 0;
-}
-
 
 /* =========================================================
    LANDING PAGE
@@ -145,20 +138,16 @@ body:not(.landing-page) {
 
 .landing {
     width: 100%;
-
     overflow: hidden;
 }
 
-
 /* =========================================================
-   LANDING NAV
+   LANDING NAVIGATION
 ========================================================= */
 
 .landing-nav {
     width: min(1180px, calc(100% - 48px));
-
     height: 80px;
-
     margin: 0 auto;
 
     display: flex;
@@ -169,12 +158,10 @@ body:not(.landing-page) {
 .landing-brand {
     display: inline-flex;
     align-items: center;
-
     gap: 11px;
 
     font-size: 20px;
     font-weight: 800;
-
     letter-spacing: -0.5px;
 }
 
@@ -195,11 +182,21 @@ body:not(.landing-page) {
         );
 
     color: white;
-
     font-weight: 900;
 
     box-shadow:
         0 8px 25px rgba(79, 140, 255, 0.25);
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.landing-brand:hover .brand-icon {
+    transform: translateY(-2px) rotate(-3deg);
+
+    box-shadow:
+        0 12px 30px rgba(79, 140, 255, 0.35);
 }
 
 .landing-login-link {
@@ -209,7 +206,6 @@ body:not(.landing-page) {
     border-radius: 10px;
 
     background: rgba(255, 255, 255, 0.025);
-
     color: var(--text);
 
     font-weight: 650;
@@ -222,14 +218,9 @@ body:not(.landing-page) {
 
 .landing-login-link:hover {
     background: rgba(79, 140, 255, 0.1);
-
-    border-color:
-        rgba(79, 140, 255, 0.4);
-
-    transform:
-        translateY(-1px);
+    border-color: rgba(79, 140, 255, 0.4);
+    transform: translateY(-1px);
 }
-
 
 /* =========================================================
    HERO
@@ -237,27 +228,20 @@ body:not(.landing-page) {
 
 .hero {
     width: min(1180px, calc(100% - 48px));
-
-    margin: 0 auto;
-
     min-height: 700px;
 
-    display: grid;
+    margin: 0 auto;
+    padding: 80px 0 110px;
 
-    grid-template-columns:
-        0.9fr
-        1.1fr;
+    display: grid;
+    grid-template-columns: 0.9fr 1.1fr;
 
     align-items: center;
-
     gap: 70px;
-
-    padding: 80px 0 110px;
 }
 
 .hero-content {
     position: relative;
-
     z-index: 2;
 }
 
@@ -267,32 +251,24 @@ body:not(.landing-page) {
 
     padding: 7px 13px;
 
-    border: 1px solid
-        rgba(79, 140, 255, 0.25);
-
+    border: 1px solid rgba(79, 140, 255, 0.25);
     border-radius: 999px;
 
-    background:
-        rgba(79, 140, 255, 0.08);
+    background: rgba(79, 140, 255, 0.08);
 
     color: #9dbdff;
 
     font-size: 12px;
     font-weight: 700;
-
     letter-spacing: 0.4px;
 }
 
 .hero h1 {
     margin-top: 24px;
 
-    font-size:
-        clamp(54px, 6vw, 82px);
-
+    font-size: clamp(54px, 6vw, 82px);
     line-height: 0.98;
-
     letter-spacing: -4px;
-
     font-weight: 850;
 }
 
@@ -308,31 +284,26 @@ body:not(.landing-page) {
 
     -webkit-background-clip: text;
     background-clip: text;
-
     color: transparent;
 }
 
 .hero-content > p {
     max-width: 530px;
-
     margin-top: 26px;
 
     color: var(--text-secondary);
 
     font-size: 18px;
-
     line-height: 1.75;
 }
 
 .hero-actions {
     display: flex;
     align-items: center;
-
     gap: 14px;
 
     margin-top: 34px;
 }
-
 
 /* =========================================================
    BUTTONS
@@ -340,7 +311,6 @@ body:not(.landing-page) {
 
 .primary-button {
     min-height: 46px;
-
     padding: 0 20px;
 
     border-radius: 11px;
@@ -353,12 +323,10 @@ body:not(.landing-page) {
         );
 
     color: white;
-
     font-weight: 750;
 
     box-shadow:
-        0 10px 30px
-            rgba(55, 119, 237, 0.2);
+        0 10px 30px rgba(55, 119, 237, 0.2);
 
     transition:
         transform 0.2s ease,
@@ -367,25 +335,19 @@ body:not(.landing-page) {
 }
 
 .primary-button:hover {
-    transform:
-        translateY(-2px);
+    transform: translateY(-2px);
 
     box-shadow:
-        0 15px 35px
-            rgba(55, 119, 237, 0.3);
+        0 15px 35px rgba(55, 119, 237, 0.3);
 }
 
 .primary-button:disabled {
     opacity: 0.65;
-
-    cursor: not-allowed;
-
     transform: none;
 }
 
 .secondary-button {
     min-height: 46px;
-
     padding: 0 20px;
 
     display: inline-flex;
@@ -393,14 +355,11 @@ body:not(.landing-page) {
     justify-content: center;
 
     border: 1px solid var(--border);
-
     border-radius: 11px;
 
-    background:
-        rgba(255, 255, 255, 0.025);
+    background: rgba(255, 255, 255, 0.025);
 
     color: var(--text);
-
     font-weight: 700;
 
     transition:
@@ -410,16 +369,10 @@ body:not(.landing-page) {
 }
 
 .secondary-button:hover {
-    background:
-        rgba(255, 255, 255, 0.06);
-
-    border-color:
-        #30415b;
-
-    transform:
-        translateY(-2px);
+    background: rgba(255, 255, 255, 0.06);
+    border-color: #30415b;
+    transform: translateY(-2px);
 }
-
 
 /* =========================================================
    HERO PREVIEW
@@ -432,27 +385,21 @@ body:not(.landing-page) {
 .preview-window {
     overflow: hidden;
 
-    border:
-        1px solid
-        rgba(109, 139, 186, 0.18);
-
+    border: 1px solid rgba(109, 139, 186, 0.18);
     border-radius: 18px;
 
     background: #0c1422;
 
     box-shadow:
-        0 40px 100px
-            rgba(0, 0, 0, 0.45),
-        0 0 0 1px
-            rgba(255, 255, 255, 0.02);
+        0 40px 100px rgba(0, 0, 0, 0.45),
+        0 0 0 1px rgba(255, 255, 255, 0.02);
 
     transform:
         perspective(1200px)
         rotateY(-5deg)
         rotateX(2deg);
 
-    transition:
-        transform 0.4s ease;
+    transition: transform 0.4s ease;
 }
 
 .preview-window:hover {
@@ -468,13 +415,11 @@ body:not(.landing-page) {
 
     display: flex;
     align-items: center;
-
     gap: 14px;
 
     padding: 0 18px;
 
-    border-bottom:
-        1px solid var(--border);
+    border-bottom: 1px solid var(--border);
 
     color: #8290a5;
 
@@ -484,7 +429,6 @@ body:not(.landing-page) {
 
 .preview-dots {
     display: flex;
-
     gap: 6px;
 }
 
@@ -499,10 +443,7 @@ body:not(.landing-page) {
 
 .preview-body {
     display: grid;
-
-    grid-template-columns:
-        150px
-        1fr;
+    grid-template-columns: 150px 1fr;
 
     min-height: 350px;
 }
@@ -510,13 +451,11 @@ body:not(.landing-page) {
 .preview-sidebar {
     display: flex;
     flex-direction: column;
-
     gap: 17px;
 
     padding: 24px 16px;
 
-    border-right:
-        1px solid var(--border);
+    border-right: 1px solid var(--border);
 
     color: #718097;
 
@@ -527,7 +466,6 @@ body:not(.landing-page) {
     margin-bottom: 12px;
 
     color: white;
-
     font-size: 15px;
 }
 
@@ -536,9 +474,7 @@ body:not(.landing-page) {
 
     border-radius: 8px;
 
-    background:
-        rgba(79, 140, 255, 0.12);
-
+    background: rgba(79, 140, 255, 0.12);
     color: #78a6ff;
 }
 
@@ -551,7 +487,6 @@ body:not(.landing-page) {
 
     font-size: 9px;
     font-weight: 800;
-
     letter-spacing: 1.5px;
 }
 
@@ -559,22 +494,17 @@ body:not(.landing-page) {
     margin-top: 8px;
 
     font-size: 25px;
-
     letter-spacing: -1px;
 }
 
 .preview-main h3 em {
     color: #6f9fff;
-
     font-style: normal;
 }
 
 .preview-stats {
     display: grid;
-
-    grid-template-columns:
-        repeat(3, 1fr);
-
+    grid-template-columns: repeat(3, 1fr);
     gap: 10px;
 
     margin-top: 22px;
@@ -583,20 +513,16 @@ body:not(.landing-page) {
 .preview-stats > div {
     padding: 13px;
 
-    border:
-        1px solid var(--border);
-
+    border: 1px solid var(--border);
     border-radius: 10px;
 
-    background:
-        rgba(255, 255, 255, 0.018);
+    background: rgba(255, 255, 255, 0.018);
 }
 
 .preview-stats small {
     display: block;
 
     color: #69788e;
-
     font-size: 9px;
 }
 
@@ -611,20 +537,15 @@ body:not(.landing-page) {
 .preview-task {
     display: flex;
     align-items: center;
-
     gap: 12px;
 
     margin-top: 10px;
-
     padding: 13px;
 
-    border:
-        1px solid var(--border);
-
+    border: 1px solid var(--border);
     border-radius: 10px;
 
-    background:
-        rgba(255, 255, 255, 0.018);
+    background: rgba(255, 255, 255, 0.018);
 }
 
 .preview-check {
@@ -641,15 +562,12 @@ body:not(.landing-page) {
     background: #4f8cff;
 
     color: white;
-
     font-size: 12px;
 }
 
 .preview-check.empty {
     background: transparent;
-
-    border:
-        1px solid #34445b;
+    border: 1px solid #34445b;
 }
 
 .preview-task strong {
@@ -680,7 +598,6 @@ body:not(.landing-page) {
     color: var(--orange);
 }
 
-
 /* =========================================================
    FEATURES
 ========================================================= */
@@ -689,7 +606,6 @@ body:not(.landing-page) {
     width: min(1180px, calc(100% - 48px));
 
     margin: 0 auto;
-
     padding: 90px 0;
 }
 
@@ -706,16 +622,13 @@ body:not(.landing-page) {
 
     font-size: 11px;
     font-weight: 800;
-
     letter-spacing: 1.5px;
 }
 
 .section-heading h2 {
     margin-top: 10px;
 
-    font-size:
-        clamp(30px, 4vw, 44px);
-
+    font-size: clamp(30px, 4vw, 44px);
     letter-spacing: -1.8px;
 }
 
@@ -727,19 +640,14 @@ body:not(.landing-page) {
 
 .feature-grid {
     display: grid;
-
-    grid-template-columns:
-        repeat(3, 1fr);
-
+    grid-template-columns: repeat(3, 1fr);
     gap: 18px;
 }
 
 .feature-card {
     padding: 30px;
 
-    border:
-        1px solid var(--border);
-
+    border: 1px solid var(--border);
     border-radius: var(--radius);
 
     background:
@@ -751,15 +659,17 @@ body:not(.landing-page) {
 
     transition:
         transform 0.25s ease,
-        border-color 0.25s ease;
+        border-color 0.25s ease,
+        box-shadow 0.25s ease;
 }
 
 .feature-card:hover {
-    transform:
-        translateY(-5px);
+    transform: translateY(-5px);
 
-    border-color:
-        #2d405c;
+    border-color: #2d405c;
+
+    box-shadow:
+        0 18px 40px rgba(0, 0, 0, 0.15);
 }
 
 .feature-icon {
@@ -771,9 +681,7 @@ body:not(.landing-page) {
 
     border-radius: 12px;
 
-    background:
-        rgba(79, 140, 255, 0.1);
-
+    background: rgba(79, 140, 255, 0.1);
     color: #73a1ff;
 
     font-weight: 800;
@@ -791,10 +699,8 @@ body:not(.landing-page) {
     color: var(--text-secondary);
 
     font-size: 14px;
-
     line-height: 1.7;
 }
-
 
 /* =========================================================
    FOOTER
@@ -810,14 +716,12 @@ body:not(.landing-page) {
     display: flex;
     justify-content: space-between;
 
-    border-top:
-        1px solid var(--border);
+    border-top: 1px solid var(--border);
 
     color: #65748a;
 
     font-size: 12px;
 }
-
 
 /* =========================================================
    LOGIN OVERLAY
@@ -825,7 +729,6 @@ body:not(.landing-page) {
 
 .login-overlay {
     position: fixed;
-
     inset: 0;
 
     z-index: 9999;
@@ -836,13 +739,11 @@ body:not(.landing-page) {
 
     padding: 20px;
 
-    background:
-        rgba(2, 6, 15, 0.78);
+    background: rgba(2, 6, 15, 0.78);
 
     backdrop-filter: blur(14px);
 
     opacity: 0;
-
     visibility: hidden;
 
     transition:
@@ -852,10 +753,8 @@ body:not(.landing-page) {
 
 .login-overlay.active {
     opacity: 1;
-
     visibility: visible;
 }
-
 
 /* =========================================================
    LOGIN MODAL
@@ -866,16 +765,13 @@ body:not(.landing-page) {
 
     width: min(460px, 100%);
 
-    max-height:
-        calc(100vh - 40px);
+    max-height: calc(100vh - 40px);
 
     overflow-y: auto;
 
     padding: 38px;
 
-    border:
-        1px solid #26364f;
-
+    border: 1px solid #26364f;
     border-radius: 22px;
 
     background:
@@ -886,8 +782,7 @@ body:not(.landing-page) {
         );
 
     box-shadow:
-        0 35px 100px
-            rgba(0, 0, 0, 0.55);
+        0 35px 100px rgba(0, 0, 0, 0.55);
 
     transform:
         translateY(18px)
@@ -897,8 +792,7 @@ body:not(.landing-page) {
         transform 0.25s ease;
 }
 
-.login-overlay.active
-.login-modal {
+.login-overlay.active .login-modal {
     transform:
         translateY(0)
         scale(1);
@@ -918,8 +812,7 @@ body:not(.landing-page) {
 
     border-radius: 9px;
 
-    background:
-        rgba(255, 255, 255, 0.045);
+    background: rgba(255, 255, 255, 0.045);
 
     color: #9aa8bb;
 
@@ -927,16 +820,17 @@ body:not(.landing-page) {
 
     transition:
         background 0.2s ease,
-        color 0.2s ease;
+        color 0.2s ease,
+        transform 0.2s ease;
 }
 
 .login-close:hover {
-    background:
-        rgba(255, 255, 255, 0.09);
+    background: rgba(255, 255, 255, 0.09);
 
     color: white;
-}
 
+    transform: rotate(5deg);
+}
 
 /* =========================================================
    LOGIN HEADER
@@ -950,8 +844,7 @@ body:not(.landing-page) {
     width: 54px;
     height: 54px;
 
-    margin:
-        0 auto 20px;
+    margin: 0 auto 20px;
 
     display: grid;
     place-items: center;
@@ -971,8 +864,7 @@ body:not(.landing-page) {
     font-weight: 900;
 
     box-shadow:
-        0 12px 35px
-            rgba(55, 119, 237, 0.25);
+        0 12px 35px rgba(55, 119, 237, 0.25);
 }
 
 .login-label {
@@ -997,16 +889,13 @@ body:not(.landing-page) {
 .login-header p {
     max-width: 330px;
 
-    margin:
-        9px auto 0;
+    margin: 9px auto 0;
 
     color: #8290a4;
 
     font-size: 13px;
-
     line-height: 1.6;
 }
-
 
 /* =========================================================
    LOGIN FORM
@@ -1062,9 +951,7 @@ body:not(.landing-page) {
 
     padding: 0 14px;
 
-    border:
-        1px solid #25354c;
-
+    border: 1px solid #25354c;
     border-radius: 10px;
 
     outline: none;
@@ -1092,7 +979,7 @@ body:not(.landing-page) {
 
     box-shadow:
         0 0 0 3px
-            rgba(79, 140, 255, 0.12);
+        rgba(79, 140, 255, 0.12);
 }
 
 .password-wrapper {
@@ -1109,8 +996,7 @@ body:not(.landing-page) {
     top: 50%;
     right: 12px;
 
-    transform:
-        translateY(-50%);
+    transform: translateY(-50%);
 
     background: transparent;
 
@@ -1137,13 +1023,11 @@ body:not(.landing-page) {
 }
 
 .input-error {
-    border-color:
-        #e45d70 !important;
+    border-color: #e45d70 !important;
 
     box-shadow:
         0 0 0 3px
-            rgba(228, 93, 112, 0.1)
-        !important;
+        rgba(228, 93, 112, 0.1) !important;
 }
 
 .remember-row {
@@ -1152,8 +1036,7 @@ body:not(.landing-page) {
 
     gap: 8px;
 
-    margin:
-        4px 0 18px;
+    margin: 4px 0 18px;
 
     color: #8795a8;
 
@@ -1165,7 +1048,6 @@ body:not(.landing-page) {
 .remember-row input {
     accent-color: var(--blue);
 }
-
 
 /* =========================================================
    LOGIN SUBMIT
@@ -1187,8 +1069,7 @@ body:not(.landing-page) {
 
     vertical-align: middle;
 
-    border:
-        2px solid
+    border: 2px solid
         rgba(255, 255, 255, 0.35);
 
     border-top-color: white;
@@ -1204,11 +1085,9 @@ body:not(.landing-page) {
 }
 
 @keyframes spin {
-
     to {
         transform: rotate(360deg);
     }
-
 }
 
 .login-message {
@@ -1222,7 +1101,6 @@ body:not(.landing-page) {
 
     text-align: center;
 }
-
 
 /* =========================================================
    LOGIN DIVIDER
@@ -1252,22 +1130,75 @@ body:not(.landing-page) {
     background: #202f44;
 }
 
+/* =========================================================
+   GOOGLE LOGIN
+========================================================= */
+
+.google-login-button {
+    width: 100%;
+    min-height: 46px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 10px;
+
+    margin-top: 24px;
+    padding: 0 16px;
+
+    border: 1px solid #293a51;
+    border-radius: 10px;
+
+    background:
+        rgba(255, 255, 255, 0.035);
+
+    color: #dbe4f0;
+
+    font-size: 13px;
+    font-weight: 700;
+
+    transition:
+        background 0.2s ease,
+        border-color 0.2s ease,
+        transform 0.2s ease;
+}
+
+.google-login-button:hover:not(:disabled) {
+    background:
+        rgba(255, 255, 255, 0.07);
+
+    border-color:
+        #405775;
+
+    transform:
+        translateY(-1px);
+}
+
+.google-login-button:disabled {
+    opacity: 0.65;
+}
+
+.google-icon {
+    width: 20px;
+    height: 20px;
+
+    display: grid;
+    place-items: center;
+}
 
 /* =========================================================
-   DEMO LOGIN
+   DEMO LOGIN / SECONDARY AUTH BUTTON
 ========================================================= */
 
 .demo-login {
     width: 100%;
     height: 45px;
 
-    border:
-        1px solid #26364e;
-
+    border: 1px solid #26364e;
     border-radius: 10px;
 
-    background:
-        rgba(255, 255, 255, 0.025);
+    background: rgba(255, 255, 255, 0.025);
 
     color: #dbe4f0;
 
@@ -1276,15 +1207,19 @@ body:not(.landing-page) {
 
     transition:
         background 0.2s ease,
-        border-color 0.2s ease;
+        border-color 0.2s ease,
+        transform 0.2s ease;
 }
 
-.demo-login:hover {
+.demo-login:hover:not(:disabled) {
     background:
         rgba(255, 255, 255, 0.06);
 
     border-color:
         #38506f;
+
+    transform:
+        translateY(-1px);
 }
 
 .login-footer {
@@ -1309,7 +1244,6 @@ body:not(.landing-page) {
     text-decoration: underline;
 }
 
-
 /* =========================================================
    DASHBOARD APPLICATION
 ========================================================= */
@@ -1326,9 +1260,8 @@ body:not(.landing-page) {
         rgba(8, 13, 24, 0.08);
 }
 
-
 /* =========================================================
-   SIDEBAR
+   SIDEBAR — MANUAL DRAWER
 ========================================================= */
 
 .sidebar {
@@ -1338,7 +1271,7 @@ body:not(.landing-page) {
     left: 0;
     bottom: 0;
 
-    width: 245px;
+    width: var(--sidebar-width);
 
     display: flex;
     flex-direction: column;
@@ -1348,22 +1281,34 @@ body:not(.landing-page) {
     background:
         rgba(10, 17, 30, 0.72);
 
-    backdrop-filter:
-        blur(18px);
-
-    -webkit-backdrop-filter:
-        blur(18px);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
 
     border-right:
         1px solid
         rgba(255, 255, 255, 0.08);
 
     box-shadow:
-        12px 0 40px
-            rgba(0, 0, 0, 0.22);
+        18px 0 45px
+        rgba(0, 0, 0, 0.24);
 
-    z-index: 100;
+    z-index: 1000;
+
+    transform:
+        translateX(-100%);
+
+    transition:
+        transform 0.28s cubic-bezier(.4, 0, .2, 1);
 }
+
+.sidebar.open {
+    transform:
+        translateX(0);
+}
+
+/* =========================================================
+   SIDEBAR BRAND
+========================================================= */
 
 .brand {
     display: flex;
@@ -1377,6 +1322,14 @@ body:not(.landing-page) {
     font-size: 18px;
 }
 
+.brand-icon {
+    flex: 0 0 auto;
+}
+
+/* =========================================================
+   SIDEBAR NAVIGATION
+========================================================= */
+
 .sidebar-nav {
     display: flex;
     flex-direction: column;
@@ -1389,6 +1342,8 @@ body:not(.landing-page) {
 .nav-item {
     width: 100%;
 
+    position: relative;
+
     display: flex;
     align-items: center;
 
@@ -1396,13 +1351,14 @@ body:not(.landing-page) {
 
     padding: 11px 12px;
 
+    overflow: hidden;
+
     border:
         1px solid transparent;
 
     border-radius: 10px;
 
-    background:
-        transparent;
+    background: transparent;
 
     color: #7f8da1;
 
@@ -1413,33 +1369,74 @@ body:not(.landing-page) {
 
     transition:
         background 0.2s ease,
+        border-color 0.2s ease,
         color 0.2s ease,
-        border-color 0.2s ease;
+        transform 0.2s ease;
+}
+
+.nav-item::before {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    top: 0;
+    bottom: 0;
+
+    width: 3px;
+
+    background:
+        linear-gradient(
+            to bottom,
+            var(--blue),
+            var(--purple)
+        );
+
+    transform:
+        scaleY(0);
+
+    transform-origin: center;
+
+    transition:
+        transform 0.2s ease;
 }
 
 .nav-item:hover {
     background:
-        rgba(255, 255, 255, 0.045);
-
-    border-color:
-        rgba(255, 255, 255, 0.05);
-
-    color: var(--text);
-}
-
-.nav-item.active {
-    background:
-        rgba(79, 140, 255, 0.11);
+        rgba(79, 140, 255, 0.08);
 
     border-color:
         rgba(79, 140, 255, 0.12);
 
-    color: #7da8ff;
+    color: white;
+
+    transform:
+        translateX(3px);
+}
+
+.nav-item:hover::before,
+.nav-item.active::before {
+    transform:
+        scaleY(1);
+}
+
+.nav-item.active {
+    background:
+        rgba(79, 140, 255, 0.12);
+
+    border-color:
+        rgba(79, 140, 255, 0.16);
+
+    color: #8bb0ff;
 
     box-shadow:
         inset 3px 0 0
-            rgba(79, 140, 255, 0.9);
+        var(--blue);
 }
+
+/* =========================================================
+   SIDEBAR BOTTOM
+========================================================= */
 
 .sidebar-bottom {
     margin-top: auto;
@@ -1454,8 +1451,7 @@ body:not(.landing-page) {
     margin-top: 14px;
 
     padding:
-        14px
-        10px;
+        14px 10px;
 
     border-top:
         1px solid
@@ -1499,9 +1495,9 @@ body:not(.landing-page) {
 
     display: block;
 
-    border-radius: inherit;
-
     object-fit: cover;
+
+    border-radius: inherit;
 }
 
 .user-card strong {
@@ -1513,11 +1509,11 @@ body:not(.landing-page) {
 .user-card small {
     display: block;
 
+    max-width: 165px;
+
     margin-top: 2px;
 
     overflow: hidden;
-
-    max-width: 165px;
 
     color: #8796aa;
 
@@ -1527,22 +1523,19 @@ body:not(.landing-page) {
     white-space: nowrap;
 }
 
-
 /* =========================================================
    MAIN
 ========================================================= */
 
 .main {
-    width:
-        calc(100% - 245px);
+    width: 100%;
 
-    margin-left: 245px;
+    margin-left: 0;
 
     min-height: 100vh;
 
     position: relative;
 }
-
 
 /* =========================================================
    TOPBAR
@@ -1578,7 +1571,6 @@ body:not(.landing-page) {
 
 .topbar-left {
     display: flex;
-
     align-items: center;
 }
 
@@ -1597,7 +1589,6 @@ body:not(.landing-page) {
     margin-top: 2px;
 
     font-size: 20px;
-
     letter-spacing: -0.5px;
 }
 
@@ -1610,8 +1601,7 @@ body:not(.landing-page) {
 
 .icon-button,
 .profile-button {
-    background:
-        transparent;
+    background: transparent;
 
     color: #8998ab;
 }
@@ -1620,19 +1610,25 @@ body:not(.landing-page) {
     width: 38px;
     height: 38px;
 
-    border:
-        1px solid
-        transparent;
+    border: 1px solid transparent;
 
     border-radius: 9px;
+
+    transition:
+        background 0.2s ease,
+        border-color 0.2s ease,
+        transform 0.2s ease;
 }
 
 .icon-button:hover {
     background:
-        rgba(255, 255, 255, 0.04);
+        rgba(255, 255, 255, 0.05);
 
     border-color:
-        rgba(255, 255, 255, 0.06);
+        rgba(255, 255, 255, 0.08);
+
+    transform:
+        translateY(-1px);
 }
 
 .profile-button {
@@ -1644,11 +1640,18 @@ body:not(.landing-page) {
     padding: 4px 7px;
 
     border-radius: 10px;
+
+    transition:
+        background 0.2s ease,
+        transform 0.2s ease;
 }
 
 .profile-button:hover {
     background:
         rgba(255, 255, 255, 0.04);
+
+    transform:
+        translateY(-1px);
 }
 
 .profile-name {
@@ -1657,10 +1660,56 @@ body:not(.landing-page) {
     font-size: 12px;
 }
 
+/* =========================================================
+   MANUAL MENU BUTTON
+========================================================= */
+
 .mobile-menu {
-    display: none;
+    width: 40px;
+    height: 40px;
+
+    display: grid;
+    place-items: center;
+
+    margin-right: 12px;
+
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.08);
+
+    border-radius: 10px;
+
+    background:
+        rgba(255, 255, 255, 0.045);
+
+    color: #aab7c8;
+
+    font-size: 18px;
+
+    transition:
+        background 0.2s ease,
+        border-color 0.2s ease,
+        color 0.2s ease,
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
 }
 
+.mobile-menu:hover {
+    background:
+        rgba(79, 140, 255, 0.12);
+
+    border-color:
+        rgba(79, 140, 255, 0.3);
+
+    color: white;
+
+    transform:
+        translateY(-1px);
+
+    box-shadow:
+        0 8px 20px
+        rgba(0, 0, 0, 0.14);
+}
 
 /* =========================================================
    DASHBOARD
@@ -1676,14 +1725,12 @@ body:not(.landing-page) {
 
 .welcome {
     display: flex;
-
     align-items: center;
     justify-content: space-between;
 
     gap: 20px;
 
-    padding:
-        28px;
+    padding: 28px;
 
     border:
         1px solid
@@ -1706,7 +1753,21 @@ body:not(.landing-page) {
 
     box-shadow:
         0 14px 40px
-            rgba(0, 0, 0, 0.12);
+        rgba(0, 0, 0, 0.12);
+
+    transition:
+        transform 0.22s ease,
+        border-color 0.22s ease,
+        box-shadow 0.22s ease;
+}
+
+.welcome:hover {
+    border-color:
+        rgba(79, 140, 255, 0.15);
+
+    box-shadow:
+        0 18px 48px
+        rgba(0, 0, 0, 0.16);
 }
 
 .welcome h2 {
@@ -1723,7 +1784,7 @@ body:not(.landing-page) {
 
     text-shadow:
         0 0 25px
-            rgba(79, 140, 255, 0.12);
+        rgba(79, 140, 255, 0.12);
 }
 
 .welcome p:last-child {
@@ -1733,7 +1794,6 @@ body:not(.landing-page) {
 
     font-size: 13px;
 }
-
 
 /* =========================================================
    STATS
@@ -1779,7 +1839,28 @@ body:not(.landing-page) {
 
     box-shadow:
         0 12px 35px
-            rgba(0, 0, 0, 0.09);
+        rgba(0, 0, 0, 0.09);
+
+    transition:
+        transform 0.22s ease,
+        border-color 0.22s ease,
+        box-shadow 0.22s ease,
+        background 0.22s ease;
+}
+
+.stat-card:hover {
+    transform:
+        translateY(-4px);
+
+    border-color:
+        rgba(79, 140, 255, 0.22);
+
+    background:
+        rgba(20, 31, 49, 0.76);
+
+    box-shadow:
+        0 18px 45px
+        rgba(0, 0, 0, 0.18);
 }
 
 .stat-card::after {
@@ -1857,7 +1938,6 @@ body:not(.landing-page) {
     font-size: 21px;
 }
 
-
 /* =========================================================
    CONTENT GRID
 ========================================================= */
@@ -1894,7 +1974,21 @@ body:not(.landing-page) {
 
     box-shadow:
         0 14px 40px
-            rgba(0, 0, 0, 0.1);
+        rgba(0, 0, 0, 0.1);
+
+    transition:
+        transform 0.22s ease,
+        border-color 0.22s ease,
+        box-shadow 0.22s ease;
+}
+
+.panel:hover {
+    border-color:
+        rgba(79, 140, 255, 0.16);
+
+    box-shadow:
+        0 18px 50px
+        rgba(0, 0, 0, 0.14);
 }
 
 .tasks-panel,
@@ -1905,7 +1999,6 @@ body:not(.landing-page) {
 
 .panel-header {
     display: flex;
-
     align-items: center;
     justify-content: space-between;
 
@@ -1925,8 +2018,14 @@ body:not(.landing-page) {
 
     font-size: 11px;
     font-weight: 650;
+
+    transition:
+        color 0.2s ease;
 }
 
+.text-button:hover {
+    color: #a2bcff;
+}
 
 /* =========================================================
    TASK CONTROLS
@@ -1976,6 +2075,11 @@ body:not(.landing-page) {
         rgba(10, 18, 32, 0.72);
 
     color: white;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease,
+        background 0.2s ease;
 }
 
 .search-box input {
@@ -1988,7 +2092,14 @@ body:not(.landing-page) {
 .task-controls select {
     width: 145px;
 
-    padding: 0 10px;
+    padding:
+        0 10px;
+}
+
+.search-box input:hover,
+.task-controls select:hover {
+    border-color:
+        #334b6b;
 }
 
 .search-box input:focus,
@@ -1996,13 +2107,13 @@ body:not(.landing-page) {
 .modal input:focus,
 .modal textarea:focus,
 .modal select:focus {
-    border-color: var(--blue);
+    border-color:
+        var(--blue);
 
     box-shadow:
         0 0 0 3px
-            rgba(79, 140, 255, 0.1);
+        rgba(79, 140, 255, 0.1);
 }
-
 
 /* =========================================================
    TASK LIST
@@ -2014,7 +2125,6 @@ body:not(.landing-page) {
 
 .task-item {
     display: flex;
-
     align-items: flex-start;
 
     gap: 13px;
@@ -2024,10 +2134,25 @@ body:not(.landing-page) {
     border-bottom:
         1px solid
         rgba(255, 255, 255, 0.06);
+
+    transition:
+        background 0.2s ease,
+        transform 0.2s ease,
+        padding-left 0.2s ease;
 }
 
 .task-item:last-child {
     border-bottom: 0;
+}
+
+.task-item:hover {
+    background:
+        rgba(79, 140, 255, 0.035);
+
+    transform:
+        translateX(3px);
+
+    padding-left: 7px;
 }
 
 .task-check {
@@ -2041,14 +2166,27 @@ body:not(.landing-page) {
 
     border-radius: 7px;
 
-    background:
-        transparent;
+    background: transparent;
 
     color: white;
+
+    transition:
+        background 0.18s ease,
+        border-color 0.18s ease,
+        transform 0.18s ease;
+}
+
+.task-check:hover {
+    transform:
+        scale(1.08);
+
+    border-color:
+        var(--blue);
 }
 
 .task-check.completed {
-    border-color: var(--blue);
+    border-color:
+        var(--blue);
 
     background:
         var(--blue);
@@ -2064,6 +2202,14 @@ body:not(.landing-page) {
     color: #e7edf5;
 
     font-size: 13px;
+
+    transition:
+        color 0.2s ease;
+}
+
+.task-item:hover .task-title {
+    color:
+        #8bb0ff;
 }
 
 .task-description {
@@ -2078,7 +2224,6 @@ body:not(.landing-page) {
 
 .task-meta {
     display: flex;
-
     flex-wrap: wrap;
 
     gap: 8px;
@@ -2140,8 +2285,9 @@ body:not(.landing-page) {
     color: #718096;
 
     transition:
-        background 0.2s ease,
-        color 0.2s ease;
+        background 0.18s ease,
+        color 0.18s ease,
+        transform 0.18s ease;
 }
 
 .task-action:hover {
@@ -2149,6 +2295,9 @@ body:not(.landing-page) {
         rgba(79, 140, 255, 0.1);
 
     color: #78a4ff;
+
+    transform:
+        translateY(-1px);
 }
 
 .task-item.completed .task-title {
@@ -2162,11 +2311,9 @@ body:not(.landing-page) {
     min-height: 220px;
 
     display: flex;
-
     flex-direction: column;
 
     align-items: center;
-
     justify-content: center;
 
     text-align: center;
@@ -2185,6 +2332,10 @@ body:not(.landing-page) {
         rgba(79, 140, 255, 0.1);
 
     color: #719fff;
+
+    box-shadow:
+        0 10px 30px
+        rgba(79, 140, 255, 0.08);
 }
 
 .empty-state h4 {
@@ -2205,14 +2356,12 @@ body:not(.landing-page) {
     margin-top: 15px;
 }
 
-
 /* =========================================================
    PROGRESS
 ========================================================= */
 
 .progress-panel {
     display: flex;
-
     flex-direction: column;
 }
 
@@ -2235,7 +2384,20 @@ body:not(.landing-page) {
 
     box-shadow:
         0 15px 40px
-            rgba(79, 140, 255, 0.08);
+        rgba(79, 140, 255, 0.08);
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+.progress-circle:hover {
+    transform:
+        scale(1.025);
+
+    box-shadow:
+        0 20px 48px
+        rgba(79, 140, 255, 0.13);
 }
 
 .progress-inner {
@@ -2243,11 +2405,9 @@ body:not(.landing-page) {
     height: 137px;
 
     display: flex;
-
     flex-direction: column;
 
     align-items: center;
-
     justify-content: center;
 
     border-radius: 50%;
@@ -2283,6 +2443,18 @@ body:not(.landing-page) {
 
     background:
         rgba(255, 255, 255, 0.025);
+
+    transition:
+        transform 0.2s ease,
+        background 0.2s ease;
+}
+
+.progress-details > div:hover {
+    transform:
+        translateY(-2px);
+
+    background:
+        rgba(79, 140, 255, 0.05);
 }
 
 .progress-details span {
@@ -2298,7 +2470,6 @@ body:not(.landing-page) {
 
     margin-top: 2px;
 }
-
 
 /* =========================================================
    PROJECTS
@@ -2338,25 +2509,29 @@ body:not(.landing-page) {
         blur(10px);
 
     transition:
-        transform 0.2s ease,
-        border-color 0.2s ease,
-        background 0.2s ease;
+        transform 0.22s ease,
+        border-color 0.22s ease,
+        background 0.22s ease,
+        box-shadow 0.22s ease;
 }
 
 .project-item:hover {
     transform:
-        translateY(-2px);
+        translateY(-4px);
 
     border-color:
-        rgba(79, 140, 255, 0.2);
+        rgba(79, 140, 255, 0.28);
 
     background:
-        rgba(16, 26, 43, 0.75);
+        rgba(16, 26, 43, 0.76);
+
+    box-shadow:
+        0 16px 35px
+        rgba(0, 0, 0, 0.16);
 }
 
 .project-top {
     display: flex;
-
     align-items: center;
 
     gap: 7px;
@@ -2374,6 +2549,24 @@ body:not(.landing-page) {
     height: 7px;
 
     border-radius: 50%;
+
+    box-shadow:
+        0 0 10px currentColor;
+}
+
+.project-dot.blue {
+    background: var(--blue);
+    color: var(--blue);
+}
+
+.project-dot.green {
+    background: var(--green);
+    color: var(--green);
+}
+
+.project-dot.purple {
+    background: var(--purple);
+    color: var(--purple);
 }
 
 .project-item h4 {
@@ -2419,6 +2612,10 @@ body:not(.landing-page) {
 
     background:
         rgba(255, 255, 255, 0.08);
+
+    box-shadow:
+        inset 0 1px 2px
+        rgba(0, 0, 0, 0.12);
 }
 
 .project-progress-fill {
@@ -2434,6 +2631,9 @@ body:not(.landing-page) {
             #4f8cff,
             #8d6fff
         );
+
+    transition:
+        width 0.5s ease;
 }
 
 .project-controls {
@@ -2451,22 +2651,18 @@ body:not(.landing-page) {
     height: 27px;
 }
 
-
 /* =========================================================
    MODAL
 ========================================================= */
 
 .modal-overlay {
     position: fixed;
-
     inset: 0;
 
     z-index: 2000;
 
     display: flex;
-
     align-items: center;
-
     justify-content: center;
 
     padding: 20px;
@@ -2478,9 +2674,7 @@ body:not(.landing-page) {
         blur(10px);
 
     opacity: 0;
-
     visibility: hidden;
-
     pointer-events: none;
 
     transition:
@@ -2501,23 +2695,36 @@ body:not(.landing-page) {
 
     padding: 25px;
 
-    border:
-        1px solid #26364d;
-
+    border: 1px solid #26364d;
     border-radius: 17px;
 
-    background:
-        #101927;
+    background: #101927;
 
-    box-shadow:
-        var(--shadow);
+    box-shadow: var(--shadow);
+
+    animation:
+        modalIn 0.25s ease both;
+}
+
+@keyframes modalIn {
+    from {
+        opacity: 0;
+        transform:
+            translateY(12px)
+            scale(0.98);
+    }
+
+    to {
+        opacity: 1;
+        transform:
+            translateY(0)
+            scale(1);
+    }
 }
 
 .modal-header {
     display: flex;
-
     align-items: flex-start;
-
     justify-content: space-between;
 
     margin-bottom: 22px;
@@ -2539,6 +2746,20 @@ body:not(.landing-page) {
     color: #8997aa;
 
     font-size: 20px;
+
+    transition:
+        background 0.2s ease,
+        color 0.2s ease,
+        transform 0.2s ease;
+}
+
+.close-button:hover {
+    background:
+        rgba(255, 255, 255, 0.08);
+
+    color: white;
+
+    transform: rotate(4deg);
 }
 
 .modal form > label,
@@ -2550,7 +2771,6 @@ body:not(.landing-page) {
     color: #cbd5e2;
 
     font-size: 12px;
-
     font-weight: 650;
 }
 
@@ -2561,8 +2781,7 @@ body:not(.landing-page) {
 
     margin-top: 7px;
 
-    padding:
-        11px 12px;
+    padding: 11px 12px;
 
     font-size: 13px;
 }
@@ -2595,7 +2814,6 @@ body:not(.landing-page) {
     cursor: pointer;
 }
 
-
 /* =========================================================
    LIGHT THEME
 ========================================================= */
@@ -2606,6 +2824,7 @@ body.light-theme {
     --panel: #ffffff;
     --panel-hover: #f4f7fb;
     --border: #dfe5ee;
+
     --text: #172033;
     --text-secondary: #647187;
     --muted: #7b8798;
@@ -2628,13 +2847,8 @@ body.light-theme .sidebar {
         rgba(30, 45, 65, 0.1);
 
     box-shadow:
-        12px 0 40px
-            rgba(30, 45, 65, 0.08);
-}
-
-body.light-theme .preview-window,
-body.light-theme .project-item {
-    background: #ffffff;
+        18px 0 45px
+        rgba(30, 45, 65, 0.08);
 }
 
 body.light-theme .topbar {
@@ -2653,6 +2867,11 @@ body.light-theme .panel {
 
     border-color:
         rgba(30, 45, 65, 0.1);
+}
+
+body.light-theme .project-item {
+    background:
+        rgba(255, 255, 255, 0.72);
 }
 
 body.light-theme .login-modal {
@@ -2685,22 +2904,18 @@ body.light-theme .progress-inner {
         rgba(255, 255, 255, 0.92);
 }
 
-
 /* =========================================================
    FIREBASE DASHBOARD AUTH LOADING
 ========================================================= */
 
 .auth-loading {
     position: fixed;
-
     inset: 0;
 
     z-index: 99999;
 
     display: flex;
-
     align-items: center;
-
     justify-content: center;
 
     background: var(--bg);
@@ -2708,9 +2923,7 @@ body.light-theme .progress-inner {
 
 .auth-loading-card {
     display: flex;
-
     flex-direction: column;
-
     align-items: center;
 
     gap: 14px;
@@ -2725,7 +2938,6 @@ body.light-theme .progress-inner {
     height: 55px;
 
     display: grid;
-
     place-items: center;
 
     border-radius: 15px;
@@ -2740,7 +2952,6 @@ body.light-theme .progress-inner {
     color: white;
 
     font-size: 22px;
-
     font-weight: 900;
 }
 
@@ -2759,20 +2970,14 @@ body.light-theme .progress-inner {
 
     animation:
         authLoadingSpin
-        0.75s
-        linear
-        infinite;
+        0.75s linear infinite;
 }
 
 @keyframes authLoadingSpin {
-
     to {
-        transform:
-            rotate(360deg);
+        transform: rotate(360deg);
     }
-
 }
-
 
 /* =========================================================
    RESPONSIVE
@@ -2800,9 +3005,8 @@ body.light-theme .progress-inner {
     }
 
     .hero-preview {
-        max-width: 760px;
-
         width: 100%;
+        max-width: 760px;
 
         margin: 0 auto;
     }
@@ -2823,9 +3027,7 @@ body.light-theme .progress-inner {
     .project-grid {
         grid-template-columns: 1fr;
     }
-
 }
-
 
 @media (max-width: 760px) {
 
@@ -2870,8 +3072,7 @@ body.light-theme .progress-inner {
     }
 
     .preview-body {
-        grid-template-columns:
-            1fr;
+        grid-template-columns: 1fr;
     }
 
     .preview-main {
@@ -2879,8 +3080,7 @@ body.light-theme .progress-inner {
     }
 
     .preview-stats {
-        grid-template-columns:
-            1fr;
+        grid-template-columns: 1fr;
     }
 
     .landing-footer {
@@ -2889,59 +3089,12 @@ body.light-theme .progress-inner {
         gap: 7px;
     }
 
-    .sidebar {
-        transform:
-            translateX(-100%);
-
-        transition:
-            transform 0.25s ease;
-    }
-
-    .sidebar.open {
-        transform:
-            translateX(0);
-    }
-
-    .main {
-        width: 100%;
-
-        margin-left: 0;
-    }
-
-    .mobile-menu {
-        display: grid;
-
-        place-items: center;
-
-        width: 38px;
-        height: 38px;
-
-        margin-right: 12px;
-
-        border-radius: 9px;
-
-        background:
-            rgba(255, 255, 255, 0.04);
-
-        color: #aab7c8;
-    }
-
     .topbar {
-        padding:
-            0 18px;
-    }
-
-    .topbar > div:first-of-type {
-        margin-right: auto;
-    }
-
-    .profile-name {
-        display: none;
+        padding: 0 18px;
     }
 
     .dashboard {
-        padding:
-            25px 18px;
+        padding: 25px 18px;
     }
 
     .welcome {
@@ -2966,7 +3119,6 @@ body.light-theme .progress-inner {
 
     .task-controls select {
         width: 100%;
-
         height: 42px;
     }
 
@@ -2979,12 +3131,10 @@ body.light-theme .progress-inner {
     }
 
     .form-row {
-        grid-template-columns:
-            1fr;
+        grid-template-columns: 1fr;
     }
 
 }
-
 
 @media (max-width: 500px) {
 
@@ -3000,8 +3150,7 @@ body.light-theme .progress-inner {
     }
 
     .stats-grid {
-        grid-template-columns:
-            1fr;
+        grid-template-columns: 1fr;
     }
 
     .preview-task {
@@ -3015,7 +3164,6 @@ body.light-theme .progress-inner {
 
 }
 
-
 /* =========================================================
    REDUCED MOTION
 ========================================================= */
@@ -3025,7 +3173,6 @@ body.light-theme .progress-inner {
     *,
     *::before,
     *::after {
-
         scroll-behavior: auto !important;
 
         animation-duration:
@@ -3036,7 +3183,5 @@ body.light-theme .progress-inner {
 
         transition-duration:
             0.01ms !important;
-
     }
-
 }
