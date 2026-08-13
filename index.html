@@ -333,7 +333,7 @@
 
 
     <!-- =========================
-         LOGIN MODAL
+         AUTHENTICATION MODAL
     ========================== -->
 
     <div
@@ -353,98 +353,463 @@
                 type="button"
                 class="login-close"
                 id="loginClose"
-                aria-label="Close login"
+                aria-label="Close authentication"
             >
                 ×
             </button>
 
 
-            <div class="login-header">
+            <!-- =========================
+                 LOGIN VIEW
+            ========================== -->
 
-                <div class="login-logo">
-                    D
+            <div id="loginView">
+
+                <div class="login-header">
+
+                    <div class="login-logo">
+                        D
+                    </div>
+
+                    <span class="login-label">
+                        WELCOME BACK
+                    </span>
+
+                    <h2 id="loginTitle">
+                        Log in to DevTask
+                    </h2>
+
+                    <p>
+                        Sign in securely with Google
+                        or your DevTask account.
+                    </p>
+
                 </div>
 
-                <span class="login-label">
-                    WELCOME BACK
-                </span>
 
-                <h2 id="loginTitle">
-                    Log in to DevTask
-                </h2>
+                <!-- Google -->
 
-                <p>
-                    Sign in securely with your Google account.
+                <button
+                    type="button"
+                    class="google-login-button"
+                    id="googleLoginButton"
+                >
+
+                    <span class="google-icon">
+                        <svg
+                            width="20"
+                            height="20"
+                            viewBox="0 0 24 24"
+                            aria-hidden="true"
+                        >
+                            <path
+                                fill="#4285F4"
+                                d="M21.35 12.23c0-.79-.07-1.55-.22-2.27H12v4.3h5.24a4.48 4.48 0 0 1-1.94 2.94v2.45h3.14c1.84-1.69 2.91-4.18 2.91-7.42z"
+                            />
+                            <path
+                                fill="#34A853"
+                                d="M12 21.99c2.63 0 4.84-.87 6.45-2.34l-3.14-2.45c-.87.58-1.98.92-3.31.92-2.54 0-4.7-1.72-5.47-4.03H3.28v2.53A9.74 9.74 0 0 0 12 21.99z"
+                            />
+                            <path
+                                fill="#FBBC05"
+                                d="M6.53 14.09A5.86 5.86 0 0 1 6.22 12c0-.73.13-1.44.31-2.09V7.38H3.28A9.99 9.99 0 0 0 2 12c0 1.61.38 3.13 1.28 4.62l3.25-2.53z"
+                            />
+                            <path
+                                fill="#EA4335"
+                                d="M12 5.88c1.43 0 2.71.49 3.72 1.45l2.79-2.79C16.84 2.93 14.63 2 12 2a9.74 9.74 0 0 0-8.72 5.38l3.25 2.53C7.3 7.6 9.46 5.88 12 5.88z"
+                            />
+                        </svg>
+                    </span>
+
+                    <span id="googleButtonText">
+                        Continue with Google
+                    </span>
+
+                    <span
+                        id="googleSpinner"
+                        class="login-spinner"
+                        aria-hidden="true"
+                    ></span>
+
+                </button>
+
+
+                <div class="login-divider">
+                    <span>or</span>
+                </div>
+
+
+                <!-- Email -->
+
+                <form
+                    id="loginForm"
+                    class="login-form"
+                    novalidate
+                >
+
+                    <div class="form-group">
+
+                        <label for="loginEmail">
+                            Email address
+                        </label>
+
+                        <input
+                            type="email"
+                            id="loginEmail"
+                            autocomplete="email"
+                            placeholder="you@example.com"
+                            required
+                        >
+
+                        <small
+                            class="login-error"
+                            id="emailError"
+                        ></small>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <div class="password-label-row">
+
+                            <label for="loginPassword">
+                                Password
+                            </label>
+
+                            <button
+                                type="button"
+                                class="forgot-button"
+                                id="forgotPassword"
+                            >
+                                Forgot password?
+                            </button>
+
+                        </div>
+
+
+                        <div class="password-wrapper">
+
+                            <input
+                                type="password"
+                                id="loginPassword"
+                                autocomplete="current-password"
+                                placeholder="Enter your password"
+                                required
+                            >
+
+                            <button
+                                type="button"
+                                class="password-toggle"
+                                id="passwordToggle"
+                            >
+                                Show
+                            </button>
+
+                        </div>
+
+                        <small
+                            class="login-error"
+                            id="passwordError"
+                        ></small>
+
+                    </div>
+
+
+                    <label class="remember-row">
+
+                        <input
+                            type="checkbox"
+                            id="rememberMe"
+                        >
+
+                        <span>
+                            Remember me
+                        </span>
+
+                    </label>
+
+
+                    <button
+                        type="submit"
+                        class="primary-button login-submit"
+                        id="loginSubmit"
+                    >
+                        <span id="loginButtonText">
+                            Log in
+                        </span>
+
+                        <span
+                            id="loginSpinner"
+                            class="login-spinner"
+                            aria-hidden="true"
+                        ></span>
+
+                    </button>
+
+                </form>
+
+
+                <p
+                    class="login-message"
+                    id="loginMessage"
+                    role="status"
+                    aria-live="polite"
+                ></p>
+
+
+                <p class="login-footer">
+
+                    Don't have an account?
+
+                    <button
+                        type="button"
+                        id="showSignup"
+                    >
+                        Create one
+                    </button>
+
                 </p>
 
             </div>
 
 
             <!-- =========================
-                 GOOGLE LOGIN
+                 SIGNUP VIEW
             ========================== -->
 
-            <button
-                type="button"
-                class="google-login-button"
-                id="googleLoginButton"
+            <div
+                id="signupView"
+                hidden
             >
 
-                <span class="google-icon">
-                    <svg
-                        width="20"
-                        height="20"
-                        viewBox="0 0 24 24"
-                        aria-hidden="true"
+                <div class="login-header">
+
+                    <div class="login-logo">
+                        D
+                    </div>
+
+                    <span class="login-label">
+                        GET STARTED
+                    </span>
+
+                    <h2>
+                        Create your account
+                    </h2>
+
+                    <p>
+                        Choose an email and password
+                        for your DevTask account.
+                    </p>
+
+                </div>
+
+
+                <form
+                    id="signupForm"
+                    class="login-form"
+                    novalidate
+                >
+
+                    <div class="form-group">
+
+                        <label for="signupEmail">
+                            Email address
+                        </label>
+
+                        <input
+                            type="email"
+                            id="signupEmail"
+                            autocomplete="email"
+                            placeholder="you@example.com"
+                            required
+                        >
+
+                        <small
+                            class="login-error"
+                            id="signupEmailError"
+                        ></small>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="signupPassword">
+                            Password
+                        </label>
+
+                        <div class="password-wrapper">
+
+                            <input
+                                type="password"
+                                id="signupPassword"
+                                autocomplete="new-password"
+                                placeholder="At least 6 characters"
+                                minlength="6"
+                                required
+                            >
+
+                            <button
+                                type="button"
+                                class="password-toggle"
+                                id="signupPasswordToggle"
+                            >
+                                Show
+                            </button>
+
+                        </div>
+
+                        <small
+                            class="login-error"
+                            id="signupPasswordError"
+                        ></small>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="signupPasswordConfirm">
+                            Confirm password
+                        </label>
+
+                        <div class="password-wrapper">
+
+                            <input
+                                type="password"
+                                id="signupPasswordConfirm"
+                                autocomplete="new-password"
+                                placeholder="Enter your password again"
+                                minlength="6"
+                                required
+                            >
+
+                            <button
+                                type="button"
+                                class="password-toggle"
+                                id="signupConfirmToggle"
+                            >
+                                Show
+                            </button>
+
+                        </div>
+
+                        <small
+                            class="login-error"
+                            id="signupConfirmError"
+                        ></small>
+
+                    </div>
+
+
+                    <button
+                        type="submit"
+                        class="primary-button login-submit"
+                        id="signupSubmit"
                     >
-                        <path
-                            fill="#4285F4"
-                            d="M21.35 12.23c0-.79-.07-1.55-.22-2.27H12v4.3h5.24a4.48 4.48 0 0 1-1.94 2.94v2.45h3.14c1.84-1.69 2.91-4.18 2.91-7.42z"
-                        />
-                        <path
-                            fill="#34A853"
-                            d="M12 21.99c2.63 0 4.84-.87 6.45-2.34l-3.14-2.45c-.87.58-1.98.92-3.31.92-2.54 0-4.7-1.72-5.47-4.03H3.28v2.53A9.74 9.74 0 0 0 12 21.99z"
-                        />
-                        <path
-                            fill="#FBBC05"
-                            d="M6.53 14.09A5.86 5.86 0 0 1 6.22 12c0-.73.13-1.44.31-2.09V7.38H3.28A9.99 9.99 0 0 0 2 12c0 1.61.38 3.13 1.28 4.62l3.25-2.53z"
-                        />
-                        <path
-                            fill="#EA4335"
-                            d="M12 5.88c1.43 0 2.71.49 3.72 1.45l2.79-2.79C16.84 2.93 14.63 2 12 2a9.74 9.74 0 0 0-8.72 5.38l3.25 2.53C7.3 7.6 9.46 5.88 12 5.88z"
-                        />
-                    </svg>
-                </span>
+                        <span id="signupButtonText">
+                            Create account
+                        </span>
 
-                <span id="googleButtonText">
-                    Continue with Google
-                </span>
+                        <span
+                            id="signupSpinner"
+                            class="login-spinner"
+                            aria-hidden="true"
+                        ></span>
 
-                <span
-                    id="googleSpinner"
-                    class="login-spinner"
-                    aria-hidden="true"
-                ></span>
+                    </button>
 
-            </button>
+                </form>
 
 
-            <p
-                class="login-message"
-                id="loginMessage"
-                role="status"
-                aria-live="polite"
-            ></p>
+                <p
+                    class="login-message"
+                    id="signupMessage"
+                    role="status"
+                    aria-live="polite"
+                ></p>
 
 
-            <div class="login-divider">
-                <span>Secure authentication</span>
+                <p class="login-footer">
+
+                    Already have an account?
+
+                    <button
+                        type="button"
+                        id="showLogin"
+                    >
+                        Log in
+                    </button>
+
+                </p>
+
             </div>
 
 
-            <p class="login-footer">
-                Your Google password is never shared with DevTask.
-            </p>
+            <!-- =========================
+                 VERIFICATION VIEW
+            ========================== -->
+
+            <div
+                id="verificationView"
+                hidden
+            >
+
+                <div class="login-header">
+
+                    <div class="login-logo">
+                        ✓
+                    </div>
+
+                    <span class="login-label">
+                        VERIFY YOUR EMAIL
+                    </span>
+
+                    <h2>
+                        Check your inbox
+                    </h2>
+
+                    <p id="verificationText">
+                        We've sent a verification email
+                        to your address.
+                    </p>
+
+                </div>
+
+
+                <button
+                    type="button"
+                    class="primary-button login-submit"
+                    id="verificationLoginButton"
+                >
+                    I've verified my email
+                </button>
+
+
+                <button
+                    type="button"
+                    class="demo-login"
+                    id="resendVerification"
+                >
+                    Resend verification email
+                </button>
+
+
+                <p
+                    class="login-message"
+                    id="verificationMessage"
+                    role="status"
+                    aria-live="polite"
+                ></p>
+
+
+                <p class="login-footer">
+                    Open Gmail and click the verification
+                    link before continuing.
+                </p>
+
+            </div>
 
         </section>
 
@@ -452,25 +817,33 @@
 
 
     <!-- =========================
-         FIREBASE
+         FIREBASE AUTHENTICATION
     ========================== -->
 
     <script type="module">
 
         import {
             initializeApp
-        } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
+        } from
+        "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
 
         import {
             getAuth,
             GoogleAuthProvider,
-            signInWithPopup
-        } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
+            signInWithPopup,
+            createUserWithEmailAndPassword,
+            signInWithEmailAndPassword,
+            sendEmailVerification,
+            sendPasswordResetEmail,
+            signOut,
+            onAuthStateChanged
+        } from
+        "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
 
 
-        // =========================
+        // =====================================================
         // FIREBASE CONFIGURATION
-        // =========================
+        // =====================================================
 
         const firebaseConfig = {
 
@@ -495,30 +868,30 @@
         };
 
 
-        // =========================
+        // =====================================================
         // INITIALIZE FIREBASE
-        // =========================
+        // =====================================================
 
         const app =
-            initializeApp(firebaseConfig);
+            initializeApp(
+                firebaseConfig
+            );
 
         const auth =
             getAuth(app);
 
-        const provider =
+        const googleProvider =
             new GoogleAuthProvider();
 
 
-        // Force Google account selection.
-
-        provider.setCustomParameters({
+        googleProvider.setCustomParameters({
             prompt: "select_account"
         });
 
 
-        // =========================
-        // DOM ELEMENTS
-        // =========================
+        // =====================================================
+        // ELEMENTS
+        // =====================================================
 
         const loginOverlay =
             document.getElementById(
@@ -540,6 +913,82 @@
                 "loginClose"
             );
 
+        const loginView =
+            document.getElementById(
+                "loginView"
+            );
+
+        const signupView =
+            document.getElementById(
+                "signupView"
+            );
+
+        const verificationView =
+            document.getElementById(
+                "verificationView"
+            );
+
+
+        // Login
+
+        const loginForm =
+            document.getElementById(
+                "loginForm"
+            );
+
+        const loginEmail =
+            document.getElementById(
+                "loginEmail"
+            );
+
+        const loginPassword =
+            document.getElementById(
+                "loginPassword"
+            );
+
+        const passwordToggle =
+            document.getElementById(
+                "passwordToggle"
+            );
+
+        const loginSubmit =
+            document.getElementById(
+                "loginSubmit"
+            );
+
+        const loginButtonText =
+            document.getElementById(
+                "loginButtonText"
+            );
+
+        const loginSpinner =
+            document.getElementById(
+                "loginSpinner"
+            );
+
+        const emailError =
+            document.getElementById(
+                "emailError"
+            );
+
+        const passwordError =
+            document.getElementById(
+                "passwordError"
+            );
+
+        const forgotPassword =
+            document.getElementById(
+                "forgotPassword"
+            );
+
+        const loginMessage =
+            document.getElementById(
+                "loginMessage"
+            );
+
+
+        // Google
+
         const googleLoginButton =
             document.getElementById(
                 "googleLoginButton"
@@ -555,15 +1004,172 @@
                 "googleSpinner"
             );
 
-        const loginMessage =
+
+        // Signup
+
+        const signupForm =
             document.getElementById(
-                "loginMessage"
+                "signupForm"
+            );
+
+        const signupEmail =
+            document.getElementById(
+                "signupEmail"
+            );
+
+        const signupPassword =
+            document.getElementById(
+                "signupPassword"
+            );
+
+        const signupPasswordConfirm =
+            document.getElementById(
+                "signupPasswordConfirm"
+            );
+
+        const signupEmailError =
+            document.getElementById(
+                "signupEmailError"
+            );
+
+        const signupPasswordError =
+            document.getElementById(
+                "signupPasswordError"
+            );
+
+        const signupConfirmError =
+            document.getElementById(
+                "signupConfirmError"
+            );
+
+        const signupSubmit =
+            document.getElementById(
+                "signupSubmit"
+            );
+
+        const signupButtonText =
+            document.getElementById(
+                "signupButtonText"
+            );
+
+        const signupSpinner =
+            document.getElementById(
+                "signupSpinner"
+            );
+
+        const signupMessage =
+            document.getElementById(
+                "signupMessage"
             );
 
 
-        // =========================
-        // OPEN LOGIN
-        // =========================
+        // Verification
+
+        const verificationText =
+            document.getElementById(
+                "verificationText"
+            );
+
+        const verificationLoginButton =
+            document.getElementById(
+                "verificationLoginButton"
+            );
+
+        const resendVerification =
+            document.getElementById(
+                "resendVerification"
+            );
+
+        const verificationMessage =
+            document.getElementById(
+                "verificationMessage"
+            );
+
+
+        // Navigation between views
+
+        const showSignup =
+            document.getElementById(
+                "showSignup"
+            );
+
+        const showLogin =
+            document.getElementById(
+                "showLogin"
+            );
+
+
+        // =====================================================
+        // VIEW HELPERS
+        // =====================================================
+
+        function showView(view) {
+
+            loginView.hidden =
+                view !== "login";
+
+            signupView.hidden =
+                view !== "signup";
+
+            verificationView.hidden =
+                view !== "verification";
+
+        }
+
+
+        function clearMessages() {
+
+            if (loginMessage) {
+                loginMessage.textContent = "";
+            }
+
+            if (signupMessage) {
+                signupMessage.textContent = "";
+            }
+
+            if (verificationMessage) {
+                verificationMessage.textContent = "";
+            }
+
+        }
+
+
+        function clearLoginErrors() {
+
+            emailError.textContent = "";
+            passwordError.textContent = "";
+
+            loginEmail.classList.remove(
+                "input-error"
+            );
+
+            loginPassword.classList.remove(
+                "input-error"
+            );
+
+        }
+
+
+        function clearSignupErrors() {
+
+            signupEmailError.textContent = "";
+            signupPasswordError.textContent = "";
+            signupConfirmError.textContent = "";
+
+            signupEmail.classList.remove(
+                "input-error"
+            );
+
+            signupPassword.classList.remove(
+                "input-error"
+            );
+
+            signupPasswordConfirm.classList.remove(
+                "input-error"
+            );
+
+        }
+
 
         function openLogin() {
 
@@ -579,12 +1185,22 @@
             document.body.style.overflow =
                 "hidden";
 
+            clearMessages();
+
+            clearLoginErrors();
+
+            clearSignupErrors();
+
+            showView("login");
+
+            setTimeout(() => {
+
+                loginEmail.focus();
+
+            }, 100);
+
         }
 
-
-        // =========================
-        // CLOSE LOGIN
-        // =========================
 
         function closeLogin() {
 
@@ -600,11 +1216,14 @@
             document.body.style.overflow =
                 "";
 
-            loginMessage.textContent =
-                "";
+            clearMessages();
 
         }
 
+
+        // =====================================================
+        // OPEN / CLOSE EVENTS
+        // =====================================================
 
         navLoginButton.addEventListener(
             "click",
@@ -641,10 +1260,6 @@
         );
 
 
-        // =========================
-        // ESCAPE KEY
-        // =========================
-
         document.addEventListener(
             "keydown",
             event => {
@@ -664,16 +1279,235 @@
         );
 
 
-        // =========================
-        // GOOGLE SIGN-IN
-        // =========================
+        // =====================================================
+        // VIEW SWITCHING
+        // =====================================================
+
+        showSignup.addEventListener(
+            "click",
+            () => {
+
+                clearMessages();
+                clearLoginErrors();
+
+                showView("signup");
+
+                signupEmail.focus();
+
+            }
+        );
+
+
+        showLogin.addEventListener(
+            "click",
+            () => {
+
+                clearMessages();
+                clearSignupErrors();
+
+                showView("login");
+
+                loginEmail.focus();
+
+            }
+        );
+
+
+        // =====================================================
+        // PASSWORD VISIBILITY
+        // =====================================================
+
+        function togglePassword(
+            input,
+            button
+        ) {
+
+            const visible =
+                input.type === "text";
+
+            input.type =
+                visible
+                    ? "password"
+                    : "text";
+
+            button.textContent =
+                visible
+                    ? "Show"
+                    : "Hide";
+
+        }
+
+
+        passwordToggle.addEventListener(
+            "click",
+            () => {
+
+                togglePassword(
+                    loginPassword,
+                    passwordToggle
+                );
+
+            }
+        );
+
+
+        document
+            .getElementById(
+                "signupPasswordToggle"
+            )
+            .addEventListener(
+                "click",
+                () => {
+
+                    togglePassword(
+                        signupPassword,
+                        document.getElementById(
+                            "signupPasswordToggle"
+                        )
+                    );
+
+                }
+            );
+
+
+        document
+            .getElementById(
+                "signupConfirmToggle"
+            )
+            .addEventListener(
+                "click",
+                () => {
+
+                    togglePassword(
+                        signupPasswordConfirm,
+                        document.getElementById(
+                            "signupConfirmToggle"
+                        )
+                    );
+
+                }
+            );
+
+
+        // =====================================================
+        // ERROR MESSAGES
+        // =====================================================
+
+        function firebaseErrorMessage(
+            error
+        ) {
+
+            switch (error.code) {
+
+                case "auth/invalid-credential":
+                case "auth/wrong-password":
+                case "auth/user-not-found":
+
+                    return "Incorrect email or password.";
+
+                case "auth/email-already-in-use":
+
+                    return "An account already exists with this email.";
+
+                case "auth/invalid-email":
+
+                    return "Please enter a valid email address.";
+
+                case "auth/weak-password":
+
+                    return "Your password is too weak. Use at least 6 characters.";
+
+                case "auth/popup-closed-by-user":
+
+                    return "Google sign-in was cancelled.";
+
+                case "auth/popup-blocked":
+
+                    return "Your browser blocked the Google sign-in window. Allow popups for DevTask.";
+
+                case "auth/unauthorized-domain":
+
+                    return "This website domain is not authorized in Firebase.";
+
+                case "auth/network-request-failed":
+
+                    return "Network error. Check your internet connection.";
+
+                case "auth/too-many-requests":
+
+                    return "Too many attempts. Please try again later.";
+
+                default:
+
+                    return (
+                        error.message ||
+                        "Something went wrong. Please try again."
+                    );
+
+            }
+
+        }
+
+
+        // =====================================================
+        // SAVE SESSION USER
+        // =====================================================
+
+        function saveUserSession(
+            user
+        ) {
+
+            sessionStorage.setItem(
+                "devtask_logged_in",
+                "true"
+            );
+
+            sessionStorage.setItem(
+                "devtask_user",
+                JSON.stringify({
+
+                    uid:
+                        user.uid,
+
+                    name:
+                        user.displayName ||
+                        "Developer",
+
+                    email:
+                        user.email ||
+                        "",
+
+                    photoURL:
+                        user.photoURL ||
+                        ""
+
+                })
+            );
+
+        }
+
+
+        // =====================================================
+        // REDIRECT
+        // =====================================================
+
+        function goToDashboard() {
+
+            window.location.href =
+                "dashboard.html";
+
+        }
+
+
+        // =====================================================
+        // GOOGLE LOGIN
+        // =====================================================
 
         googleLoginButton.addEventListener(
             "click",
             async () => {
 
-                loginMessage.textContent =
-                    "";
+                clearMessages();
 
                 googleLoginButton.disabled =
                     true;
@@ -691,7 +1525,7 @@
                     const result =
                         await signInWithPopup(
                             auth,
-                            provider
+                            googleProvider
                         );
 
 
@@ -699,33 +1533,8 @@
                         result.user;
 
 
-                    // Store basic user information
-                    // for the dashboard UI.
-
-                    sessionStorage.setItem(
-                        "devtask_logged_in",
-                        "true"
-                    );
-
-                    sessionStorage.setItem(
-                        "devtask_user",
-                        JSON.stringify({
-
-                            uid: user.uid,
-
-                            name:
-                                user.displayName ||
-                                "Developer",
-
-                            email:
-                                user.email ||
-                                "",
-
-                            photoURL:
-                                user.photoURL ||
-                                ""
-
-                        })
+                    saveUserSession(
+                        user
                     );
 
 
@@ -733,12 +1542,10 @@
                         "Signed in successfully";
 
 
-                    setTimeout(() => {
-
-                        window.location.href =
-                            "dashboard.html";
-
-                    }, 400);
+                    setTimeout(
+                        goToDashboard,
+                        300
+                    );
 
 
                 } catch (error) {
@@ -748,49 +1555,10 @@
                         error
                     );
 
-
-                    let message =
-                        "Unable to sign in with Google. Please try again.";
-
-
-                    if (
-                        error.code ===
-                        "auth/popup-closed-by-user"
-                    ) {
-
-                        message =
-                            "Google sign-in was cancelled.";
-
-                    } else if (
-                        error.code ===
-                        "auth/popup-blocked"
-                    ) {
-
-                        message =
-                            "Your browser blocked the Google sign-in window. Please allow popups for DevTask.";
-
-                    } else if (
-                        error.code ===
-                        "auth/unauthorized-domain"
-                    ) {
-
-                        message =
-                            "This website domain is not authorized in Firebase Authentication.";
-
-                    } else if (
-                        error.code ===
-                        "auth/network-request-failed"
-                    ) {
-
-                        message =
-                            "Network error. Please check your internet connection.";
-
-                    }
-
-
                     loginMessage.textContent =
-                        message;
-
+                        firebaseErrorMessage(
+                            error
+                        );
 
                     googleLoginButton.disabled =
                         false;
@@ -800,6 +1568,548 @@
 
                     googleSpinner.classList.remove(
                         "active"
+                    );
+
+                }
+
+            }
+        );
+
+
+        // =====================================================
+        // EMAIL LOGIN
+        // =====================================================
+
+        loginForm.addEventListener(
+            "submit",
+            async event => {
+
+                event.preventDefault();
+
+                clearMessages();
+                clearLoginErrors();
+
+
+                const email =
+                    loginEmail.value
+                        .trim();
+
+                const password =
+                    loginPassword.value;
+
+
+                let valid = true;
+
+
+                if (!email) {
+
+                    emailError.textContent =
+                        "Please enter your email address.";
+
+                    loginEmail.classList.add(
+                        "input-error"
+                    );
+
+                    valid = false;
+
+                }
+
+
+                if (!password) {
+
+                    passwordError.textContent =
+                        "Please enter your password.";
+
+                    loginPassword.classList.add(
+                        "input-error"
+                    );
+
+                    valid = false;
+
+                }
+
+
+                if (!valid) {
+                    return;
+                }
+
+
+                loginSubmit.disabled =
+                    true;
+
+                loginButtonText.textContent =
+                    "Signing in...";
+
+                loginSpinner.classList.add(
+                    "active"
+                );
+
+
+                try {
+
+                    const result =
+                        await signInWithEmailAndPassword(
+                            auth,
+                            email,
+                            password
+                        );
+
+
+                    const user =
+                        result.user;
+
+
+                    await user.reload();
+
+
+                    if (!user.emailVerified) {
+
+                        await signOut(
+                            auth
+                        );
+
+
+                        verificationText.textContent =
+                            `Your account exists, but ${email} has not been verified yet. Check your Gmail inbox and click the verification link.`;
+
+                        showView(
+                            "verification"
+                        );
+
+
+                        verificationMessage.textContent =
+                            "You must verify your email before entering DevTask.";
+
+                        return;
+
+                    }
+
+
+                    saveUserSession(
+                        user
+                    );
+
+
+                    goToDashboard();
+
+
+                } catch (error) {
+
+                    console.error(
+                        "Email login error:",
+                        error
+                    );
+
+                    loginMessage.textContent =
+                        firebaseErrorMessage(
+                            error
+                        );
+
+                } finally {
+
+                    loginSubmit.disabled =
+                        false;
+
+                    loginButtonText.textContent =
+                        "Log in";
+
+                    loginSpinner.classList.remove(
+                        "active"
+                    );
+
+                }
+
+            }
+        );
+
+
+        // =====================================================
+        // SIGNUP
+        // =====================================================
+
+        signupForm.addEventListener(
+            "submit",
+            async event => {
+
+                event.preventDefault();
+
+                clearMessages();
+                clearSignupErrors();
+
+
+                const email =
+                    signupEmail.value
+                        .trim();
+
+                const password =
+                    signupPassword.value;
+
+                const confirmation =
+                    signupPasswordConfirm.value;
+
+
+                let valid = true;
+
+
+                if (!email) {
+
+                    signupEmailError.textContent =
+                        "Please enter your email address.";
+
+                    signupEmail.classList.add(
+                        "input-error"
+                    );
+
+                    valid = false;
+
+                } else if (
+                    !/^[^\s@]+@[^\s@]+\.[^\s@]+$/
+                        .test(email)
+                ) {
+
+                    signupEmailError.textContent =
+                        "Please enter a valid email address.";
+
+                    signupEmail.classList.add(
+                        "input-error"
+                    );
+
+                    valid = false;
+
+                }
+
+
+                if (
+                    !password ||
+                    password.length < 6
+                ) {
+
+                    signupPasswordError.textContent =
+                        "Password must contain at least 6 characters.";
+
+                    signupPassword.classList.add(
+                        "input-error"
+                    );
+
+                    valid = false;
+
+                }
+
+
+                if (
+                    password !==
+                    confirmation
+                ) {
+
+                    signupConfirmError.textContent =
+                        "Passwords do not match.";
+
+                    signupPasswordConfirm.classList.add(
+                        "input-error"
+                    );
+
+                    valid = false;
+
+                }
+
+
+                if (!valid) {
+                    return;
+                }
+
+
+                signupSubmit.disabled =
+                    true;
+
+                signupButtonText.textContent =
+                    "Creating account...";
+
+                signupSpinner.classList.add(
+                    "active"
+                );
+
+
+                try {
+
+                    const result =
+                        await createUserWithEmailAndPassword(
+                            auth,
+                            email,
+                            password
+                        );
+
+
+                    const user =
+                        result.user;
+
+
+                    await sendEmailVerification(
+                        user
+                    );
+
+
+                    verificationText.textContent =
+                        `We've sent a verification email to ${email}. Open Gmail and click the verification link to verify your account.`;
+
+
+                    verificationMessage.textContent =
+                        "Verification email sent successfully.";
+
+                    showView(
+                        "verification"
+                    );
+
+
+                } catch (error) {
+
+                    console.error(
+                        "Signup error:",
+                        error
+                    );
+
+                    signupMessage.textContent =
+                        firebaseErrorMessage(
+                            error
+                        );
+
+                } finally {
+
+                    signupSubmit.disabled =
+                        false;
+
+                    signupButtonText.textContent =
+                        "Create account";
+
+                    signupSpinner.classList.remove(
+                        "active"
+                    );
+
+                }
+
+            }
+        );
+
+
+        // =====================================================
+        // RESEND VERIFICATION
+        // =====================================================
+
+        resendVerification.addEventListener(
+            "click",
+            async () => {
+
+                verificationMessage.textContent =
+                    "Sending verification email...";
+
+                resendVerification.disabled =
+                    true;
+
+
+                try {
+
+                    const currentUser =
+                        auth.currentUser;
+
+
+                    if (!currentUser) {
+
+                        verificationMessage.textContent =
+                            "Please sign in again before requesting another verification email.";
+
+                        return;
+
+                    }
+
+
+                    await sendEmailVerification(
+                        currentUser
+                    );
+
+
+                    verificationMessage.textContent =
+                        "Verification email sent. Check your Gmail inbox.";
+
+                } catch (error) {
+
+                    console.error(
+                        "Verification resend error:",
+                        error
+                    );
+
+                    verificationMessage.textContent =
+                        firebaseErrorMessage(
+                            error
+                        );
+
+                } finally {
+
+                    resendVerification.disabled =
+                        false;
+
+                }
+
+            }
+        );
+
+
+        // =====================================================
+        // CHECK VERIFICATION
+        // =====================================================
+
+        verificationLoginButton.addEventListener(
+            "click",
+            async () => {
+
+                verificationMessage.textContent =
+                    "Checking verification status...";
+
+
+                try {
+
+                    const currentUser =
+                        auth.currentUser;
+
+
+                    if (!currentUser) {
+
+                        verificationMessage.textContent =
+                            "Please log in again.";
+
+                        showView(
+                            "login"
+                        );
+
+                        return;
+
+                    }
+
+
+                    await currentUser.reload();
+
+
+                    if (
+                        currentUser.emailVerified
+                    ) {
+
+                        saveUserSession(
+                            currentUser
+                        );
+
+                        verificationMessage.textContent =
+                            "Email verified. Opening DevTask...";
+
+                        setTimeout(
+                            goToDashboard,
+                            300
+                        );
+
+                    } else {
+
+                        verificationMessage.textContent =
+                            "Your email is not verified yet. Click the verification link in Gmail, then try again.";
+
+                    }
+
+                } catch (error) {
+
+                    console.error(
+                        "Verification check error:",
+                        error
+                    );
+
+                    verificationMessage.textContent =
+                        firebaseErrorMessage(
+                            error
+                        );
+
+                }
+
+            }
+        );
+
+
+        // =====================================================
+        // FORGOT PASSWORD
+        // =====================================================
+
+        forgotPassword.addEventListener(
+            "click",
+            async () => {
+
+                clearMessages();
+
+                const email =
+                    loginEmail.value.trim();
+
+
+                if (!email) {
+
+                    emailError.textContent =
+                        "Enter your email first, then click Forgot password.";
+
+                    loginEmail.focus();
+
+                    return;
+
+                }
+
+
+                try {
+
+                    await sendPasswordResetEmail(
+                        auth,
+                        email
+                    );
+
+
+                    loginMessage.textContent =
+                        "Password reset email sent. Check your Gmail inbox.";
+
+                } catch (error) {
+
+                    console.error(
+                        "Password reset error:",
+                        error
+                    );
+
+                    loginMessage.textContent =
+                        firebaseErrorMessage(
+                            error
+                        );
+
+                }
+
+            }
+        );
+
+
+        // =====================================================
+        // AUTH STATE
+        // =====================================================
+
+        onAuthStateChanged(
+            auth,
+            user => {
+
+                if (!user) {
+                    return;
+                }
+
+
+                // If Google authenticated the user,
+                // allow them through because Google
+                // already handles account verification.
+
+                if (
+                    user.providerData.some(
+                        provider =>
+                            provider.providerId ===
+                            "google.com"
+                    )
+                ) {
+
+                    saveUserSession(
+                        user
                     );
 
                 }
