@@ -10,7 +10,7 @@
 
     <meta
         name="description"
-        content="DevTask secure email verification and password recovery."
+        content="DevTask dashboard for managing tasks, projects, and productivity."
     >
 
     <meta
@@ -18,284 +18,1102 @@
         content="#080d18"
     >
 
-    <title>DevTask | Secure Action</title>
+    <title>DevTask | Dashboard</title>
 
     <link rel="stylesheet" href="style.css">
 </head>
 
-<body class="landing-page">
+<body>
 
-    <main class="action-page">
+    <!-- =====================================================
+         AUTHENTICATION LOADING SCREEN
+    ====================================================== -->
 
-        <section class="action-card">
+    <div
+        id="authLoading"
+        class="auth-loading"
+    >
 
-            <!-- =========================
-                 BRAND
-            ========================== -->
+        <div class="auth-loading-card">
 
-            <div class="action-logo">
+            <div class="auth-loading-logo">
                 D
             </div>
 
+            <div class="auth-loading-spinner"></div>
 
-            <!-- =========================
-                 LOADING
-            ========================== -->
+            <p>
+                Checking your session...
+            </p>
 
-            <div
-                id="loadingState"
-                class="action-state"
-            >
+        </div>
 
-                <div class="action-spinner"></div>
+    </div>
 
-                <span class="action-label">
-                    DEVTASK
+
+    <!-- =====================================================
+         APPLICATION
+    ====================================================== -->
+
+    <div
+        class="app"
+        id="app"
+        hidden
+    >
+
+        <!-- =================================================
+             SIDEBAR
+        ================================================== -->
+
+        <aside
+            class="sidebar"
+            id="sidebar"
+            aria-label="Main navigation"
+        >
+
+            <div class="brand">
+
+                <div
+                    class="brand-icon"
+                    aria-hidden="true"
+                >
+                    D
+                </div>
+
+                <span>
+                    DevTask
                 </span>
-
-                <h1>
-                    Processing request
-                </h1>
-
-                <p>
-                    Please wait while we securely
-                    process your request.
-                </p>
 
             </div>
 
 
-            <!-- =========================
-                 ERROR
-            ========================== -->
-
-            <div
-                id="errorState"
-                class="action-state"
-                hidden
+            <nav
+                class="sidebar-nav"
+                aria-label="Dashboard navigation"
             >
-
-                <div class="action-icon error">
-                    !
-                </div>
-
-                <span class="action-label">
-                    ACTION FAILED
-                </span>
-
-                <h1 id="errorTitle">
-                    Link unavailable
-                </h1>
-
-                <p id="errorMessage">
-                    This link is invalid or has expired.
-                </p>
 
                 <a
-                    href="index.html"
-                    class="action-primary"
+                    href="#dashboard"
+                    class="nav-item active"
+                    aria-current="page"
                 >
-                    Return to DevTask
+                    <span aria-hidden="true">⌂</span>
+                    <span>Dashboard</span>
                 </a>
 
-            </div>
-
-
-            <!-- =========================
-                 EMAIL VERIFIED
-            ========================== -->
-
-            <div
-                id="verifiedState"
-                class="action-state"
-                hidden
-            >
-
-                <div class="action-icon success">
-                    ✓
-                </div>
-
-                <span class="action-label">
-                    EMAIL VERIFIED
-                </span>
-
-                <h1>
-                    You're verified.
-                </h1>
-
-                <p id="verifiedMessage">
-                    Your email address has been verified successfully.
-                </p>
 
                 <a
-                    href="index.html"
-                    class="action-primary"
+                    href="#tasks"
+                    class="nav-item"
                 >
-                    Continue to DevTask
+                    <span aria-hidden="true">✓</span>
+                    <span>My Tasks</span>
                 </a>
+
+
+                <a
+                    href="#projects"
+                    class="nav-item"
+                >
+                    <span aria-hidden="true">▣</span>
+                    <span>Projects</span>
+                </a>
+
+            </nav>
+
+
+            <div class="sidebar-bottom">
+
+                <button
+                    type="button"
+                    class="nav-item"
+                    id="themeToggle"
+                    aria-label="Toggle color theme"
+                    aria-pressed="false"
+                >
+                    <span aria-hidden="true">◐</span>
+                    <span>Toggle Theme</span>
+                </button>
+
+
+                <button
+                    type="button"
+                    class="nav-item"
+                    id="logoutButton"
+                >
+                    <span aria-hidden="true">↪</span>
+                    <span>Log out</span>
+                </button>
+
+
+                <div class="user-card">
+
+                    <div
+                        class="avatar"
+                        id="sidebarAvatar"
+                        aria-hidden="true"
+                    >
+                        DR
+                    </div>
+
+
+                    <div>
+
+                        <strong id="sidebarUserName">
+                            Developer
+                        </strong>
+
+                        <small id="sidebarUserEmail">
+                            Personal Workspace
+                        </small>
+
+                    </div>
+
+                </div>
 
             </div>
 
+        </aside>
 
-            <!-- =========================
-                 PASSWORD RESET
-            ========================== -->
 
-            <div
-                id="resetState"
-                class="action-state"
-                hidden
-            >
+        <!-- =================================================
+             MAIN
+        ================================================== -->
 
-                <div class="action-icon reset">
-                    ✓
+        <main
+            class="main"
+            id="main-content"
+        >
+
+            <!-- =================================================
+                 TOPBAR
+            ================================================== -->
+
+            <header class="topbar">
+
+                <div class="topbar-left">
+
+                    <button
+                        type="button"
+                        class="mobile-menu"
+                        id="mobileMenu"
+                        aria-label="Open navigation menu"
+                        aria-controls="sidebar"
+                        aria-expanded="false"
+                    >
+                        ☰
+                    </button>
+
+
+                    <div>
+
+                        <p class="topbar-label">
+                            WORKSPACE
+                        </p>
+
+                        <h1>
+                            Dashboard
+                        </h1>
+
+                    </div>
+
                 </div>
 
-                <span class="action-label">
-                    PASSWORD RESET
-                </span>
 
-                <h1>
-                    Create a new password
-                </h1>
+                <div class="topbar-actions">
 
-                <p id="resetAccountText">
-                    Choose a new password for your account.
-                </p>
+                    <button
+                        type="button"
+                        class="icon-button"
+                        aria-label="Notifications"
+                    >
+                        <span aria-hidden="true">
+                            ♧
+                        </span>
+                    </button>
 
 
-                <form
-                    id="resetForm"
-                    class="action-form"
-                    novalidate
+                    <button
+                        type="button"
+                        class="profile-button"
+                        id="profileButton"
+                        aria-label="Account menu"
+                    >
+
+                        <span
+                            class="avatar small"
+                            id="topbarAvatar"
+                            aria-hidden="true"
+                        >
+                            DR
+                        </span>
+
+
+                        <span
+                            class="profile-name"
+                            id="topbarUserName"
+                        >
+                            Developer
+                        </span>
+
+                    </button>
+
+                </div>
+
+            </header>
+
+
+            <!-- =================================================
+                 DASHBOARD
+            ================================================== -->
+
+            <section
+                class="dashboard"
+                id="dashboard"
+                aria-labelledby="dashboard-heading"
+            >
+
+                <div class="welcome">
+
+                    <div>
+
+                        <p class="welcome-label">
+                            GOOD MORNING
+                        </p>
+
+
+                        <h2 id="dashboard-heading">
+                            Let's get things
+                            <span>
+                                done.
+                            </span>
+                        </h2>
+
+
+                        <p>
+                            Organize your work, track your progress,
+                            and stay productive.
+                        </p>
+
+                    </div>
+
+
+                    <button
+                        type="button"
+                        class="primary-button"
+                        id="addTaskButton"
+                    >
+                        + Add Task
+                    </button>
+
+                </div>
+
+
+                <!-- =================================================
+                     STATISTICS
+                ================================================== -->
+
+                <section
+                    class="stats-grid"
+                    aria-label="Task statistics"
                 >
 
-                    <label for="newPassword">
-                        New password
+                    <div class="stat-card">
 
-                        <div class="action-input-wrapper">
+                        <div
+                            class="stat-icon blue"
+                            aria-hidden="true"
+                        >
+                            ✓
+                        </div>
 
-                            <input
-                                type="password"
-                                id="newPassword"
-                                autocomplete="new-password"
-                                placeholder="At least 6 characters"
-                                minlength="6"
-                                required
+                        <div>
+
+                            <span>
+                                Total Tasks
+                            </span>
+
+                            <strong
+                                id="totalTasks"
+                                aria-live="polite"
                             >
+                                0
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="stat-card">
+
+                        <div
+                            class="stat-icon green"
+                            aria-hidden="true"
+                        >
+                            ✓
+                        </div>
+
+                        <div>
+
+                            <span>
+                                Completed
+                            </span>
+
+                            <strong
+                                id="completedTasks"
+                                aria-live="polite"
+                            >
+                                0
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="stat-card">
+
+                        <div
+                            class="stat-icon orange"
+                            aria-hidden="true"
+                        >
+                            ◷
+                        </div>
+
+                        <div>
+
+                            <span>
+                                In Progress
+                            </span>
+
+                            <strong
+                                id="activeTasks"
+                                aria-live="polite"
+                            >
+                                0
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="stat-card">
+
+                        <div
+                            class="stat-icon purple"
+                            aria-hidden="true"
+                        >
+                            %
+                        </div>
+
+                        <div>
+
+                            <span>
+                                Completion
+                            </span>
+
+                            <strong
+                                id="completionRate"
+                                aria-live="polite"
+                            >
+                                0%
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+                <!-- =================================================
+                     CONTENT GRID
+                ================================================== -->
+
+                <div class="content-grid">
+
+                    <!-- =================================================
+                         TASKS
+                    ================================================== -->
+
+                    <section
+                        class="panel tasks-panel"
+                        id="tasks"
+                        aria-labelledby="tasks-heading"
+                    >
+
+                        <div class="panel-header">
+
+                            <div>
+
+                                <p class="panel-label">
+                                    TASK MANAGEMENT
+                                </p>
+
+                                <h3 id="tasks-heading">
+                                    My Tasks
+                                </h3>
+
+                            </div>
+
 
                             <button
                                 type="button"
-                                id="newPasswordToggle"
-                                class="action-toggle"
+                                class="text-button"
+                                id="clearCompleted"
                             >
-                                Show
+                                Clear completed
                             </button>
 
                         </div>
 
-                    </label>
+
+                        <div class="task-controls">
+
+                            <div class="search-box">
+
+                                <span aria-hidden="true">
+                                    ⌕
+                                </span>
+
+                                <label
+                                    for="searchInput"
+                                    class="sr-only"
+                                >
+                                    Search tasks
+                                </label>
+
+                                <input
+                                    type="search"
+                                    id="searchInput"
+                                    placeholder="Search tasks..."
+                                    autocomplete="off"
+                                    maxlength="100"
+                                >
+
+                            </div>
 
 
-                    <label for="confirmPassword">
-                        Confirm password
+                            <label
+                                for="filterSelect"
+                                class="sr-only"
+                            >
+                                Filter tasks
+                            </label>
 
-                        <div class="action-input-wrapper">
-
-                            <input
-                                type="password"
-                                id="confirmPassword"
-                                autocomplete="new-password"
-                                placeholder="Enter your password again"
-                                minlength="6"
-                                required
+                            <select
+                                id="filterSelect"
+                                aria-label="Filter tasks"
                             >
 
-                            <button
-                                type="button"
-                                id="confirmPasswordToggle"
-                                class="action-toggle"
-                            >
-                                Show
-                            </button>
+                                <option value="all">
+                                    All Tasks
+                                </option>
+
+                                <option value="active">
+                                    Active
+                                </option>
+
+                                <option value="completed">
+                                    Completed
+                                </option>
+
+                                <option value="high">
+                                    High Priority
+                                </option>
+
+                            </select>
 
                         </div>
 
+
+                        <div
+                            id="taskList"
+                            class="task-list"
+                            aria-live="polite"
+                        >
+
+                            <div
+                                class="empty-state"
+                                id="emptyState"
+                            >
+
+                                <div
+                                    class="empty-icon"
+                                    aria-hidden="true"
+                                >
+                                    ✓
+                                </div>
+
+
+                                <h4>
+                                    No tasks yet
+                                </h4>
+
+
+                                <p>
+                                    Create your first task to get started.
+                                </p>
+
+
+                                <button
+                                    type="button"
+                                    class="primary-button"
+                                    id="emptyAddTask"
+                                >
+                                    Create Task
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                    </section>
+
+
+                    <!-- =================================================
+                         PROGRESS
+                    ================================================== -->
+
+                    <aside
+                        class="panel progress-panel"
+                        aria-labelledby="progress-heading"
+                    >
+
+                        <div class="panel-header">
+
+                            <div>
+
+                                <p class="panel-label">
+                                    OVERVIEW
+                                </p>
+
+                                <h3 id="progress-heading">
+                                    Progress
+                                </h3>
+
+                            </div>
+
+                        </div>
+
+
+                        <div
+                            class="progress-circle"
+                            role="progressbar"
+                            aria-valuemin="0"
+                            aria-valuemax="100"
+                            aria-valuenow="0"
+                            aria-label="Task completion progress"
+                        >
+
+                            <div class="progress-inner">
+
+                                <strong
+                                    id="progressPercentage"
+                                    aria-live="polite"
+                                >
+                                    0%
+                                </strong>
+
+                                <span>
+                                    Complete
+                                </span>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="progress-details">
+
+                            <div>
+
+                                <span>
+                                    Completed
+                                </span>
+
+                                <strong
+                                    id="progressCompleted"
+                                    aria-live="polite"
+                                >
+                                    0
+                                </strong>
+
+                            </div>
+
+
+                            <div>
+
+                                <span>
+                                    Remaining
+                                </span>
+
+                                <strong
+                                    id="progressRemaining"
+                                    aria-live="polite"
+                                >
+                                    0
+                                </strong>
+
+                            </div>
+
+                        </div>
+
+                    </aside>
+
+                </div>
+
+
+                <!-- =================================================
+                     PROJECTS
+                ================================================== -->
+
+                <section
+                    class="panel projects-panel"
+                    id="projects"
+                    aria-labelledby="projects-heading"
+                >
+
+                    <div class="panel-header">
+
+                        <div>
+
+                            <p class="panel-label">
+                                WORKSPACE
+                            </p>
+
+                            <h3 id="projects-heading">
+                                Projects
+                            </h3>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="project-grid">
+
+                        <article
+                            class="project-item"
+                            data-project="portfolio"
+                            data-progress="75"
+                        >
+
+                            <div class="project-top">
+
+                                <span
+                                    class="project-dot blue"
+                                    aria-hidden="true"
+                                ></span>
+
+                                <span>
+                                    WEB
+                                </span>
+
+                            </div>
+
+                            <h4>
+                                Portfolio Website
+                            </h4>
+
+                            <p>
+                                Personal developer portfolio
+                            </p>
+
+
+                            <div class="project-progress">
+
+                                <div>
+
+                                    <span>
+                                        Progress
+                                    </span>
+
+                                    <strong class="project-percentage">
+                                        75%
+                                    </strong>
+
+                                </div>
+
+
+                                <div
+                                    class="progress-bar"
+                                    role="progressbar"
+                                    aria-valuemin="0"
+                                    aria-valuemax="100"
+                                    aria-valuenow="75"
+                                    aria-label="Portfolio Website progress"
+                                >
+
+                                    <span
+                                        class="project-progress-fill"
+                                        style="width: 75%"
+                                    ></span>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="project-controls">
+
+                                <button
+                                    class="task-action project-decrease"
+                                    type="button"
+                                    aria-label="Decrease Portfolio Website progress"
+                                >
+                                    −
+                                </button>
+
+                                <button
+                                    class="task-action project-increase"
+                                    type="button"
+                                    aria-label="Increase Portfolio Website progress"
+                                >
+                                    +
+                                </button>
+
+                            </div>
+
+                        </article>
+
+
+                        <article
+                            class="project-item"
+                            data-project="devtask"
+                            data-progress="40"
+                        >
+
+                            <div class="project-top">
+
+                                <span
+                                    class="project-dot green"
+                                    aria-hidden="true"
+                                ></span>
+
+                                <span>
+                                    APP
+                                </span>
+
+                            </div>
+
+                            <h4>
+                                DevTask
+                            </h4>
+
+                            <p>
+                                Task management application
+                            </p>
+
+
+                            <div class="project-progress">
+
+                                <div>
+
+                                    <span>
+                                        Progress
+                                    </span>
+
+                                    <strong class="project-percentage">
+                                        40%
+                                    </strong>
+
+                                </div>
+
+
+                                <div
+                                    class="progress-bar"
+                                    role="progressbar"
+                                    aria-valuemin="0"
+                                    aria-valuemax="100"
+                                    aria-valuenow="40"
+                                    aria-label="DevTask project progress"
+                                >
+
+                                    <span
+                                        class="project-progress-fill"
+                                        style="width: 40%"
+                                    ></span>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="project-controls">
+
+                                <button
+                                    class="task-action project-decrease"
+                                    type="button"
+                                    aria-label="Decrease DevTask progress"
+                                >
+                                    −
+                                </button>
+
+                                <button
+                                    class="task-action project-increase"
+                                    type="button"
+                                    aria-label="Increase DevTask progress"
+                                >
+                                    +
+                                </button>
+
+                            </div>
+
+                        </article>
+
+
+                        <article
+                            class="project-item"
+                            data-project="brand"
+                            data-progress="25"
+                        >
+
+                            <div class="project-top">
+
+                                <span
+                                    class="project-dot purple"
+                                    aria-hidden="true"
+                                ></span>
+
+                                <span>
+                                    DESIGN
+                                </span>
+
+                            </div>
+
+                            <h4>
+                                Brand Identity
+                            </h4>
+
+                            <p>
+                                New visual identity project
+                            </p>
+
+
+                            <div class="project-progress">
+
+                                <div>
+
+                                    <span>
+                                        Progress
+                                    </span>
+
+                                    <strong class="project-percentage">
+                                        25%
+                                    </strong>
+
+                                </div>
+
+
+                                <div
+                                    class="progress-bar"
+                                    role="progressbar"
+                                    aria-valuemin="0"
+                                    aria-valuemax="100"
+                                    aria-valuenow="25"
+                                    aria-label="Brand Identity project progress"
+                                >
+
+                                    <span
+                                        class="project-progress-fill"
+                                        style="width: 25%"
+                                    ></span>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="project-controls">
+
+                                <button
+                                    class="task-action project-decrease"
+                                    type="button"
+                                    aria-label="Decrease Brand Identity progress"
+                                >
+                                    −
+                                </button>
+
+                                <button
+                                    class="task-action project-increase"
+                                    type="button"
+                                    aria-label="Increase Brand Identity progress"
+                                >
+                                    +
+                                </button>
+
+                            </div>
+
+                        </article>
+
+                    </div>
+
+                </section>
+
+            </section>
+
+        </main>
+
+    </div>
+
+
+    <!-- =====================================================
+         ADD / EDIT TASK MODAL
+    ====================================================== -->
+
+    <div
+        class="modal-overlay"
+        id="modalOverlay"
+        role="presentation"
+    >
+
+        <div
+            class="modal"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="modalTitle"
+        >
+
+            <div class="modal-header">
+
+                <div>
+
+                    <p class="panel-label">
+                        TASK MANAGEMENT
+                    </p>
+
+                    <h3 id="modalTitle">
+                        Create Task
+                    </h3>
+
+                </div>
+
+
+                <button
+                    type="button"
+                    class="close-button"
+                    id="closeModal"
+                    aria-label="Close task dialog"
+                >
+                    ×
+                </button>
+
+            </div>
+
+
+            <form id="taskForm">
+
+                <input
+                    type="hidden"
+                    id="taskId"
+                >
+
+
+                <label for="taskTitle">
+
+                    Task title
+
+                    <input
+                        type="text"
+                        id="taskTitle"
+                        placeholder="e.g. Finish portfolio website"
+                        autocomplete="off"
+                        maxlength="100"
+                        required
+                    >
+
+                </label>
+
+
+                <label for="taskDescription">
+
+                    Description
+
+                    <textarea
+                        id="taskDescription"
+                        rows="4"
+                        placeholder="Describe the task..."
+                        maxlength="500"
+                    ></textarea>
+
+                </label>
+
+
+                <div class="form-row">
+
+                    <label for="taskPriority">
+
+                        Priority
+
+                        <select id="taskPriority">
+
+                            <option value="low">
+                                Low
+                            </option>
+
+                            <option
+                                value="medium"
+                                selected
+                            >
+                                Medium
+                            </option>
+
+                            <option value="high">
+                                High
+                            </option>
+
+                        </select>
+
                     </label>
 
 
-                    <p
-                        id="resetError"
-                        class="action-error"
-                        role="alert"
-                    ></p>
+                    <label for="taskDueDate">
+
+                        Due date
+
+                        <input
+                            type="date"
+                            id="taskDueDate"
+                        >
+
+                    </label>
+
+                </div>
+
+
+                <div class="modal-actions">
+
+                    <button
+                        type="button"
+                        class="secondary-button"
+                        id="cancelTask"
+                    >
+                        Cancel
+                    </button>
 
 
                     <button
                         type="submit"
-                        id="resetSubmit"
-                        class="action-primary"
+                        class="primary-button"
                     >
-                        <span id="resetButtonText">
-                            Update password
-                        </span>
-
-                        <span
-                            id="resetSpinner"
-                            class="action-spinner-small"
-                            hidden
-                        ></span>
-
+                        Save Task
                     </button>
 
-                </form>
-
-            </div>
-
-
-            <!-- =========================
-                 PASSWORD RESET SUCCESS
-            ========================== -->
-
-            <div
-                id="resetSuccessState"
-                class="action-state"
-                hidden
-            >
-
-                <div class="action-icon success">
-                    ✓
                 </div>
 
-                <span class="action-label">
-                    PASSWORD UPDATED
-                </span>
+            </form>
 
-                <h1>
-                    You're all set.
-                </h1>
+        </div>
 
-                <p>
-                    Your DevTask password has been updated successfully.
-                </p>
-
-                <a
-                    href="index.html"
-                    class="action-primary"
-                >
-                    Return to login
-                </a>
-
-            </div>
-
-        </section>
-
-    </main>
+    </div>
 
 
-    <!-- =========================
-         FIREBASE
-    ========================== -->
+    <!-- =====================================================
+         FIREBASE AUTH GUARD
+    ====================================================== -->
 
     <script type="module">
 
@@ -306,9 +1124,8 @@
 
         import {
             getAuth,
-            applyActionCode,
-            verifyPasswordResetCode,
-            confirmPasswordReset
+            onAuthStateChanged,
+            signOut
         } from
         "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
 
@@ -354,459 +1171,120 @@
 
 
         // =====================================================
-        // URL PARAMETERS
+        // UI
         // =====================================================
 
-        const params =
-            new URLSearchParams(
-                window.location.search
+        const authLoading =
+            document.getElementById(
+                "authLoading"
             );
 
-        const mode =
-            params.get("mode");
-
-        const actionCode =
-            params.get("oobCode");
-
-        const continueUrl =
-            params.get("continueUrl");
-
-
-        // =====================================================
-        // DOM
-        // =====================================================
-
-        const loadingState =
+        const appElement =
             document.getElementById(
-                "loadingState"
+                "app"
             );
 
-        const errorState =
+        const logoutButton =
             document.getElementById(
-                "errorState"
+                "logoutButton"
             );
 
-        const errorTitle =
+        const sidebarUserName =
             document.getElementById(
-                "errorTitle"
+                "sidebarUserName"
             );
 
-        const errorMessage =
+        const sidebarUserEmail =
             document.getElementById(
-                "errorMessage"
+                "sidebarUserEmail"
             );
 
-        const verifiedState =
+        const sidebarAvatar =
             document.getElementById(
-                "verifiedState"
+                "sidebarAvatar"
             );
 
-        const verifiedMessage =
+        const topbarUserName =
             document.getElementById(
-                "verifiedMessage"
+                "topbarUserName"
             );
 
-        const resetState =
+        const topbarAvatar =
             document.getElementById(
-                "resetState"
-            );
-
-        const resetAccountText =
-            document.getElementById(
-                "resetAccountText"
-            );
-
-        const resetSuccessState =
-            document.getElementById(
-                "resetSuccessState"
-            );
-
-        const resetForm =
-            document.getElementById(
-                "resetForm"
-            );
-
-        const newPassword =
-            document.getElementById(
-                "newPassword"
-            );
-
-        const confirmPassword =
-            document.getElementById(
-                "confirmPassword"
-            );
-
-        const newPasswordToggle =
-            document.getElementById(
-                "newPasswordToggle"
-            );
-
-        const confirmPasswordToggle =
-            document.getElementById(
-                "confirmPasswordToggle"
-            );
-
-        const resetError =
-            document.getElementById(
-                "resetError"
-            );
-
-        const resetSubmit =
-            document.getElementById(
-                "resetSubmit"
-            );
-
-        const resetButtonText =
-            document.getElementById(
-                "resetButtonText"
-            );
-
-        const resetSpinner =
-            document.getElementById(
-                "resetSpinner"
+                "topbarAvatar"
             );
 
 
         // =====================================================
-        // HELPERS
+        // AVATAR
         // =====================================================
 
-        function hideLoading() {
-
-            loadingState.hidden =
-                true;
-
-        }
-
-
-        function showError(
-            title,
-            message
+        function getInitials(
+            name
         ) {
 
-            hideLoading();
-
-            verifiedState.hidden =
-                true;
-
-            resetState.hidden =
-                true;
-
-            resetSuccessState.hidden =
-                true;
-
-            errorState.hidden =
-                false;
-
-            errorTitle.textContent =
-                title;
-
-            errorMessage.textContent =
-                message;
-
-        }
+            if (!name) {
+                return "U";
+            }
 
 
-        function showVerified(
-            email
-        ) {
+            const parts =
+                name
+                    .trim()
+                    .split(/\s+/)
+                    .filter(Boolean);
 
-            hideLoading();
 
-            errorState.hidden =
-                true;
+            if (parts.length === 1) {
 
-            resetState.hidden =
-                true;
-
-            resetSuccessState.hidden =
-                true;
-
-            verifiedState.hidden =
-                false;
-
-            if (email) {
-
-                verifiedMessage.textContent =
-                    `${email} has been verified successfully.`;
+                return parts[0]
+                    .slice(0, 2)
+                    .toUpperCase();
 
             }
 
+
+            return (
+                parts[0][0] +
+                parts[parts.length - 1][0]
+            ).toUpperCase();
+
         }
 
 
-        function showReset(
-            email
+        function setUserAvatar(
+            element,
+            user
         ) {
 
-            hideLoading();
-
-            errorState.hidden =
-                true;
-
-            verifiedState.hidden =
-                true;
-
-            resetSuccessState.hidden =
-                true;
-
-            resetState.hidden =
-                false;
-
-            if (email) {
-
-                resetAccountText.textContent =
-                    `Create a new password for ${email}.`;
-
+            if (!element) {
+                return;
             }
 
-            newPassword.focus();
 
-        }
+            if (user.photoURL) {
 
+                element.innerHTML = "";
 
-        function firebaseActionError(
-            error
-        ) {
+                const image =
+                    document.createElement(
+                        "img"
+                    );
 
-            switch (error.code) {
+                image.src =
+                    user.photoURL;
 
-                case "auth/expired-action-code":
-
-                    return {
-                        title:
-                            "This link has expired",
-                        message:
-                            "This Firebase action link is no longer valid. Request a new email from DevTask and use the newest link."
-                    };
-
-
-                case "auth/invalid-action-code":
-
-                    return {
-                        title:
-                            "This link is no longer valid",
-                        message:
-                            "The action code is invalid or has already been used. Request a new email and try again."
-                    };
-
-
-                case "auth/user-disabled":
-
-                    return {
-                        title:
-                            "Account disabled",
-                        message:
-                            "This account has been disabled."
-                    };
-
-
-                case "auth/user-not-found":
-
-                    return {
-                        title:
-                            "Account not found",
-                        message:
-                            "The Firebase account associated with this action could not be found."
-                    };
-
-
-                case "auth/weak-password":
-
-                    return {
-                        title:
-                            "Password too weak",
-                        message:
-                            "Choose a stronger password with at least 6 characters."
-                    };
-
-
-                default:
-
-                    return {
-                        title:
-                            "Something went wrong",
-                        message:
-                            error.message ||
-                            "The requested action could not be completed."
-                    };
-
-            }
-
-        }
-
-
-        function toggleVisibility(
-            input,
-            button
-        ) {
-
-            const isPassword =
-                input.type === "password";
-
-            input.type =
-                isPassword
-                    ? "text"
-                    : "password";
-
-            button.textContent =
-                isPassword
-                    ? "Hide"
-                    : "Show";
-
-        }
-
-
-        // =====================================================
-        // PASSWORD VISIBILITY
-        // =====================================================
-
-        newPasswordToggle.addEventListener(
-            "click",
-            () => {
-
-                toggleVisibility(
-                    newPassword,
-                    newPasswordToggle
-                );
-
-            }
-        );
-
-
-        confirmPasswordToggle.addEventListener(
-            "click",
-            () => {
-
-                toggleVisibility(
-                    confirmPassword,
-                    confirmPasswordToggle
-                );
-
-            }
-        );
-
-
-        // =====================================================
-        // PASSWORD RESET FORM
-        // =====================================================
-
-        resetForm.addEventListener(
-            "submit",
-            async event => {
-
-                event.preventDefault();
-
-                resetError.textContent =
+                image.alt =
                     "";
 
-                const password =
-                    newPassword.value;
+                image.referrerPolicy =
+                    "no-referrer";
 
-                const confirmation =
-                    confirmPassword.value;
+                image.width = 38;
+                image.height = 38;
 
-
-                if (
-                    password.length < 6
-                ) {
-
-                    resetError.textContent =
-                        "Password must contain at least 6 characters.";
-
-                    newPassword.focus();
-
-                    return;
-
-                }
-
-
-                if (
-                    password !==
-                    confirmation
-                ) {
-
-                    resetError.textContent =
-                        "Passwords do not match.";
-
-                    confirmPassword.focus();
-
-                    return;
-
-                }
-
-
-                resetSubmit.disabled =
-                    true;
-
-                resetButtonText.textContent =
-                    "Updating password...";
-
-                resetSpinner.hidden =
-                    false;
-
-
-                try {
-
-                    await confirmPasswordReset(
-                        auth,
-                        actionCode,
-                        password
-                    );
-
-
-                    resetState.hidden =
-                        true;
-
-                    resetSuccessState.hidden =
-                        false;
-
-
-                } catch (error) {
-
-                    console.error(
-                        "Password reset error:",
-                        error
-                    );
-
-                    const result =
-                        firebaseActionError(
-                            error
-                        );
-
-                    showError(
-                        result.title,
-                        result.message
-                    );
-
-                } finally {
-
-                    resetSubmit.disabled =
-                        false;
-
-                    resetButtonText.textContent =
-                        "Update password";
-
-                    resetSpinner.hidden =
-                        true;
-
-                }
-
-            }
-        );
-
-
-        // =====================================================
-        // INITIAL ACTION HANDLER
-        // =====================================================
-
-        async function processAction() {
-
-            if (!mode || !actionCode) {
-
-                showError(
-                    "Invalid request",
-                    "This page is missing the Firebase email action information."
+                element.appendChild(
+                    image
                 );
 
                 return;
@@ -814,101 +1292,191 @@
             }
 
 
-            try {
-
-                // =============================================
-                // VERIFY EMAIL
-                // =============================================
-
-                if (
-                    mode ===
-                    "verifyEmail"
-                ) {
-
-                    await applyActionCode(
-                        auth,
-                        actionCode
-                    );
-
-
-                    // Firebase has successfully
-                    // marked the email as verified.
-
-                    showVerified();
-
-
-                    return;
-
-                }
-
-
-                // =============================================
-                // RESET PASSWORD
-                // =============================================
-
-                if (
-                    mode ===
-                    "resetPassword"
-                ) {
-
-                    const email =
-                        await verifyPasswordResetCode(
-                            auth,
-                            actionCode
-                        );
-
-
-                    showReset(
-                        email
-                    );
-
-
-                    return;
-
-                }
-
-
-                // =============================================
-                // UNSUPPORTED
-                // =============================================
-
-                showError(
-                    "Unsupported action",
-                    "This DevTask email action is not supported by this page."
+            element.textContent =
+                getInitials(
+                    user.displayName ||
+                    user.email ||
+                    "User"
                 );
-
-
-            } catch (error) {
-
-                console.error(
-                    "Firebase action handler error:",
-                    error
-                );
-
-
-                const result =
-                    firebaseActionError(
-                        error
-                    );
-
-
-                showError(
-                    result.title,
-                    result.message
-                );
-
-            }
 
         }
 
 
         // =====================================================
-        // START
+        // USER UI
         // =====================================================
 
-        processAction();
+        function populateUser(
+            user
+        ) {
+
+            const displayName =
+                user.displayName ||
+                (
+                    user.email
+                        ? user.email.split("@")[0]
+                        : "Developer"
+                );
+
+
+            if (sidebarUserName) {
+
+                sidebarUserName.textContent =
+                    displayName;
+
+            }
+
+
+            if (sidebarUserEmail) {
+
+                sidebarUserEmail.textContent =
+                    user.email ||
+                    "Personal Workspace";
+
+            }
+
+
+            if (topbarUserName) {
+
+                topbarUserName.textContent =
+                    displayName;
+
+            }
+
+
+            setUserAvatar(
+                sidebarAvatar,
+                user
+            );
+
+            setUserAvatar(
+                topbarAvatar,
+                user
+            );
+
+        }
+
+
+        // =====================================================
+        // AUTH STATE
+        // =====================================================
+
+        onAuthStateChanged(
+            auth,
+            user => {
+
+                if (!user) {
+
+                    window.location.replace(
+                        "index.html"
+                    );
+
+                    return;
+
+                }
+
+
+                populateUser(
+                    user
+                );
+
+
+                if (authLoading) {
+
+                    authLoading.remove();
+
+                }
+
+
+                if (appElement) {
+
+                    appElement.hidden =
+                        false;
+
+                }
+
+            }
+        );
+
+
+        // =====================================================
+        // LOGOUT
+        // =====================================================
+
+        if (logoutButton) {
+
+            logoutButton.addEventListener(
+                "click",
+                async () => {
+
+                    logoutButton.disabled =
+                        true;
+
+                    logoutButton.querySelector(
+                        "span:last-child"
+                    ).textContent =
+                        "Logging out...";
+
+
+                    try {
+
+                        await signOut(
+                            auth
+                        );
+
+
+                        sessionStorage.removeItem(
+                            "devtask_logged_in"
+                        );
+
+                        sessionStorage.removeItem(
+                            "devtask_user"
+                        );
+
+
+                        window.location.replace(
+                            "index.html"
+                        );
+
+
+                    } catch (error) {
+
+                        console.error(
+                            "Logout failed:",
+                            error
+                        );
+
+
+                        logoutButton.disabled =
+                            false;
+
+                        logoutButton.querySelector(
+                            "span:last-child"
+                        ).textContent =
+                            "Log out";
+
+                        alert(
+                            "Unable to log out right now. Please try again."
+                        );
+
+                    }
+
+                }
+            );
+
+        }
 
     </script>
+
+
+    <!-- =====================================================
+         EXISTING DASHBOARD LOGIC
+    ====================================================== -->
+
+    <script
+        src="script.js"
+        defer
+    ></script>
 
 </body>
 </html>
