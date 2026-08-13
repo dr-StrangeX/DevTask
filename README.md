@@ -1,52 +1,32 @@
-# DevTask
+🌐 Deployment
 
-A modern, responsive task management dashboard built with HTML, CSS, and vanilla JavaScript.
+The application is deployed using GitHub Pages.
 
-DevTask provides a clean productivity interface for creating, organizing, searching, filtering, and completing tasks.
+Live website:
 
-![DevTask Preview](images/website-preview.png)
+https://dr-strangex.github.io/DevTask/
 
-## 🚀 Live Demo
+🔮 Future Improvements
 
-**[Open DevTask](https://dr-strangex.github.io/DevTask/)**
+Potential future features include:
 
-## ✨ Features
+User authentication
+Cloud database synchronization
+User accounts
+Task categories
+Drag-and-drop task organization
+Calendar integration
+Notifications
+Backend API
+Multi-device synchronization
+👨‍💻 Author
 
-- Create tasks
-- Edit existing tasks
-- Delete tasks
-- Mark tasks as completed
-- Search tasks
-- Filter tasks by status
-- Filter tasks by priority
-- Automatic task prioritization
-- Task completion statistics
-- Progress tracking
-- Persistent data using browser LocalStorage
-- Dark and light theme support
-- Responsive mobile layout
-- Mobile navigation
-- Empty-state handling
-- Confirmation dialogs for destructive actions
+dr-StrangeX
 
-## 🛠️ Technologies
+GitHub:
 
-- HTML5
-- CSS3
-- JavaScript (ES6+)
-- LocalStorage API
-- Git
-- GitHub
-- GitHub Pages
+https://github.com/dr-StrangeX
 
-## 📁 Project Structure
+📄 License
 
-```text
-DevTask/
-├── index.html
-├── style.css
-├── script.js
-├── images/
-│   └── website-preview.png
-├── README.md
-└── .gitignore
+This project is available for educational and portfolio purposes.
