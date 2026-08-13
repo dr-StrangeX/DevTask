@@ -1250,12 +1250,7 @@ body:not(.landing-page) {
 
 .app {
     min-height: 100vh;
-
-    background-image: url("background.png");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
+    background: transparent;
 }
 
 /* =========================================================
@@ -3203,11 +3198,11 @@ body.light-theme {
 
 /* Main application */
 body.light-theme .app {
-    background: var(--bg);
+    background: transparent;
 }
 
 body.light-theme .main {
-    background: var(--bg);
+    background: transparent;
 }
 
 /* Sidebar */
@@ -3537,25 +3532,4 @@ body.light-theme .auth-loading {
 body.light-theme .auth-loading-card {
     color: #536174;
 }
-/* =========================================================
-   BACKGROUND IMAGE — PERSISTS IN BOTH THEMES
-========================================================= */
 
-body {
-    background-color: var(--bg);
-    background-image: url("YOUR-BACKGROUND-IMAGE.jpg");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-}
-
-/* Keep the image visible in light mode */
-body.light-theme {
-    background-color: #f5f7fb;
-    background-image: url("background.png");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-}
