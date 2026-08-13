@@ -56,10 +56,7 @@
              HERO
         ========================== -->
 
-        <section
-            class="hero"
-            id="hero"
-        >
+        <section class="hero" id="hero">
 
             <div class="hero-content">
 
@@ -119,9 +116,7 @@
                             <span></span>
                         </div>
 
-                        <span>
-                            DevTask
-                        </span>
+                        <span>DevTask</span>
 
                     </div>
 
@@ -130,9 +125,7 @@
 
                         <div class="preview-sidebar">
 
-                            <strong>
-                                DevTask
-                            </strong>
+                            <strong>DevTask</strong>
 
                             <span class="preview-active">
                                 ⌂ Dashboard
@@ -151,9 +144,7 @@
 
                         <div class="preview-main">
 
-                            <small>
-                                WORKSPACE
-                            </small>
+                            <small>WORKSPACE</small>
 
                             <h3>
                                 Let's get things
@@ -206,8 +197,7 @@
 
                             <div class="preview-task">
 
-                                <span class="preview-check empty">
-                                </span>
+                                <span class="preview-check empty"></span>
 
                                 <div>
                                     <strong>
@@ -384,160 +374,76 @@
                 </h2>
 
                 <p>
-                    Enter your credentials to continue
-                    to your workspace.
+                    Sign in securely with your Google account.
                 </p>
 
             </div>
 
 
             <!-- =========================
-                 LOGIN FORM
+                 GOOGLE LOGIN
             ========================== -->
-
-            <form
-                id="loginForm"
-                class="login-form"
-                novalidate
-            >
-
-                <div class="form-group">
-
-                    <label for="loginEmail">
-                        Email address
-                    </label>
-
-                    <input
-                        type="email"
-                        id="loginEmail"
-                        name="email"
-                        placeholder="you@example.com"
-                        autocomplete="email"
-                        required
-                    >
-
-                    <small
-                        class="login-error"
-                        id="emailError"
-                    ></small>
-
-                </div>
-
-
-                <div class="form-group">
-
-                    <div class="password-label-row">
-
-                        <label for="loginPassword">
-                            Password
-                        </label>
-
-                        <button
-                            type="button"
-                            class="forgot-button"
-                            id="forgotPassword"
-                        >
-                            Forgot password?
-                        </button>
-
-                    </div>
-
-
-                    <div class="password-wrapper">
-
-                        <input
-                            type="password"
-                            id="loginPassword"
-                            name="password"
-                            placeholder="Enter your password"
-                            autocomplete="current-password"
-                            minlength="6"
-                            required
-                        >
-
-                        <button
-                            type="button"
-                            class="password-toggle"
-                            id="passwordToggle"
-                            aria-label="Show password"
-                        >
-                            Show
-                        </button>
-
-                    </div>
-
-                    <small
-                        class="login-error"
-                        id="passwordError"
-                    ></small>
-
-                </div>
-
-
-                <label class="remember-row">
-
-                    <input
-                        type="checkbox"
-                        id="rememberMe"
-                    >
-
-                    <span>
-                        Remember me
-                    </span>
-
-                </label>
-
-
-                <button
-                    type="submit"
-                    class="primary-button login-submit"
-                    id="loginSubmit"
-                >
-                    <span id="loginButtonText">
-                        Log in
-                    </span>
-
-                    <span
-                        id="loginSpinner"
-                        class="login-spinner"
-                        aria-hidden="true"
-                    ></span>
-
-                </button>
-
-
-                <p
-                    class="login-message"
-                    id="loginMessage"
-                    role="status"
-                    aria-live="polite"
-                ></p>
-
-            </form>
-
-
-            <div class="login-divider">
-                <span>or</span>
-            </div>
-
 
             <button
                 type="button"
-                class="demo-login"
-                id="demoLogin"
+                class="google-login-button"
+                id="googleLoginButton"
             >
-                Continue with demo account
+
+                <span class="google-icon">
+                    <svg
+                        width="20"
+                        height="20"
+                        viewBox="0 0 24 24"
+                        aria-hidden="true"
+                    >
+                        <path
+                            fill="#4285F4"
+                            d="M21.35 12.23c0-.79-.07-1.55-.22-2.27H12v4.3h5.24a4.48 4.48 0 0 1-1.94 2.94v2.45h3.14c1.84-1.69 2.91-4.18 2.91-7.42z"
+                        />
+                        <path
+                            fill="#34A853"
+                            d="M12 21.99c2.63 0 4.84-.87 6.45-2.34l-3.14-2.45c-.87.58-1.98.92-3.31.92-2.54 0-4.7-1.72-5.47-4.03H3.28v2.53A9.74 9.74 0 0 0 12 21.99z"
+                        />
+                        <path
+                            fill="#FBBC05"
+                            d="M6.53 14.09A5.86 5.86 0 0 1 6.22 12c0-.73.13-1.44.31-2.09V7.38H3.28A9.99 9.99 0 0 0 2 12c0 1.61.38 3.13 1.28 4.62l3.25-2.53z"
+                        />
+                        <path
+                            fill="#EA4335"
+                            d="M12 5.88c1.43 0 2.71.49 3.72 1.45l2.79-2.79C16.84 2.93 14.63 2 12 2a9.74 9.74 0 0 0-8.72 5.38l3.25 2.53C7.3 7.6 9.46 5.88 12 5.88z"
+                        />
+                    </svg>
+                </span>
+
+                <span id="googleButtonText">
+                    Continue with Google
+                </span>
+
+                <span
+                    id="googleSpinner"
+                    class="login-spinner"
+                    aria-hidden="true"
+                ></span>
+
             </button>
 
 
+            <p
+                class="login-message"
+                id="loginMessage"
+                role="status"
+                aria-live="polite"
+            ></p>
+
+
+            <div class="login-divider">
+                <span>Secure authentication</span>
+            </div>
+
+
             <p class="login-footer">
-                Don't have an account?
-                <button
-                    type="button"
-                    id="signupButton"
-                >
-                    Create one
-                </button>
+                Your Google password is never shared with DevTask.
             </p>
 
         </section>
@@ -546,68 +452,113 @@
 
 
     <!-- =========================
-         LOGIN JAVASCRIPT
+         FIREBASE
     ========================== -->
 
-    <script>
+    <script type="module">
 
-        "use strict";
+        import {
+            initializeApp
+        } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
+
+        import {
+            getAuth,
+            GoogleAuthProvider,
+            signInWithPopup
+        } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
 
 
         // =========================
-        // ELEMENTS
+        // FIREBASE CONFIGURATION
+        // =========================
+
+        const firebaseConfig = {
+
+            apiKey:
+                "AIzaSyATGM7Z8DxDbaxJnm354YMSEJs_iL3hRnE",
+
+            authDomain:
+                "devtask-16557.firebaseapp.com",
+
+            projectId:
+                "devtask-16557",
+
+            storageBucket:
+                "devtask-16557.firebasestorage.app",
+
+            messagingSenderId:
+                "410494319429",
+
+            appId:
+                "1:410494319429:web:550bb45a80856c2e099c2c"
+
+        };
+
+
+        // =========================
+        // INITIALIZE FIREBASE
+        // =========================
+
+        const app =
+            initializeApp(firebaseConfig);
+
+        const auth =
+            getAuth(app);
+
+        const provider =
+            new GoogleAuthProvider();
+
+
+        // Force Google account selection.
+
+        provider.setCustomParameters({
+            prompt: "select_account"
+        });
+
+
+        // =========================
+        // DOM ELEMENTS
         // =========================
 
         const loginOverlay =
-            document.getElementById("loginOverlay");
+            document.getElementById(
+                "loginOverlay"
+            );
 
         const navLoginButton =
-            document.getElementById("navLoginButton");
+            document.getElementById(
+                "navLoginButton"
+            );
 
         const heroLoginButton =
-            document.getElementById("heroLoginButton");
+            document.getElementById(
+                "heroLoginButton"
+            );
 
         const loginClose =
-            document.getElementById("loginClose");
+            document.getElementById(
+                "loginClose"
+            );
 
-        const loginForm =
-            document.getElementById("loginForm");
+        const googleLoginButton =
+            document.getElementById(
+                "googleLoginButton"
+            );
 
-        const loginEmail =
-            document.getElementById("loginEmail");
+        const googleButtonText =
+            document.getElementById(
+                "googleButtonText"
+            );
 
-        const loginPassword =
-            document.getElementById("loginPassword");
-
-        const passwordToggle =
-            document.getElementById("passwordToggle");
-
-        const loginSubmit =
-            document.getElementById("loginSubmit");
-
-        const loginButtonText =
-            document.getElementById("loginButtonText");
-
-        const loginSpinner =
-            document.getElementById("loginSpinner");
+        const googleSpinner =
+            document.getElementById(
+                "googleSpinner"
+            );
 
         const loginMessage =
-            document.getElementById("loginMessage");
-
-        const emailError =
-            document.getElementById("emailError");
-
-        const passwordError =
-            document.getElementById("passwordError");
-
-        const demoLogin =
-            document.getElementById("demoLogin");
-
-        const signupButton =
-            document.getElementById("signupButton");
-
-        const forgotPassword =
-            document.getElementById("forgotPassword");
+            document.getElementById(
+                "loginMessage"
+            );
 
 
         // =========================
@@ -616,18 +567,17 @@
 
         function openLogin() {
 
-            loginOverlay.classList.add("active");
+            loginOverlay.classList.add(
+                "active"
+            );
 
             loginOverlay.setAttribute(
                 "aria-hidden",
                 "false"
             );
 
-            document.body.style.overflow = "hidden";
-
-            setTimeout(() => {
-                loginEmail.focus();
-            }, 100);
+            document.body.style.overflow =
+                "hidden";
 
         }
 
@@ -638,16 +588,20 @@
 
         function closeLogin() {
 
-            loginOverlay.classList.remove("active");
+            loginOverlay.classList.remove(
+                "active"
+            );
 
             loginOverlay.setAttribute(
                 "aria-hidden",
                 "true"
             );
 
-            document.body.style.overflow = "";
+            document.body.style.overflow =
+                "";
 
-            clearLoginErrors();
+            loginMessage.textContent =
+                "";
 
         }
 
@@ -678,7 +632,9 @@
                     event.target ===
                     loginOverlay
                 ) {
+
                     closeLogin();
+
                 }
 
             }
@@ -686,7 +642,7 @@
 
 
         // =========================
-        // ESCAPE
+        // ESCAPE KEY
         // =========================
 
         document.addEventListener(
@@ -695,9 +651,13 @@
 
                 if (
                     event.key === "Escape" &&
-                    loginOverlay.classList.contains("active")
+                    loginOverlay.classList.contains(
+                        "active"
+                    )
                 ) {
+
                     closeLogin();
+
                 }
 
             }
@@ -705,259 +665,147 @@
 
 
         // =========================
-        // PASSWORD VISIBILITY
+        // GOOGLE SIGN-IN
         // =========================
 
-        passwordToggle.addEventListener(
+        googleLoginButton.addEventListener(
             "click",
-            () => {
+            async () => {
 
-                const showing =
-                    loginPassword.type === "text";
+                loginMessage.textContent =
+                    "";
 
-                loginPassword.type =
-                    showing
-                        ? "password"
-                        : "text";
+                googleLoginButton.disabled =
+                    true;
 
-                passwordToggle.textContent =
-                    showing
-                        ? "Show"
-                        : "Hide";
+                googleButtonText.textContent =
+                    "Connecting to Google...";
 
-                passwordToggle.setAttribute(
-                    "aria-label",
-                    showing
-                        ? "Show password"
-                        : "Hide password"
-                );
-
-            }
-        );
-
-
-        // =========================
-        // CLEAR ERRORS
-        // =========================
-
-        function clearLoginErrors() {
-
-            emailError.textContent = "";
-
-            passwordError.textContent = "";
-
-            loginMessage.textContent = "";
-
-            loginEmail.classList.remove(
-                "input-error"
-            );
-
-            loginPassword.classList.remove(
-                "input-error"
-            );
-
-        }
-
-
-        // =========================
-        // LOGIN VALIDATION
-        // =========================
-
-        loginForm.addEventListener(
-            "submit",
-            event => {
-
-                event.preventDefault();
-
-                clearLoginErrors();
-
-                const email =
-                    loginEmail.value.trim();
-
-                const password =
-                    loginPassword.value;
-
-                let valid = true;
-
-
-                // Email
-
-                if (!email) {
-
-                    emailError.textContent =
-                        "Please enter your email address.";
-
-                    loginEmail.classList.add(
-                        "input-error"
-                    );
-
-                    valid = false;
-
-                } else if (
-                    !/^[^\s@]+@[^\s@]+\.[^\s@]+$/
-                        .test(email)
-                ) {
-
-                    emailError.textContent =
-                        "Please enter a valid email address.";
-
-                    loginEmail.classList.add(
-                        "input-error"
-                    );
-
-                    valid = false;
-
-                }
-
-
-                // Password
-
-                if (!password) {
-
-                    passwordError.textContent =
-                        "Please enter your password.";
-
-                    loginPassword.classList.add(
-                        "input-error"
-                    );
-
-                    valid = false;
-
-                } else if (
-                    password.length < 6
-                ) {
-
-                    passwordError.textContent =
-                        "Password must contain at least 6 characters.";
-
-                    loginPassword.classList.add(
-                        "input-error"
-                    );
-
-                    valid = false;
-
-                }
-
-
-                if (!valid) {
-                    return;
-                }
-
-
-                // =========================
-                // DEMO FRONT-END LOGIN
-                // =========================
-
-                loginSubmit.disabled = true;
-
-                loginButtonText.textContent =
-                    "Signing in...";
-
-                loginSpinner.classList.add(
+                googleSpinner.classList.add(
                     "active"
                 );
 
 
-                setTimeout(() => {
+                try {
+
+                    const result =
+                        await signInWithPopup(
+                            auth,
+                            provider
+                        );
+
+
+                    const user =
+                        result.user;
+
+
+                    // Store basic user information
+                    // for the dashboard UI.
 
                     sessionStorage.setItem(
                         "devtask_logged_in",
                         "true"
                     );
 
+                    sessionStorage.setItem(
+                        "devtask_user",
+                        JSON.stringify({
+
+                            uid: user.uid,
+
+                            name:
+                                user.displayName ||
+                                "Developer",
+
+                            email:
+                                user.email ||
+                                "",
+
+                            photoURL:
+                                user.photoURL ||
+                                ""
+
+                        })
+                    );
+
+
+                    googleButtonText.textContent =
+                        "Signed in successfully";
+
+
+                    setTimeout(() => {
+
+                        window.location.href =
+                            "dashboard.html";
+
+                    }, 400);
+
+
+                } catch (error) {
+
+                    console.error(
+                        "Google sign-in error:",
+                        error
+                    );
+
+
+                    let message =
+                        "Unable to sign in with Google. Please try again.";
+
 
                     if (
-                        document.getElementById(
-                            "rememberMe"
-                        ).checked
+                        error.code ===
+                        "auth/popup-closed-by-user"
                     ) {
 
-                        localStorage.setItem(
-                            "devtask_remembered_email",
-                            email
-                        );
+                        message =
+                            "Google sign-in was cancelled.";
+
+                    } else if (
+                        error.code ===
+                        "auth/popup-blocked"
+                    ) {
+
+                        message =
+                            "Your browser blocked the Google sign-in window. Please allow popups for DevTask.";
+
+                    } else if (
+                        error.code ===
+                        "auth/unauthorized-domain"
+                    ) {
+
+                        message =
+                            "This website domain is not authorized in Firebase Authentication.";
+
+                    } else if (
+                        error.code ===
+                        "auth/network-request-failed"
+                    ) {
+
+                        message =
+                            "Network error. Please check your internet connection.";
 
                     }
 
 
-                    window.location.href =
-                        "dashboard.html";
-
-                }, 700);
-
-            }
-        );
+                    loginMessage.textContent =
+                        message;
 
 
-        // =========================
-        // DEMO ACCOUNT
-        // =========================
+                    googleLoginButton.disabled =
+                        false;
 
-        demoLogin.addEventListener(
-            "click",
-            () => {
+                    googleButtonText.textContent =
+                        "Continue with Google";
 
-                loginEmail.value =
-                    "demo@devtask.app";
+                    googleSpinner.classList.remove(
+                        "active"
+                    );
 
-                loginPassword.value =
-                    "demo123";
-
-                loginForm.requestSubmit();
+                }
 
             }
         );
-
-
-        // =========================
-        // FORGOT PASSWORD
-        // =========================
-
-        forgotPassword.addEventListener(
-            "click",
-            () => {
-
-                loginMessage.textContent =
-                    "Password recovery will be available when a real authentication service is connected.";
-
-            }
-        );
-
-
-        // =========================
-        // SIGN UP
-        // =========================
-
-        signupButton.addEventListener(
-            "click",
-            () => {
-
-                loginMessage.textContent =
-                    "Account registration will be available when a real authentication service is connected.";
-
-            }
-        );
-
-
-        // =========================
-        // REMEMBERED EMAIL
-        // =========================
-
-        const rememberedEmail =
-            localStorage.getItem(
-                "devtask_remembered_email"
-            );
-
-        if (rememberedEmail) {
-
-            loginEmail.value =
-                rememberedEmail;
-
-            document.getElementById(
-                "rememberMe"
-            ).checked = true;
-
-        }
 
     </script>
 
