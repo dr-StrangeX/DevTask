@@ -103,7 +103,7 @@ DevTask/
 ### 1️⃣ Clone the repository
 
 ```bash
-git clone YOUR_GITHUB_REPOSITORY_URL
+git clone https://github.com/dr-StrangeX/DevTask
 ```
 
 ### 2️⃣ Open the project
