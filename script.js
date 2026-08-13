@@ -1448,3 +1448,222 @@ if (savedTheme === "light") {
 renderTasks();
 
 updateStatistics();
+// =========================
+// PROJECT PROGRESS
+// =========================
+
+const projectItems = document.querySelectorAll(".project-item");
+
+
+// Load saved project progress
+
+function loadProjectProgress() {
+
+    projectItems.forEach(project => {
+
+        const projectId =
+            project.dataset.project;
+
+        const savedProgress =
+            localStorage.getItem(
+                `devtask_project_${projectId}`
+            );
+
+        if (savedProgress !== null) {
+
+            updateProjectProgress(
+                project,
+                Number(savedProgress)
+            );
+
+        } else {
+
+            updateProjectProgress(
+                project,
+                Number(project.dataset.progress) || 0
+            );
+
+        }
+
+    });
+
+}
+
+
+// Update project UI
+
+function updateProjectProgress(project, progress) {
+
+    progress = Math.max(
+        0,
+        Math.min(100, progress)
+    );
+
+
+    // Save current value in HTML data attribute
+
+    project.dataset.progress =
+        progress;
+
+
+    // Percentage text
+
+    const percentage =
+        project.querySelector(
+            ".project-percentage"
+        );
+
+
+    if (percentage) {
+
+        percentage.textContent =
+            `${progress}%`;
+
+    }
+
+
+    // Progress bar
+
+    const progressFill =
+        project.querySelector(
+            ".project-progress-fill"
+        );
+
+
+    if (progressFill) {
+
+        progressFill.style.width =
+            `${progress}%`;
+
+    }
+
+
+    // Accessibility
+
+    const progressBar =
+        project.querySelector(
+            ".progress-bar"
+        );
+
+
+    if (progressBar) {
+
+        progressBar.setAttribute(
+            "aria-valuenow",
+            progress
+        );
+
+    }
+
+}
+
+
+// Increase project progress
+
+function increaseProjectProgress(project) {
+
+    const current =
+        Number(project.dataset.progress) || 0;
+
+    const newProgress =
+        Math.min(
+            100,
+            current + 5
+        );
+
+
+    updateProjectProgress(
+        project,
+        newProgress
+    );
+
+
+    localStorage.setItem(
+        `devtask_project_${project.dataset.project}`,
+        newProgress
+    );
+
+}
+
+
+// Decrease project progress
+
+function decreaseProjectProgress(project) {
+
+    const current =
+        Number(project.dataset.progress) || 0;
+
+    const newProgress =
+        Math.max(
+            0,
+            current - 5
+        );
+
+
+    updateProjectProgress(
+        project,
+        newProgress
+    );
+
+
+    localStorage.setItem(
+        `devtask_project_${project.dataset.project}`,
+        newProgress
+    );
+
+}
+
+
+// Add button events
+
+projectItems.forEach(project => {
+
+    const increaseButton =
+        project.querySelector(
+            ".project-increase"
+        );
+
+
+    const decreaseButton =
+        project.querySelector(
+            ".project-decrease"
+        );
+
+
+    if (increaseButton) {
+
+        increaseButton.addEventListener(
+            "click",
+            () => {
+
+                increaseProjectProgress(
+                    project
+                );
+
+            }
+        );
+
+    }
+
+
+    if (decreaseButton) {
+
+        decreaseButton.addEventListener(
+            "click",
+            () => {
+
+                decreaseProjectProgress(
+                    project
+                );
+
+            }
+        );
+
+    }
+
+});
+
+
+// Load project progress when application starts
+
+loadProjectProgress();
