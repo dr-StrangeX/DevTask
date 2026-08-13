@@ -1,7 +1,6 @@
 # 🚀 DevTask — Productivity Dashboard
 =======
 ## 🌐 Deployment
->>>>>>> 936a18f (Improve README and add project screenshots)
 
 A modern, responsive **task and project management dashboard** designed to help users organize tasks, track projects, and monitor productivity from one centralized interface.
 
